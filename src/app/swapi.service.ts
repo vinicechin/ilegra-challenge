@@ -10,20 +10,22 @@ import { Character } from './character.model';
 @Injectable()
 export class SwapiService {
   filmsUpdated = new EventEmitter<Film[]>();
-  charsUpdated = new EventEmitter<Film[]>();
+  charsUpdated = new EventEmitter<Character[]>();
+  
   public films : Film[] = [];
-  public characters : any[] = [];
+  public characters : Character[] = [];
+
+  private tempData: any[] = [];
 
   // service constructor
   constructor(private http: Http) {}
 
-  // Film setter and getter
   setFilms(films: Film[]) {
     this.films = Film.buildFilmsStructure(films)
     this.filmsUpdated.emit(this.films);
   }
 
-  setCharacters(chars: any[]) {
+  setCharacters(chars: Character[]) {
     this.characters = Character.buildCharactersStructure(chars)
     this.charsUpdated.emit(this.characters);
   }
@@ -62,22 +64,22 @@ export class SwapiService {
     }
   }
 
-  // Gets data from api based on purl parameter
-  // getData(url, page, items, type) {
-  //   this.http.get(url + "/?page=" + page)
-  //     .subscribe(
-  //       (response: Response) => {
-  //         const data = response.json();
-  //         for(let item of data.results) {
-  //           items.push(item)
-  //         }
-  //         if (data.next) {
-  //           this.getData(url, ++page, items, type)
-  //         } else {
-  //           console.log(items)
-  //           this.setData(type, items)
-  //         }
-  //       }
-  //     )
-  // }
+  //Gets data from api based on purl parameter
+  getSpecificData(url, page, items, type) {
+    this.http.get(url + "/?page=" + page)
+      .subscribe(
+        (response: Response) => {
+          const data = response.json();
+          for(let item of data.results) {
+            items.push(item)
+          }
+          if (data.next) {
+            this.getData(url, ++page, items, type)
+          } else {
+            console.log(items)
+            this.setData(type, items)
+          }
+        }
+      )
+  }
 }
