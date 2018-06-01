@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ngOnChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Film } from '../../film.model'; 
 
 @Component({
   selector: 'app-film-details',
@@ -11,6 +12,10 @@ export class FilmDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getCharactersName() {
+    return 'teste'
   }
 
 }
