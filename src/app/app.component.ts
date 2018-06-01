@@ -17,12 +17,8 @@ export class AppComponent {
   }
 
   getData() {
-    this.swapiService.getData("https://swapi.co/api/films")
-      .subscribe(
-        (films: any[]) => {
-          this.swapiService.setFilms(films)
-        },
-        (error) => console.log(error)
-      );
+    this.swapiService.getData("https://swapi.co/api/films", 1, [], 0)
+    this.swapiService.getData("https://swapi.co/api/people", 1, [], 1)
   }
+
 }
