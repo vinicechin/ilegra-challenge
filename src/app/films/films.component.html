@@ -1,14 +1,14 @@
 <div class="row">
-  <div class="col-md-5">
+  <app-film-details 
+    class="col-7"
+    [selFilm]="selectedFilm">
+  </app-film-details>
+  <div class="col-5">
     <app-film
       *ngFor="let filmItem of films" 
       [film]="filmItem"
       (click)="setSelectedFilm(filmItem)">
     </app-film>
   </div>
-  <app-film-details 
-    class="col-md-7"
-    [selFilm]="selectedFilm">
-  </app-film-details>
 </div>
 
