@@ -1,3 +1,6 @@
-<div>
-  Teste
+<div *ngIf="selFilm">
+  {{ selFilm.title }}
+</div>
+<div *ngIf="!selFilm">
+  Plase select a film to show its details
 </div>

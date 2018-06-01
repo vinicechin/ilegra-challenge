@@ -9,6 +9,7 @@ import { Film } from '../film.model';
 })
 export class FilmsComponent implements OnInit {
   public films: Film[];
+  public selectedFilm: Film;
 
   constructor(private swapiService: SwapiService) {
     this.swapiService.filmsUpdated.subscribe(
@@ -20,6 +21,10 @@ export class FilmsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  setSelectedFilm(selectedFilm: Film) {
+    this.selectedFilm = selectedFilm;
   }
 
 }
