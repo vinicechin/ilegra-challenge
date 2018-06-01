@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Response } from '@angular/http';
+import { SwapiService } from './swapi.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(private swapiService: SwapiService) {}
+
+  ngOnInit() {
+    this.getFilmsData()
+  }
+
+  getFilmsData() {
+    this.swapiService.getFilmsData()
+      .subscribe(
+        (films: any[]) => {
+          this.swapiService.setFilms(films)
+        },
+        (error) => console.log(error)
+      );
+  }
 }
