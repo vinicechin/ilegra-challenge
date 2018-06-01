@@ -22,7 +22,7 @@ export class Film {
         film.director, 
         film.title, 
         film.episode_id, 
-        charsArray,
+        film.characters,
         planetsArray,
         speciesArray,
         starshipsArray,
