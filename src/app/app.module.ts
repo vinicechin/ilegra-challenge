@@ -10,6 +10,7 @@ import { FilmsComponent } from './films/films.component';
 import { CharacterComponent } from './character/character.component';
 import { FilmComponent } from './films/film/film.component';
 import { CharacterItemComponent } from './character/character-item/character-item.component';
+import { FilmDetailsComponent } from './films/film-details/film-details.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CharacterItemComponent } from './character/character-item/character-ite
     CharacterComponent,
     FilmComponent,
     CharacterItemComponent,
+    FilmDetailsComponent
   ],
   imports: [
     BrowserModule,
