@@ -1,5 +1,20 @@
-<app-films></app-films>
-<hr>
-<app-characters></app-characters>
-
-<button class="btn btn-primary">aa</button>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="nav nav-tabs">
+        <button class="btn btn-primary" (click)="onFilmsSelected()"> 
+            Films
+        </button>
+        <button class="btn" (click)="onCharacterSelected()"> 
+            Characters
+        </button>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <app-films [hidden]="!filmsSelected"></app-films>
+      <app-characters [hidden]="!charactersSelected"></app-characters> 
+    </div>
+  </div>
+</div>

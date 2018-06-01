@@ -9,6 +9,8 @@ import { SwapiService } from './swapi.service';
 })
 export class AppComponent {
   title = 'app';
+  filmsSelected = true;
+  charactersSelected = false;
 
   constructor(private swapiService: SwapiService) {}
 
@@ -19,6 +21,16 @@ export class AppComponent {
   getData() {
     this.swapiService.getData("https://swapi.co/api/films", 1, [], 0)
     this.swapiService.getData("https://swapi.co/api/people", 1, [], 1)
+  }
+
+  onCharacterSelected() {
+    this.filmsSelected = false;
+    this.charactersSelected = true;
+  }
+
+  onFilmsSelected() {
+    this.filmsSelected = true;
+    this.charactersSelected = false;
   }
 
 }

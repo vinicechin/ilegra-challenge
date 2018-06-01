@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges} from '@angular/core';
 import { SwapiService } from '../swapi.service';
 import { Film } from '../film.model'; 
 
@@ -11,8 +11,11 @@ export class FilmsComponent implements OnInit {
   public films: Film[];
 
   constructor(private swapiService: SwapiService) {
-    this.swapiService.filmsUpdated.subscribe( 
-      (filmsArray: Film[]) => this.films = filmsArray
+    this.swapiService.filmsUpdated.subscribe(
+      (filmsArray: Film[]) => {
+        console.log(filmsArray)
+        this.films = filmsArray
+      }
     )
   }
 

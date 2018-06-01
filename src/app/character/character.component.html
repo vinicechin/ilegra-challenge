@@ -1,10 +1,11 @@
-<div class="row"> 
-  <div class="col-xs-12"> 
-    <div *ngFor="let character of characters">
-      {{ character.name }}
-    </div>
-    <!-- <app-recipe-item 
-      *ngFor="let recipeEl of recipes" 
-      [recipe]="recipeEl"></app-recipe-item>  -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+    <app-character-item 
+      *ngFor="let characterItem of characters" 
+      [character]="characterItem">
+    </app-character-item> 
+    <div>
   </div> 
 </div> 
+

@@ -9,13 +9,15 @@ import { SwapiService } from './swapi.service';
 import { FilmsComponent } from './films/films.component';
 import { CharacterComponent } from './character/character.component';
 import { FilmComponent } from './films/film/film.component';
+import { CharacterItemComponent } from './character/character-item/character-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilmsComponent,
     CharacterComponent,
-    FilmComponent
+    FilmComponent,
+    CharacterItemComponent,
   ],
   imports: [
     BrowserModule,
