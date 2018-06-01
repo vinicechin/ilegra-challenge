@@ -1,11 +1,11 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <app-film 
-        *ngFor="let filmItem of films" 
-        [film]="filmItem">
-      </app-film> 
-    <div>
-  </div> 
-</div> 
+<div class="row">
+  <div class="col-md-5">
+    <app-film
+      *ngFor="let filmItem of films" 
+      [film]="filmItem">
+    </app-film>
+  </div>
+  <app-film-details class="col-md-7">
+  </app-film-details>
+</div>
 
