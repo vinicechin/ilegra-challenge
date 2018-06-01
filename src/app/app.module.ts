@@ -11,6 +11,7 @@ import { CharacterComponent } from './character/character.component';
 import { FilmComponent } from './films/film/film.component';
 import { CharacterItemComponent } from './character/character-item/character-item.component';
 import { FilmDetailsComponent } from './films/film-details/film-details.component';
+import { CharacterDetailsComponent } from './character/character-details/character-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FilmDetailsComponent } from './films/film-details/film-details.componen
     CharacterComponent,
     FilmComponent,
     CharacterItemComponent,
-    FilmDetailsComponent
+    FilmDetailsComponent,
+    CharacterDetailsComponent
   ],
   imports: [
     BrowserModule,

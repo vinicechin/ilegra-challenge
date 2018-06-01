@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { SwapiService } from '../swapi.service';
 import { Film } from '../film.model'; 
 
@@ -13,10 +13,7 @@ export class FilmsComponent implements OnInit {
 
   constructor(private swapiService: SwapiService) {
     this.swapiService.filmsUpdated.subscribe(
-      (filmsArray: Film[]) => {
-        console.log(filmsArray)
-        this.films = filmsArray
-      }
+      (filmsArray: Film[]) => this.films = filmsArray
     )
     this.swapiService.tabChanged.subscribe( 
       () => this.selectedFilm = null

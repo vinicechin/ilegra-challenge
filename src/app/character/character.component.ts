@@ -9,14 +9,22 @@ import { Character } from '../character.model';
 })
 export class CharacterComponent implements OnInit {
   public characters: Character[];
+  public selectedChar: Character;
 
   constructor(private swapiService: SwapiService) {
     this.swapiService.charsUpdated.subscribe( 
       (charsArray: Character[]) => this.characters = charsArray
     )
+    this.swapiService.tabChanged.subscribe( 
+      () => this.selectedChar = null
+    )
   }
 
   ngOnInit() {
+  }
+
+  setSelectedChar(selectedChar: Character) {
+    this.selectedChar = selectedChar;
   }
 
 }

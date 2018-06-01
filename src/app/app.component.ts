@@ -32,6 +32,7 @@ export class AppComponent {
   onFilmsSelected() {
     this.filmsSelected = true;
     this.charactersSelected = false;
+    this.swapiService.tabChanged.emit();
   }
 
 }

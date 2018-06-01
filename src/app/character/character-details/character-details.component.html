@@ -1,0 +1,14 @@
+<div *ngIf="selChar">
+  <div>
+    Name: {{ selChar.name }}
+  </div>
+  <div>
+    <label>Films:</label>
+    <div *ngFor="let title of filmNames">
+      {{ title }}
+    </div>
+  </div>
+</div>
+<div *ngIf="!selChar">
+  Plase select a character to show its details
+</div>
