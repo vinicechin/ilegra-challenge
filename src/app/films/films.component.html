@@ -1,3 +1,11 @@
-<div *ngFor="let film of films">
-  {{ film.title }}
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <app-film 
+        *ngFor="let filmItem of films" 
+        [film]="filmItem">
+      </app-film> 
+    <div>
+  </div> 
+</div> 
+
