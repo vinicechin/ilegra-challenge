@@ -1,5 +1,10 @@
 <div *ngIf="selFilm">
-  {{ selFilm.title }}
+  <div class="film-title">
+    {{ selFilm.title }}
+  </div>
+  <div class="film-content">
+    Characters: {{ getCharactersName() }}
+  </div>
 </div>
 <div *ngIf="!selFilm">
   Plase select a film to show its details
