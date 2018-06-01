@@ -13,11 +13,11 @@ export class AppComponent {
   constructor(private swapiService: SwapiService) {}
 
   ngOnInit() {
-    this.getFilmsData()
+    this.getData()
   }
 
-  getFilmsData() {
-    this.swapiService.getFilmsData()
+  getData() {
+    this.swapiService.getData("https://swapi.co/api/films")
       .subscribe(
         (films: any[]) => {
           this.swapiService.setFilms(films)

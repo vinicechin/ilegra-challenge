@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
@@ -8,21 +8,25 @@ import { Film } from './film.model';
 
 @Injectable()
 export class SwapiService {
-  private films : any[];
+  filmsUpdated = new EventEmitter<Film[]>();
+  private films : Film[] = [new Film("a", "a", 100, [1,2], [1,2], [1,2], [1,2], [1,2])];
   
+  // service constructor
   constructor(private http: Http) {}
 
+  // Film setter and getter
   setFilms(films: any[]) {
-    console.log(films)
-    this.buildDataStructure(films)
+    this.buildFilmsStructure(films)
+    this.filmsUpdated.emit(this.films);
   }
 
   getFilms() {
     return this.films;
   }
   
-  getFilmsData() {
-    return this.http.get("https://swapi.co/api/films")
+  // Gets data from api based on purl parameter
+  getData(url) {
+    return this.http.get(url)
       .map(
         (response: Response) => {
           const data = response.json();
@@ -40,8 +44,8 @@ export class SwapiService {
       );
   }
 
-  buildDataStructure(films) {
-    console.log(films)
+  // Build film structure based on film model
+  buildFilmsStructure(films) {
     const filmsArray: Film[] = [];
     for (let film of films) {
       const charsArray = this.getIdsArray(film.characters)
@@ -63,9 +67,10 @@ export class SwapiService {
 
       filmsArray.push(newFilm)
     }
-    this.films = films;
+    this.films = filmsArray;
   }
 
+  // transform links into ids array
   getIdsArray(originArray) {
     const resultArray = []
     for (let item of originArray) {
