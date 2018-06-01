@@ -9,8 +9,11 @@ import { Character } from './character.model';
 
 @Injectable()
 export class SwapiService {
+  // emit event for data updates
   filmsUpdated = new EventEmitter<Film[]>();
   charsUpdated = new EventEmitter<Character[]>();
+  tabChanged = new EventEmitter<void>();
+  // variable to control components data values
   public films : Film[] = [];
   public characters : Character[] = [];
 

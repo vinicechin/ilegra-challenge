@@ -18,6 +18,9 @@ export class FilmsComponent implements OnInit {
         this.films = filmsArray
       }
     )
+    this.swapiService.tabChanged.subscribe( 
+      () => this.selectedFilm = null
+    )
   }
 
   ngOnInit() {
