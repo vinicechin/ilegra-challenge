@@ -29,6 +29,17 @@ export class SwapiService {
     this.characters = Character.buildCharactersStructure(chars)
     this.charsUpdated.emit(this.characters);
   }
+
+  //Gets data from api based on purl parameter
+  getUnitaryData(url) {
+    return this.http.get(url)
+      .map(
+        (response: Response) => {
+          const data = response.json();
+          return data
+        }
+      )
+  }
   
   // Gets data from api based on purl parameter
   getData(url, page, items, type) {
@@ -62,24 +73,5 @@ export class SwapiService {
         console.log(array)
         break;
     }
-  }
-
-  //Gets data from api based on purl parameter
-  getSpecificData(url, page, items, type) {
-    this.http.get(url + "/?page=" + page)
-      .subscribe(
-        (response: Response) => {
-          const data = response.json();
-          for(let item of data.results) {
-            items.push(item)
-          }
-          if (data.next) {
-            this.getData(url, ++page, items, type)
-          } else {
-            console.log(items)
-            this.setData(type, items)
-          }
-        }
-      )
   }
 }
