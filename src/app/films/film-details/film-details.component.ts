@@ -27,7 +27,6 @@ export class FilmDetailsComponent implements OnInit {
         .subscribe(
           (character: any) => {
             this.characterNames.push(character.name)
-            console.log(this.characterNames)
           }
         )
     }
