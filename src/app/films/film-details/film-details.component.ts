@@ -17,22 +17,20 @@ export class FilmDetailsComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.characterNames = this.selFilm ? this.getCharactersName() : []
+    this.selFilm ? this.getCharactersName() : this.characterNames = []
   }
 
   getCharactersName() {
-    console.log(this.selFilm.characters)
+    this.characterNames = []
     for (let characterUrl of this.selFilm.characters) {
-      // console.log(characterUrl)
-      // this.swapiService.getUnitaryData("")
-      //   .subscribe(
-      //     (character: any) => {
-      //       console.log(character)
-      //     }
-      //   )
+      this.swapiService.getUnitaryData(characterUrl)
+        .subscribe(
+          (character: any) => {
+            this.characterNames.push(character.name)
+            console.log(this.characterNames)
+          }
+        )
     }
-
-    return ['teste']
   }
 
 }

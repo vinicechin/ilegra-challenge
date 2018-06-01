@@ -1,9 +1,12 @@
 <div *ngIf="selFilm">
   <div class="film-title">
-    {{ selFilm.title }}
+    Title: {{ selFilm.title }}
   </div>
   <div class="film-content">
-    Characters: {{ characterNames }}
+    <label>Characters:</label>
+    <div *ngFor="let name of characterNames">
+      {{ name }}
+    </div>
   </div>
 </div>
 <div *ngIf="!selFilm">
