@@ -9,7 +9,7 @@ import { Film } from '../../film.model';
 })
 export class FilmDetailsComponent implements OnInit {
   @Input() selFilm: Film;
-  characterNames: string[];
+  characterNames: string[] = [];
 
   constructor(private swapiService: SwapiService) {}
 
@@ -17,7 +17,9 @@ export class FilmDetailsComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.selFilm ? this.getCharactersName() : this.characterNames = []
+    if (this.selFilm) {
+      this.getCharactersName()
+    }
   }
 
   getCharactersName() {

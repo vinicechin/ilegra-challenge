@@ -11,11 +11,8 @@ import { Character } from './character.model';
 export class SwapiService {
   filmsUpdated = new EventEmitter<Film[]>();
   charsUpdated = new EventEmitter<Character[]>();
-  
   public films : Film[] = [];
   public characters : Character[] = [];
-
-  private tempData: any[] = [];
 
   // service constructor
   constructor(private http: Http) {}
