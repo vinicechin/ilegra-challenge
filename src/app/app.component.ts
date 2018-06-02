@@ -31,6 +31,7 @@ export class AppComponent {
     this.swapiService.getData("https://swapi.co/api/films", 1, [], 0)
     this.swapiService.getData("https://swapi.co/api/people", 1, [], 1)
     this.swapiService.getData("https://swapi.co/api/vehicles", 1, [], 2)
+    this.swapiService.getData("https://swapi.co/api/starships", 1, [], 3)
   }
 
   onFilmsSelected() {

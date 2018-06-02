@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Starship } from '../../starship.model'; 
 
 @Component({
   selector: 'app-starship-item',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./starship-item.component.css']
 })
 export class StarshipItemComponent implements OnInit {
+  @Input() starship: Starship;
 
   constructor() { }
 
