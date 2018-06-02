@@ -2,10 +2,16 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
       <ul class="nav nav-tabs">
-        <button class="btn btn-primary" (click)="onFilmsSelected()"> 
+        <button 
+          class="btn"
+          [ngClass]="{'selected-tab': filmsSelected}"
+          (click)="onFilmsSelected()"> 
             Films
         </button>
-        <button class="btn" (click)="onCharacterSelected()"> 
+        <button 
+          class="btn"
+          [ngClass]="{'selected-tab': charactersSelected}"
+          (click)="onCharacterSelected()"> 
             Characters
         </button>
       </ul>

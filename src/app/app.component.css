@@ -2,3 +2,8 @@ button {
   margin-right: 2px;
   margin-bottom: 2px;
 }
+
+.selected-tab {
+  background-color: #007bff;
+  color: white;
+}
