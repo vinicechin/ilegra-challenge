@@ -1,12 +1,12 @@
 <div class="row">
-  <div class="col-4">
+  <div class="col-3">
     <app-vehicle-item
       *ngFor="let vehicleItem of vehicles" 
       [vehicle]="vehicleItem"
       (click)="setSelectedVehicle(vehicleItem)">
     </app-vehicle-item>
   </div>
-  <div class="col-8">
+  <div class="col-9">
     <app-vehicle-details 
       [selVehicle]="selectedVehicle">
     </app-vehicle-details>
