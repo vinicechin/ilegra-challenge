@@ -19,7 +19,10 @@ export class CharacterComponent implements OnInit {
       () => this.selectedChar = null
     )
     this.swapiService.selectCharacter.subscribe(
-      (character) => this.setSelectedChar(character)
+      (character) => {
+        this.setSelectedChar(character)
+        window.scrollTo(0, 0)
+      }
     )
   }
 

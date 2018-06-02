@@ -22,7 +22,7 @@
       <div class="col">
         <label>Vehicles:</label>
         <div *ngFor="let name of vehicleNames">
-          {{ name }}
+          <a (click)="redirect(name, 2)">{{ name }}</a>
         </div>
       </div>
       <div class="col">

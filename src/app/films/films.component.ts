@@ -18,6 +18,12 @@ export class FilmsComponent implements OnInit {
     this.swapiService.tabChanged.subscribe( 
       () => this.selectedFilm = null
     )
+    this.swapiService.selectFilm.subscribe(
+      (film) => {
+        this.setSelectedFilm(film)
+        window.scrollTo(0, 0)
+      }
+    )
   }
 
   ngOnInit() {

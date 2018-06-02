@@ -5,7 +5,7 @@
   <div>
     <label>Films:</label>
     <div *ngFor="let title of filmNames">
-      {{ title }}
+      <a (click)="redirect(title, 0)">{{ title }}</a>
     </div>
   </div>
 </div>
