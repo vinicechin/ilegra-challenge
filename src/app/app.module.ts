@@ -21,6 +21,9 @@ import { StarshipDetailsComponent } from './starships/starship-details/starship-
 import { SpeciesComponent } from './species/species.component';
 import { SpecieItemComponent } from './species/specie-item/specie-item.component';
 import { SpecieDetailsComponent } from './species/specie-details/specie-details.component';
+import { PlanetsComponent } from './planets/planets.component';
+import { PlanetItemComponent } from './planets/planet-item/planet-item.component';
+import { PlanetDetailsComponent } from './planets/planet-details/planet-details.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { SpecieDetailsComponent } from './species/specie-details/specie-details.
     StarshipDetailsComponent,
     SpeciesComponent,
     SpecieItemComponent,
-    SpecieDetailsComponent
+    SpecieDetailsComponent,
+    PlanetsComponent,
+    PlanetItemComponent,
+    PlanetDetailsComponent
   ],
   imports: [
     BrowserModule,
