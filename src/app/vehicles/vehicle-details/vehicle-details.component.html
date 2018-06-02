@@ -1,6 +1,6 @@
 <div *ngIf="selVehicle">
   <div class="vehicle-name">
-    Title: {{ selVehicle.name }}
+    Name: {{ selVehicle.name }}
   </div>
   <hr>
   <div class="vehicle-content">
@@ -26,15 +26,15 @@
     <br>
     <div class="row">
       <div class="col">
-        <label>Pilotes:</label>
-        <div *ngFor="let name of characterNames">
-          <a (click)="redirect(name, 1)">{{ name }}</a>
-        </div>
-      </div>
-      <div class="col">
         <label>Films:</label>
         <div *ngFor="let name of filmNames">
           <a (click)="redirect(name, 0)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label>Pilotes:</label>
+        <div *ngFor="let name of characterNames">
+          <a (click)="redirect(name, 1)">{{ name }}</a>
         </div>
       </div>
     </div>

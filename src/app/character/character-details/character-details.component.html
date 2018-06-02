@@ -1,11 +1,50 @@
 <div *ngIf="selChar">
-  <div>
+  <div class="vehicle-name">
     Name: {{ selChar.name }}
   </div>
-  <div>
-    <label>Films:</label>
-    <div *ngFor="let title of filmNames">
-      <a (click)="redirect(title, 0)">{{ title }}</a>
+  <hr>
+  <div class="vehicle-content">
+    <label>Eye color: {{ selChar.eye_color }}</label>
+    <br>
+    <label>Skin color: {{ selChar.skin_color }}</label>
+    <br>
+    <label>Hair color: {{ selChar.hair_color }}</label>
+    <br>
+    <label>Gender: {{ selChar.gender }}</label>
+    <br>
+    <label>Height: {{ selChar.height }}</label>
+    <br>
+    <label>Mass: {{ selChar.mass }}</label>
+    <br>
+    <label>Birth year: {{ selChar.birth_year }}</label>
+    <br>
+    <label>Homeworld: {{ homeworld }}</label>
+    <br>
+    <div class="row">
+      <div class="col">
+        <label>Films:</label>
+        <div *ngFor="let name of filmNames">
+          <a (click)="redirect(name, 0)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label>Vehicles:</label>
+        <div *ngFor="let name of vehicleNames">
+          <a (click)="redirect(name, 2)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label>Starships:</label>
+        <div *ngFor="let name of starshipNames">
+          {{ name }}
+        </div>
+      </div>
+      <div class="col">
+        <label>Species:</label>
+        <div *ngFor="let name of specieNames">
+          {{ name }}
+        </div>
+      </div>
     </div>
   </div>
 </div>
