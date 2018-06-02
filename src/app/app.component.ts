@@ -6,6 +6,7 @@ const FILMS = 0
 const CHARACTERS = 1
 const VEHICLES = 2
 const STARSHIPS = 3
+const SPECIES = 4
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent {
   charactersSelected = false;
   vehiclesSelected = false;
   starshipsSelected = false;
+  speciesSelected = false;
 
   constructor(private swapiService: SwapiService) {
     this.swapiService.redirectEvent.subscribe( 
@@ -34,6 +36,7 @@ export class AppComponent {
     this.swapiService.getData("https://swapi.co/api/people", 1, [], 1)
     this.swapiService.getData("https://swapi.co/api/vehicles", 1, [], 2)
     this.swapiService.getData("https://swapi.co/api/starships", 1, [], 3)
+    this.swapiService.getData("https://swapi.co/api/species", 1, [], 4)
   }
 
   onFilmsSelected() {
@@ -56,11 +59,17 @@ export class AppComponent {
     this.swapiService.tabChanged.emit();
   }
 
+  onSpeciesSelected() {
+    this.selectSpeciesTab();
+    this.swapiService.tabChanged.emit();
+  }
+
   selectFilmsTab() {
     this.filmsSelected = true;
     this.charactersSelected = false;
     this.vehiclesSelected = false;
     this.starshipsSelected = false;
+    this.speciesSelected = false;
   }
 
   selectCharacterTab() {
@@ -68,6 +77,7 @@ export class AppComponent {
     this.charactersSelected = true;
     this.vehiclesSelected = false;
     this.starshipsSelected = false;
+    this.speciesSelected = false;
   }
 
   selectVehiclesTab() {
@@ -75,6 +85,7 @@ export class AppComponent {
     this.charactersSelected = false;
     this.vehiclesSelected = true;
     this.starshipsSelected = false;
+    this.speciesSelected = false;
   }
 
   selectStarshipsTab() {
@@ -82,6 +93,15 @@ export class AppComponent {
     this.charactersSelected = false;
     this.vehiclesSelected = false;
     this.starshipsSelected = true;
+    this.speciesSelected = false;
+  }
+
+  selectSpeciesTab() {
+    this.filmsSelected = false;
+    this.charactersSelected = false;
+    this.vehiclesSelected = false;
+    this.starshipsSelected = false;
+    this.speciesSelected = true;
   }
 
   redirect(redirectObj) {
@@ -101,6 +121,10 @@ export class AppComponent {
       case STARSHIPS:
         this.selectStarshipsTab()
         this.swapiService.selectStarship.emit(redirectObj.selected)
+        break;
+      case SPECIES:
+        this.selectSpeciesTab()
+        this.swapiService.selectSpecie.emit(redirectObj.selected)
         break;
       default:
         break;

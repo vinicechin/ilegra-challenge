@@ -26,6 +26,12 @@
           (click)="onStarshipsSelected()"> 
             Starships
         </button>
+        <button 
+          class="btn"
+          [ngClass]="{'selected-tab': speciesSelected}"
+          (click)="onSpeciesSelected()"> 
+            Species
+        </button>
       </ul>
     </div>
   </div>
@@ -35,6 +41,7 @@
       <app-characters [hidden]="!charactersSelected"></app-characters>
       <app-vehicles [hidden]="!vehiclesSelected"></app-vehicles> 
       <app-starships [hidden]="!starshipsSelected"></app-starships> 
+      <app-species [hidden]="!speciesSelected"></app-species> 
     </div>
   </div>
 </div>

@@ -18,6 +18,9 @@ import { VehicleDetailsComponent } from './vehicles/vehicle-details/vehicle-deta
 import { StarshipsComponent } from './starships/starships.component';
 import { StarshipItemComponent } from './starships/starship-item/starship-item.component';
 import { StarshipDetailsComponent } from './starships/starship-details/starship-details.component';
+import { SpeciesComponent } from './species/species.component';
+import { SpecieItemComponent } from './species/specie-item/specie-item.component';
+import { SpecieDetailsComponent } from './species/specie-details/specie-details.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { StarshipDetailsComponent } from './starships/starship-details/starship-
     VehicleDetailsComponent,
     StarshipsComponent,
     StarshipItemComponent,
-    StarshipDetailsComponent
+    StarshipDetailsComponent,
+    SpeciesComponent,
+    SpecieItemComponent,
+    SpecieDetailsComponent
   ],
   imports: [
     BrowserModule,
