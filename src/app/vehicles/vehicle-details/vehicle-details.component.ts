@@ -48,4 +48,8 @@ export class VehicleDetailsComponent implements OnInit {
     }
   }
 
+  redirect(name, type) {
+    this.swapiService.redirect(name, type)
+  }
+
 }

@@ -116,7 +116,6 @@ export class SwapiService {
         break;
     }
     if (filterResult[0]) {
-      console.log(filterResult[0])
       this.redirectEvent.emit({selected: filterResult[0], type: type})
     }
   }

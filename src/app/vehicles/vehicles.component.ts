@@ -21,6 +21,12 @@ export class VehiclesComponent implements OnInit {
     this.swapiService.tabChanged.subscribe( 
       () => this.selectedVehicle = null
     )
+    this.swapiService.selectVehicle.subscribe(
+      (vehicle) => {
+        this.setSelectedVehicle(vehicle)
+        window.scrollTo(0, 0)
+      }
+    )
   }
 
   ngOnInit() {

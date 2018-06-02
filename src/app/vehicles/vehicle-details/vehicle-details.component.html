@@ -28,13 +28,13 @@
       <div class="col">
         <label>Pilotes:</label>
         <div *ngFor="let name of characterNames">
-          {{ name }}
+          <a (click)="redirect(name, 1)">{{ name }}</a>
         </div>
       </div>
       <div class="col">
         <label>Films:</label>
         <div *ngFor="let name of filmNames">
-          {{ name }}
+          <a (click)="redirect(name, 0)">{{ name }}</a>
         </div>
       </div>
     </div>
