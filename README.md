@@ -10,6 +10,10 @@ Run `npm install` on the main application folder to load and install the project
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## For Chrome users
+
+If running the application with chrome the [CORS](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi) extension needs to be added to the browser.
+
 ## Copyright
 
 Vinicius Cechin 2018. Powered by [SWAPI](https://swapi.co/)
