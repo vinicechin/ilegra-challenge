@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { SwapiService } from '../../swapi.service';
-import { Starship } from '../../starship.model'; 
+import { Starship } from '../../models/starship.model'; 
 
 @Component({
   selector: 'app-starship-details',

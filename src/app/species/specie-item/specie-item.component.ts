@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Specie } from '../../specie.model'; 
+import { Specie } from '../../models/specie.model'; 
 
 @Component({
   selector: 'app-specie-item',

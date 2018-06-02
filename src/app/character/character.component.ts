@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SwapiService } from '../swapi.service';
-import { Character } from '../character.model'; 
+import { Character } from '../models/character.model'; 
 
 @Component({
   selector: 'app-characters',

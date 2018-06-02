@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { SwapiService } from '../../swapi.service';
-import { Film } from '../../film.model'; 
+import { Film } from '../../models/film.model'; 
 
 @Component({
   selector: 'app-film-details',

@@ -4,12 +4,12 @@ import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import 'rxjs/add/operator/map'
-import { Film } from './film.model'; 
-import { Character } from './character.model'; 
-import { Vehicle } from './vehicle.model'; 
-import { Starship } from './starship.model';
-import { Specie } from './specie.model';
-import { Planet } from './planet.model';
+import { Film } from './models/film.model'; 
+import { Character } from './models/character.model'; 
+import { Vehicle } from './models/vehicle.model'; 
+import { Starship } from './models/starship.model';
+import { Specie } from './models/specie.model';
+import { Planet } from './models/planet.model';
 
 const FILMS = 0
 const CHARACTERS = 1

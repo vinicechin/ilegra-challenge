@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SwapiService } from '../swapi.service';
-import { Specie } from '../specie.model'; 
+import { Specie } from '../models/specie.model'; 
 
 @Component({
   selector: 'app-species',

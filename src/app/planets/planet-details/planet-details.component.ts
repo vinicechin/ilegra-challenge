@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { SwapiService } from '../../swapi.service';
-import { Planet } from '../../planet.model'; 
+import { Planet } from '../../models/planet.model'; 
 
 @Component({
   selector: 'app-planet-details',
