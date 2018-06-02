@@ -1,0 +1,13 @@
+label {
+  margin-bottom: 0px;
+}
+
+.planet-content a {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.planet-content a:hover {
+  color: #000bff;
+  text-decoration: underline;
+}

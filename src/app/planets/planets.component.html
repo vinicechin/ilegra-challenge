@@ -1,3 +1,14 @@
-<p>
-  planets works!
-</p>
+<div class="row">
+  <div class="col-3">
+    <app-planet-item
+      *ngFor="let planetItem of planets" 
+      [planet]="planetItem"
+      (click)="setSelectedPlanet(planetItem)">
+    </app-planet-item>
+  </div>
+  <div class="col-9">
+    <app-planet-details 
+      [selPlanet]="selectedPlanet">
+    </app-planet-details>
+  </div>
+</div>

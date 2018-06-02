@@ -9,12 +9,14 @@ import { Character } from './character.model';
 import { Vehicle } from './vehicle.model'; 
 import { Starship } from './starship.model';
 import { Specie } from './specie.model';
+import { Planet } from './planet.model';
 
 const FILMS = 0
 const CHARACTERS = 1
 const VEHICLES = 2
 const STARSHIPS = 3
 const SPECIES = 4
+const PLANETS = 5
 
 @Injectable()
 export class SwapiService {
@@ -24,6 +26,7 @@ export class SwapiService {
   vehiclesUpdated = new EventEmitter<Vehicle[]>();
   starshipsUpdated = new EventEmitter<Starship[]>();
   speciesUpdated = new EventEmitter<Specie[]>();
+  planetsUpdated = new EventEmitter<Planet[]>();
   // emit event to change tab
   tabChanged = new EventEmitter<void>();
   // redirection and selections events
@@ -33,12 +36,14 @@ export class SwapiService {
   selectVehicle = new EventEmitter<Vehicle>();
   selectStarship = new EventEmitter<Starship>();
   selectSpecie = new EventEmitter<Specie>();
+  selectPlanet = new EventEmitter<Planet>();
   // variable to control components data values
   public films : Film[] = [];
   public characters : Character[] = [];
   public vehicles : Vehicle[] = [];
   public starships : Starship[] = [];
   public species : Specie[] = [];
+  public planets : Planet[] = [];
 
   // service constructor
   constructor(private http: Http) {}
@@ -66,6 +71,11 @@ export class SwapiService {
   setSpecies(species: Specie[]) {
     this.species = Specie.buildSpeciesStructure(species)
     this.speciesUpdated.emit(this.species)
+  }
+
+  setPlanets(planets: Planet[]) {
+    this.planets = Planet.buildPlanetsStructure(planets)
+    this.planetsUpdated.emit(this.planets)
   }
 
   //Gets data from api based on purl parameter
@@ -116,6 +126,9 @@ export class SwapiService {
       case SPECIES:
         this.setSpecies(array)
         break;
+      case PLANETS:
+        this.setPlanets(array)
+        break;
       default:
         console.log(array)
         break;
@@ -144,6 +157,10 @@ export class SwapiService {
       case SPECIES:
         filterResult = this.species.filter(
           specie => specie.name === name)
+        break;
+      case PLANETS:
+        filterResult = this.planets.filter(
+          planet => planet.name === name)
         break;
       default:
         console.log(name, type)

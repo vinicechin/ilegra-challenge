@@ -1,3 +1,41 @@
-<p>
-  planet-details works!
-</p>
+<div *ngIf="selPlanet">
+  <div class="planet-name">
+    Name: {{ selPlanet.name }}
+  </div>
+  <hr>
+  <div class="planet-content">
+    <label>Rotation Period: {{ selPlanet.rotation_period }}</label>
+    <br>
+    <label>Orbital Period: {{ selPlanet.orbital_period }}</label>
+    <br>
+    <label>Diameter: {{ selPlanet.diameter }}</label>
+    <br>
+    <label>Climate: {{ selPlanet.climate }}</label>
+    <br>
+    <label>Gravity: {{ selPlanet.gravity }}</label>
+    <br>
+    <label>Terrain: {{ selPlanet.terrain }}</label>
+    <br>
+    <label>Water Surface: {{ selPlanet.surface_water }}%</label>
+    <br>
+    <label>Population: {{ selPlanet.population }}</label>
+    <br>
+    <div class="row">
+      <div class="col">
+        <label>Films:</label>
+        <div *ngFor="let name of filmNames">
+          <a (click)="redirect(name, 0)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label>Residents:</label>
+        <div *ngFor="let name of characterNames">
+          <a (click)="redirect(name, 1)">{{ name }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!selPlanet">
+  Plase select a planet to show its details
+</div>
