@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="loadedData">
   <div class="col-3">
     <app-film
       *ngFor="let filmItem of films" 
@@ -10,6 +10,11 @@
     <app-film-details 
       [selFilm]="selectedFilm">
     </app-film-details>
+  </div>
+</div>
+<div *ngIf="!loadedData">
+  <div class="loading-msg">
+    Loading
   </div>
 </div>
 

@@ -2,6 +2,10 @@ label {
   margin-bottom: 0px;
 }
 
+.character-name {
+  margin-top: 15px;
+}
+
 .character-content a {
   color: #007bff;
   cursor: pointer;

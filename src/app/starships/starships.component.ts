@@ -10,12 +10,14 @@ import { Starship } from '../starship.model';
 export class StarshipsComponent implements OnInit {
   public starships: Starship[];
   public selectedStarship: Starship;
+  public loadedData: boolean = false;
 
   constructor(private swapiService: SwapiService) {
     this.swapiService.starshipsUpdated.subscribe(
       (starshipsArray: Starship[]) => {
         starshipsArray.sort(this.compare)
         this.starships = starshipsArray
+        this.loadedData = true
       }
     )
     this.swapiService.tabChanged.subscribe( 

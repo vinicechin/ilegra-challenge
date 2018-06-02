@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="loadedData">
   <div class="col-3">
     <app-vehicle-item
       *ngFor="let vehicleItem of vehicles" 
@@ -10,5 +10,10 @@
     <app-vehicle-details 
       [selVehicle]="selectedVehicle">
     </app-vehicle-details>
+  </div>
+</div>
+<div *ngIf="!loadedData">
+  <div class="loading-msg">
+    Loading
   </div>
 </div>

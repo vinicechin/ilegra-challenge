@@ -7,6 +7,5 @@ label {
 }
 
 .list-group-item {
-  height: 40px;
-  padding: 7px 15px;
+  padding: 7px 15px 0px 15px;
 }

@@ -10,12 +10,14 @@ import { Planet } from '../planet.model';
 export class PlanetsComponent implements OnInit {
   public planets: Planet[];
   public selectedPlanet: Planet;
+  public loadedData: boolean = false;
 
   constructor(private swapiService: SwapiService) {
     this.swapiService.planetsUpdated.subscribe(
       (planetsArray: Planet[]) => {
         planetsArray.sort(this.compare)
         this.planets = planetsArray
+        this.loadedData = true
       }
     )
     this.swapiService.tabChanged.subscribe( 

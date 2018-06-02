@@ -10,12 +10,14 @@ import { Character } from '../character.model';
 export class CharacterComponent implements OnInit {
   public characters: Character[];
   public selectedChar: Character;
+  public loadedData: boolean = false;
 
   constructor(private swapiService: SwapiService) {
     this.swapiService.charsUpdated.subscribe( 
       (charsArray: Character[]) => {
         charsArray.sort(this.compare)
         this.characters = charsArray
+        this.loadedData = true
       }
     )
     this.swapiService.tabChanged.subscribe( 

@@ -1,36 +1,36 @@
 <div *ngIf="selSpecie">
   <div class="specie-name">
-    Name: {{ selSpecie.name }}
+    <h4>{{ selSpecie.name }}</h4>
   </div>
   <hr>
   <div class="specie-content">
-    <label>Classification: {{ selSpecie.classification }}</label>
+    <label><b>Classification:</b> {{ selSpecie.classification }}</label>
     <br>
-    <label>Designation: {{ selSpecie.designation }}</label>
+    <label><b>Designation:</b> {{ selSpecie.designation }}</label>
     <br>
-    <label>Average Height: {{ selSpecie.average_height }}</label>
+    <label><b>Average Height:</b> {{ selSpecie.average_height }}</label>
     <br>
-    <label>Eye color: {{ selSpecie.eye_colors }}</label>
+    <label><b>Eye color:</b> {{ selSpecie.eye_colors }}</label>
     <br>
-    <label>Skin color: {{ selSpecie.skin_colors }}</label>
+    <label><b>Skin color:</b> {{ selSpecie.skin_colors }}</label>
     <br>
-    <label>Hair color: {{ selSpecie.hair_colors }}</label>
+    <label><b>Hair color:</b> {{ selSpecie.hair_colors }}</label>
     <br>
-    <label>Average Lifespan: {{ selSpecie.average_lifespan }}</label>
+    <label><b>Average Lifespan:</b> {{ selSpecie.average_lifespan }}</label>
     <br>
-    <label>Homeworld: <a (click)="redirect(homeworld, 5)">{{ homeworld }}</a></label>
+    <label><b>Homeworld:</b> <a (click)="redirect(homeworld, 5)">{{ homeworld }}</a></label>
     <br>
-    <label>Language: {{ selSpecie.language }}</label>
-    <br>
+    <label><b>Language:</b> {{ selSpecie.language }}</label>
+    <hr>
     <div class="row">
       <div class="col">
-        <label>Films:</label>
+        <label><b>Films:</b></label>
         <div *ngFor="let name of filmNames">
           <a (click)="redirect(name, 0)">{{ name }}</a>
         </div>
       </div>
       <div class="col">
-        <label>Characters:</label>
+        <label><b>Characters:</b></label>
         <div *ngFor="let name of characterNames">
           <a (click)="redirect(name, 1)">{{ name }}</a>
         </div>
@@ -39,5 +39,5 @@
   </div>
 </div>
 <div *ngIf="!selSpecie">
-  Plase select a character to show its details
+  Use the left menu to navigate through the species.
 </div>

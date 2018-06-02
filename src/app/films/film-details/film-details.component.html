@@ -1,44 +1,44 @@
 <div *ngIf="selFilm">
   <div class="film-title">
-    Title: {{ selFilm.title }}
+    <h4>{{ selFilm.title }}</h4>
   </div>
   <hr>
   <div class="film-content">
-    <label>Director: {{ selFilm.director }}</label>
+    <label><b>Director:</b> {{ selFilm.director }}</label>
     <br>
-    <label>Producer: {{ selFilm.producer }}</label>
+    <label><b>Producer:</b> {{ selFilm.producer }}</label>
     <br>
-    <label>Opening Crawl: {{ selFilm.crawl }}</label>
+    <label><b>Opening Crawl:</b> {{ selFilm.crawl }}</label>
     <br>
-    <label>Release Date: {{ selFilm.release }}</label>
-    <br>
+    <label><b>Release Date:</b> {{ selFilm.release }}</label>
+    <hr>
     <div class="row">
       <div class="col">
-        <label>Characters:</label>
+        <label><b>Characters:</b></label>
         <div *ngFor="let name of characterNames">
           <a (click)="redirect(name, 1)">{{ name }}</a>
         </div>
       </div>
       <div class="col">
-        <label>Vehicles:</label>
+        <label><b>Vehicles:</b></label>
         <div *ngFor="let name of vehicleNames">
           <a (click)="redirect(name, 2)">{{ name }}</a>
         </div>
       </div>
       <div class="col">
-        <label>Starships:</label>
+        <label><b>Starships:</b></label>
         <div *ngFor="let name of starshipNames">
           <a (click)="redirect(name, 3)">{{ name }}</a>
         </div>
       </div>
       <div class="col">
-        <label>Species:</label>
+        <label><b>Species:</b></label>
         <div *ngFor="let name of specieNames">
           <a (click)="redirect(name, 4)">{{ name }}</a>
         </div>
       </div>
       <div class="col">
-        <label>Planets:</label>
+        <label><b>Planets:</b></label>
         <div *ngFor="let name of planetNames">
           <a (click)="redirect(name, 5)">{{ name }}</a>
         </div>
@@ -47,10 +47,5 @@
   </div>
 </div>
 <div *ngIf="!selFilm">
-  Plase select a film to show its details
+  Use the left menu to navigate through the films.
 </div>
-
-<!-- 
-public planets: string[],
-public species: string[],
-public vehicles: string[] -->

@@ -1,34 +1,34 @@
 <div *ngIf="selPlanet">
   <div class="planet-name">
-    Name: {{ selPlanet.name }}
+    <h4>{{ selPlanet.name }}</h4>
   </div>
   <hr>
   <div class="planet-content">
-    <label>Rotation Period: {{ selPlanet.rotation_period }}</label>
+    <label><b>Rotation Period:</b> {{ selPlanet.rotation_period }}</label>
     <br>
-    <label>Orbital Period: {{ selPlanet.orbital_period }}</label>
+    <label><b>Orbital Period:</b> {{ selPlanet.orbital_period }}</label>
     <br>
-    <label>Diameter: {{ selPlanet.diameter }}</label>
+    <label><b>Diameter:</b> {{ selPlanet.diameter }}</label>
     <br>
-    <label>Climate: {{ selPlanet.climate }}</label>
+    <label><b>Climate:</b> {{ selPlanet.climate }}</label>
     <br>
-    <label>Gravity: {{ selPlanet.gravity }}</label>
+    <label><b>Gravity:</b> {{ selPlanet.gravity }}</label>
     <br>
-    <label>Terrain: {{ selPlanet.terrain }}</label>
+    <label><b>Terrain:</b> {{ selPlanet.terrain }}</label>
     <br>
-    <label>Water Surface: {{ selPlanet.surface_water }}%</label>
+    <label><b>Water Surface:</b> {{ selPlanet.surface_water }}%</label>
     <br>
-    <label>Population: {{ selPlanet.population }}</label>
-    <br>
+    <label><b>Population:</b> {{ selPlanet.population }}</label>
+    <hr>
     <div class="row">
       <div class="col">
-        <label>Films:</label>
+        <label><b>Films:</b></label>
         <div *ngFor="let name of filmNames">
           <a (click)="redirect(name, 0)">{{ name }}</a>
         </div>
       </div>
       <div class="col">
-        <label>Residents:</label>
+        <label><b>Residents:</b></label>
         <div *ngFor="let name of characterNames">
           <a (click)="redirect(name, 1)">{{ name }}</a>
         </div>
@@ -37,5 +37,5 @@
   </div>
 </div>
 <div *ngIf="!selPlanet">
-  Plase select a planet to show its details
+  Use the left menu to navigate through the planets.
 </div>

@@ -1,38 +1,38 @@
 <div *ngIf="selVehicle">
   <div class="vehicle-name">
-    Name: {{ selVehicle.name }}
+    <h4>{{ selVehicle.name }}</h4>
   </div>
   <hr>
   <div class="vehicle-content">
-    <label>Model: {{ selVehicle.model }}</label>
+    <label><b>Model:</b> {{ selVehicle.model }}</label>
     <br>
-    <label>Manufacturer: {{ selVehicle.manufacturer }}</label>
+    <label><b>Manufacturer:</b> {{ selVehicle.manufacturer }}</label>
     <br>
-    <label>Cost: {{ selVehicle.cost_in_credits }} credits</label>
+    <label><b>Cost:</b> {{ selVehicle.cost_in_credits }} credits</label>
     <br>
-    <label>Length: {{ selVehicle.length }}</label>
+    <label><b>Length:</b> {{ selVehicle.length }}</label>
     <br>
-    <label>Max Speed: {{ selVehicle.max_atm_speed }}</label>
+    <label><b>Max Speed:</b> {{ selVehicle.max_atm_speed }}</label>
     <br>
-    <label>Crew: {{ selVehicle.crew }}</label>
+    <label><b>Crew:</b> {{ selVehicle.crew }}</label>
     <br>
-    <label>Passangers: {{ selVehicle.passengers }}</label>
+    <label><b>Passangers:</b> {{ selVehicle.passengers }}</label>
     <br>
-    <label>Cargo Capacity: {{ selVehicle.cargo_capacity }}</label>
+    <label><b>Cargo Capacity:</b> {{ selVehicle.cargo_capacity }}</label>
     <br>
-    <label>Consumables: {{ selVehicle.consumables }}</label>
+    <label><b>Consumables:</b> {{ selVehicle.consumables }}</label>
     <br>
-    <label>Class: {{ selVehicle.vehicle_class }}</label>
+    <label><b>Class:</b> {{ selVehicle.vehicle_class }}</label>
     <br>
     <div class="row">
       <div class="col">
-        <label>Films:</label>
+        <label><b>Films:</b></label>
         <div *ngFor="let name of filmNames">
           <a (click)="redirect(name, 0)">{{ name }}</a>
         </div>
       </div>
       <div class="col">
-        <label>Pilotes:</label>
+        <label><b>Pilotes:</b></label>
         <div *ngFor="let name of characterNames">
           <a (click)="redirect(name, 1)">{{ name }}</a>
         </div>
@@ -41,5 +41,5 @@
   </div>
 </div>
 <div *ngIf="!selVehicle">
-  Plase select a vehicle to show its details
+  Use the left menu to navigate through the vehicles.
 </div>

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="loadedData">
   <div class="col-3">
     <app-starship-item
       *ngFor="let starshipItem of starships" 
@@ -10,5 +10,10 @@
     <app-starship-details 
       [selStarship]="selectedStarship">
     </app-starship-details>
+  </div>
+</div>
+<div *ngIf="!loadedData">
+  <div class="loading-msg">
+    Loading
   </div>
 </div>

@@ -10,12 +10,14 @@ import { Film } from '../film.model';
 export class FilmsComponent implements OnInit {
   public films: Film[];
   public selectedFilm: Film;
+  public loadedData: boolean = false;
 
   constructor(private swapiService: SwapiService) {
     this.swapiService.filmsUpdated.subscribe(
       (filmsArray: Film[]) => {
         filmsArray.sort(this.compare)
         this.films = filmsArray
+        this.loadedData = true
       }
     )
     this.swapiService.tabChanged.subscribe( 

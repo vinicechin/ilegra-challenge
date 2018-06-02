@@ -2,6 +2,10 @@ label {
   margin-bottom: 0px;
 }
 
+.planet-name {
+  margin-top: 15px;
+}
+
 .planet-content a {
   color: #007bff;
   cursor: pointer;

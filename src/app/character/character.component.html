@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="loadedData">
   <div class="col-3">
     <app-character-item 
       *ngFor="let characterItem of characters" 
@@ -12,4 +12,9 @@
     </app-character-details>
   </div>
 </div> 
+<div *ngIf="!loadedData">
+  <div class="loading-msg">
+    Loading
+  </div>
+</div>
 

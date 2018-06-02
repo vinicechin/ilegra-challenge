@@ -1,7 +1,10 @@
 <div class="container">
+  <div class="app-header">
+    <h1>Star Wars Wiki</h1>
+  </div>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs" style="margin: 5px 0px">
         <button 
           class="btn"
           [ngClass]="{'selected-tab': filmsSelected}"
@@ -50,5 +53,9 @@
       <app-species [hidden]="!speciesSelected"></app-species> 
       <app-planets [hidden]="!planetsSelected"></app-planets>
     </div>
+  </div>
+  <hr style="margin: 5px 0px">
+  <div class="app-footer">
+    <p style="margin: 0px">&copy;Vinicius Cechin 2018. Powered by <a target="_blank" href="https://swapi.co/">SWAPI</a></p>
   </div>
 </div>

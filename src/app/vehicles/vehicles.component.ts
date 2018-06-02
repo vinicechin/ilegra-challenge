@@ -10,12 +10,14 @@ import { Vehicle } from '../vehicle.model';
 export class VehiclesComponent implements OnInit {
   public vehicles: Vehicle[];
   public selectedVehicle: Vehicle;
+  public loadedData: boolean = false;
 
   constructor(private swapiService: SwapiService) {
     this.swapiService.vehiclesUpdated.subscribe(
       (vehiclesArray: Vehicle[]) => {
         vehiclesArray.sort(this.compare)
         this.vehicles = vehiclesArray
+        this.loadedData = true
       }
     )
     this.swapiService.tabChanged.subscribe( 
