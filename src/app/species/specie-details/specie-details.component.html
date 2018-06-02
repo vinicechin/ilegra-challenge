@@ -1,3 +1,43 @@
-<p>
-  specie-details works!
-</p>
+<div *ngIf="selSpecie">
+  <div class="specie-name">
+    Name: {{ selSpecie.name }}
+  </div>
+  <hr>
+  <div class="specie-content">
+    <label>Classification: {{ selSpecie.classification }}</label>
+    <br>
+    <label>Designation: {{ selSpecie.designation }}</label>
+    <br>
+    <label>Average Height: {{ selSpecie.average_height }}</label>
+    <br>
+    <label>Eye color: {{ selSpecie.eye_colors }}</label>
+    <br>
+    <label>Skin color: {{ selSpecie.skin_colors }}</label>
+    <br>
+    <label>Hair color: {{ selSpecie.hair_colors }}</label>
+    <br>
+    <label>Average Lifespan: {{ selSpecie.average_lifespan }}</label>
+    <br>
+    <label>Homeworld: {{ homeworld }}</label>
+    <br>
+    <label>Language: {{ selSpecie.language }}</label>
+    <br>
+    <div class="row">
+      <div class="col">
+        <label>Films:</label>
+        <div *ngFor="let name of filmNames">
+          <a (click)="redirect(name, 0)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label>Characters:</label>
+        <div *ngFor="let name of characterNames">
+          <a (click)="redirect(name, 1)">{{ name }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!selSpecie">
+  Plase select a character to show its details
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SwapiService } from '../swapi.service';
 import { Film } from '../film.model'; 
 
