@@ -13,7 +13,10 @@ export class CharacterComponent implements OnInit {
 
   constructor(private swapiService: SwapiService) {
     this.swapiService.charsUpdated.subscribe( 
-      (charsArray: Character[]) => this.characters = charsArray
+      (charsArray: Character[]) => {
+        charsArray.sort(this.compare)
+        this.characters = charsArray
+      }
     )
     this.swapiService.tabChanged.subscribe( 
       () => this.selectedChar = null
@@ -31,6 +34,14 @@ export class CharacterComponent implements OnInit {
 
   setSelectedChar(selectedChar: Character) {
     this.selectedChar = selectedChar;
+  }
+
+  compare(a,b) {
+    if (a.name < b.name)
+      return -1;
+    if (a.name > b.name)
+      return 1;
+    return 0;
   }
 
 }

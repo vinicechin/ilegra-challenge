@@ -13,7 +13,10 @@ export class FilmsComponent implements OnInit {
 
   constructor(private swapiService: SwapiService) {
     this.swapiService.filmsUpdated.subscribe(
-      (filmsArray: Film[]) => this.films = filmsArray
+      (filmsArray: Film[]) => {
+        filmsArray.sort(this.compare)
+        this.films = filmsArray
+      }
     )
     this.swapiService.tabChanged.subscribe( 
       () => this.selectedFilm = null
@@ -31,6 +34,14 @@ export class FilmsComponent implements OnInit {
 
   setSelectedFilm(selectedFilm: Film) {
     this.selectedFilm = selectedFilm;
+  }
+
+  compare(a,b) {
+    if (a.release < b.release)
+      return -1;
+    if (a.release > b.release)
+      return 1;
+    return 0;
   }
 
 }
