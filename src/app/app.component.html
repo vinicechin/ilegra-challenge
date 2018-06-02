@@ -14,13 +14,20 @@
           (click)="onCharacterSelected()"> 
             Characters
         </button>
+        <button 
+          class="btn"
+          [ngClass]="{'selected-tab': vehiclesSelected}"
+          (click)="onVehiclesSelected()"> 
+            Vehicles
+        </button>
       </ul>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
       <app-films [hidden]="!filmsSelected"></app-films>
-      <app-characters [hidden]="!charactersSelected"></app-characters> 
+      <app-characters [hidden]="!charactersSelected"></app-characters>
+      <app-vehicles [hidden]="!vehiclesSelected"></app-vehicles> 
     </div>
   </div>
 </div>

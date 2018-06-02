@@ -1,0 +1,45 @@
+<div *ngIf="selVehicle">
+  <div class="vehicle-name">
+    Title: {{ selVehicle.name }}
+  </div>
+  <hr>
+  <div class="vehicle-content">
+    <label>Model: {{ selVehicle.model }}</label>
+    <br>
+    <label>Manufacturer: {{ selVehicle.manufacturer }}</label>
+    <br>
+    <label>Cost: {{ selVehicle.cost_in_credits }} credits</label>
+    <br>
+    <label>Length: {{ selVehicle.length }}</label>
+    <br>
+    <label>Max Speed: {{ selVehicle.max_atm_speed }}</label>
+    <br>
+    <label>Crew: {{ selVehicle.crew }}</label>
+    <br>
+    <label>Passangers: {{ selVehicle.passengers }}</label>
+    <br>
+    <label>Cargo Capacity: {{ selVehicle.cargo_capacity }}</label>
+    <br>
+    <label>Consumables: {{ selVehicle.consumables }}</label>
+    <br>
+    <label>Class: {{ selVehicle.vehicle_class }}</label>
+    <br>
+    <div class="row">
+      <div class="col">
+        <label>Pilotes:</label>
+        <div *ngFor="let name of characterNames">
+          {{ name }}
+        </div>
+      </div>
+      <div class="col">
+        <label>Films:</label>
+        <div *ngFor="let name of filmNames">
+          {{ name }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!selVehicle">
+  Plase select a vehicle to show its details
+</div>
