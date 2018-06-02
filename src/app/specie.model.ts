@@ -30,7 +30,7 @@ export class Specie {
         specie.average_lifespan,
         specie.homeworld,
         specie.language,
-        specie.characters,
+        specie.people,
         specie.films,
         specie.created,
         specie.edited,

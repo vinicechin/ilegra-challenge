@@ -42,7 +42,7 @@
       <div class="col">
         <label>Species:</label>
         <div *ngFor="let name of specieNames">
-          {{ name }}
+          <a (click)="redirect(name, 4)">{{ name }}</a>
         </div>
       </div>
     </div>
