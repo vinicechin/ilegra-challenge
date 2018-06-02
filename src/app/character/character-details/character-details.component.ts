@@ -36,7 +36,6 @@ export class CharacterDetailsComponent implements OnInit {
       this.swapiService.getUnitaryData(filmUrl)
         .subscribe(
           (film: any) => {
-            console.log(film)
             this.filmNames.push(film.title)
           }
         )
