@@ -7,10 +7,12 @@ import 'rxjs/add/operator/map'
 import { Film } from './film.model'; 
 import { Character } from './character.model'; 
 import { Vehicle } from './vehicle.model'; 
+import { Starship } from './starship.model';
 
 const FILMS = 0
 const CHARACTERS = 1
 const VEHICLES = 2
+const STARSHIPS = 3
 
 @Injectable()
 export class SwapiService {
@@ -18,6 +20,7 @@ export class SwapiService {
   filmsUpdated = new EventEmitter<Film[]>();
   charsUpdated = new EventEmitter<Character[]>();
   vehiclesUpdated = new EventEmitter<Vehicle[]>();
+  starshipsUpdated = new EventEmitter<Starship[]>();
   // emit event to change tab
   tabChanged = new EventEmitter<void>();
   // redirection and selections events
@@ -25,10 +28,12 @@ export class SwapiService {
   selectFilm = new EventEmitter<Film>();
   selectCharacter = new EventEmitter<Character>();
   selectVehicle = new EventEmitter<Vehicle>();
+  selectStarship = new EventEmitter<Starship>();
   // variable to control components data values
   public films : Film[] = [];
   public characters : Character[] = [];
   public vehicles : Vehicle[] = [];
+  public starships : Starship[] = [];
 
   // service constructor
   constructor(private http: Http) {}
@@ -46,6 +51,11 @@ export class SwapiService {
   setVehicles(vehicles: Vehicle[]) {
     this.vehicles = Vehicle.buildVehicleStructure(vehicles)
     this.vehiclesUpdated.emit(this.vehicles)
+  }
+
+  setStarships(starships: Starship[]) {
+    this.starships = Starship.buildStarshipStructure(starships)
+    this.starshipsUpdated.emit(this.starships)
   }
 
   //Gets data from api based on purl parameter
@@ -90,6 +100,9 @@ export class SwapiService {
       case VEHICLES:
         this.setVehicles(array)
         break;
+      case STARSHIPS:
+        this.setStarships(array)
+        break;
       default:
         console.log(array)
         break;
@@ -110,6 +123,10 @@ export class SwapiService {
       case VEHICLES:
         filterResult = this.vehicles.filter(
           vehicle => vehicle.name === name)
+        break;
+      case STARSHIPS:
+        filterResult = this.starships.filter(
+          starship => starship.name === name)
         break;
       default:
         console.log(name, type)

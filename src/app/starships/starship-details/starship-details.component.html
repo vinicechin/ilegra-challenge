@@ -1,0 +1,49 @@
+<div *ngIf="selStarship">
+  <div class="starship-name">
+    Name: {{ selStarship.name }}
+  </div>
+  <hr>
+  <div class="starship-content">
+    <label>Model: {{ selStarship.model }}</label>
+    <br>
+    <label>Manufacturer: {{ selStarship.manufacturer }}</label>
+    <br>
+    <label>Cost: {{ selStarship.cost_in_credits }} credits</label>
+    <br>
+    <label>Length: {{ selStarship.length }}</label>
+    <br>
+    <label>Max Speed: {{ selStarship.max_atm_speed }}</label>
+    <br>
+    <label>Crew: {{ selStarship.crew }}</label>
+    <br>
+    <label>Passangers: {{ selStarship.passengers }}</label>
+    <br>
+    <label>Cargo Capacity: {{ selStarship.cargo_capacity }}</label>
+    <br>
+    <label>Consumables: {{ selStarship.consumables }}</label>
+    <br>
+    <label>Consumables: {{ selStarship.hyperdrive_rating }}</label>
+    <br>
+    <label>Consumables: {{ selStarship.MGLT }}</label>
+    <br>
+    <label>Class: {{ selStarship.starship_class }}</label>
+    <br>
+    <div class="row">
+      <div class="col">
+        <label>Films:</label>
+        <div *ngFor="let name of filmNames">
+          <a (click)="redirect(name, 0)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label>Pilotes:</label>
+        <div *ngFor="let name of characterNames">
+          <a (click)="redirect(name, 1)">{{ name }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!selStarship">
+  Plase select a starship to show its details
+</div>

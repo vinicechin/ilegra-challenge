@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-3">
+    <app-starship-item
+      *ngFor="let starshipItem of starships" 
+      [starship]="starshipItem"
+      (click)="setSelectedStarship(starshipItem)">
+    </app-starship-item>
+  </div>
+  <div class="col-9">
+    <app-starship-details 
+      [selStarship]="selectedStarship">
+    </app-starship-details>
+  </div>
+</div>
