@@ -3,6 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
 
 ## Install dependencies
+If necessary, install angular-cli by running `npm install -g @angular/cli`
 
 Run `npm install` on the main application folder to load and install the project dependencies.
 
