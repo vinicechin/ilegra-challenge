@@ -18,6 +18,9 @@ export class CharacterComponent implements OnInit {
     this.swapiService.tabChanged.subscribe( 
       () => this.selectedChar = null
     )
+    this.swapiService.selectCharacter.subscribe(
+      (character) => this.setSelectedChar(character)
+    )
   }
 
   ngOnInit() {

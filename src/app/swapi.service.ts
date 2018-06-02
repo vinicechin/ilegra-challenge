@@ -8,13 +8,23 @@ import { Film } from './film.model';
 import { Character } from './character.model'; 
 import { Vehicle } from './vehicle.model'; 
 
+const FILMS = 0
+const CHARACTERS = 1
+const VEHICLES = 2
+
 @Injectable()
 export class SwapiService {
   // emit event for data updates
   filmsUpdated = new EventEmitter<Film[]>();
   charsUpdated = new EventEmitter<Character[]>();
   vehiclesUpdated = new EventEmitter<Vehicle[]>();
+  // emit event to change tab
   tabChanged = new EventEmitter<void>();
+  // redirection and selections events
+  redirectEvent = new EventEmitter<{ selected: any[], type: number }>();
+  selectFilm = new EventEmitter<Film>();
+  selectCharacter = new EventEmitter<Character>();
+  selectVehicle = new EventEmitter<Vehicle>();
   // variable to control components data values
   public films : Film[] = [];
   public characters : Character[] = [];
@@ -71,18 +81,43 @@ export class SwapiService {
   // Set data for component of respective type
   setData(type, array) {
     switch (type) {
-      case 0:
+      case FILMS:
         this.setFilms(array)
         break;
-      case 1:
+      case CHARACTERS:
         this.setCharacters(array)
         break;
-      case 2:
+      case VEHICLES:
         this.setVehicles(array)
         break;
       default:
         console.log(array)
         break;
+    }
+  }
+
+  redirect(name, type) {
+    var filterResult
+    switch (type) {
+      case FILMS:
+        filterResult = this.films.filter(
+          film => film.title === name)
+        break;
+      case CHARACTERS:
+        filterResult = this.characters.filter(
+          char => char.name === name)
+        break;
+      case VEHICLES:
+        filterResult = this.vehicles.filter(
+          vehicle => vehicle.name === name)
+        break;
+      default:
+        console.log(name, type)
+        break;
+    }
+    if (filterResult[0]) {
+      console.log(filterResult[0])
+      this.redirectEvent.emit({selected: filterResult[0], type: type})
     }
   }
 }

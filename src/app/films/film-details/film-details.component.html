@@ -16,7 +16,7 @@
       <div class="col">
         <label>Characters:</label>
         <div *ngFor="let name of characterNames">
-          {{ name }}
+          <a (click)="redirect(name, 1)">{{ name }}</a>
         </div>
       </div>
       <div class="col">
@@ -40,7 +40,7 @@
       <div class="col">
         <label>Planets:</label>
         <div *ngFor="let name of planetNames">
-          {{ name }}
+          <a>{{ name }}</a>
         </div>
       </div>
     </div>
