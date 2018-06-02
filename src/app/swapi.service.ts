@@ -101,7 +101,7 @@ export class SwapiService {
           if (data.next) {
             this.getData(url, ++page, items, type)
           } else {
-            console.log(items)
+            // console.log("Loaded data: " + type)
             this.setData(type, items)
           }
         }

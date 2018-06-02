@@ -37,9 +37,9 @@ export class PlanetsComponent implements OnInit {
   }
 
   compare(a,b) {
-    if (a.release < b.release)
+    if (a.name < b.name)
       return -1;
-    if (a.release > b.release)
+    if (a.name > b.name)
       return 1;
     return 0;
   }
