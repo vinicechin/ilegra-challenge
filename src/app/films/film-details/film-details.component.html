@@ -40,7 +40,7 @@
       <div class="col">
         <label>Planets:</label>
         <div *ngFor="let name of planetNames">
-          <a>{{ name }}</a>
+          <a (click)="redirect(name, 5)">{{ name }}</a>
         </div>
       </div>
     </div>
