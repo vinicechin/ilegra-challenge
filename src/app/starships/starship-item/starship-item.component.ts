@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Starship } from '../../starship.model'; 
+import { Starship } from '../../models/starship.model'; 
 
 @Component({
   selector: 'app-starship-item',

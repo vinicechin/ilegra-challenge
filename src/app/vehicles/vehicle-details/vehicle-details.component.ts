@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { SwapiService } from '../../swapi.service';
-import { Vehicle } from '../../vehicle.model'; 
+import { Vehicle } from '../../models/vehicle.model'; 
 
 @Component({
   selector: 'app-vehicle-details',

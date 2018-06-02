@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Planet } from '../../planet.model'; 
+import { Planet } from '../../models/planet.model'; 
 
 @Component({
   selector: 'app-planet-item',
