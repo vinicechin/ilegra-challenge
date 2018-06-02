@@ -1,0 +1,53 @@
+<div *ngIf="selChar">
+  <div class="character-name">
+    <h4>{{ selChar.name }}</h4>
+  </div>
+  <hr>
+  <div class="character-content">
+    <label><b>Eye color:</b> {{ selChar.eye_color }}</label>
+    <br>
+    <label><b>Skin color:</b> {{ selChar.skin_color }}</label>
+    <br>
+    <label><b>Hair color:</b> {{ selChar.hair_color }}</label>
+    <br>
+    <label><b>Gender:</b> {{ selChar.gender }}</label>
+    <br>
+    <label><b>Height:</b> {{ selChar.height }}</label>
+    <br>
+    <label><b>Mass:</b> {{ selChar.mass }}</label>
+    <br>
+    <label><b>Birth year:</b> {{ selChar.birth_year }}</label>
+    <br>
+    <label><b>Homeworld:</b> <a (click)="redirect(homeworld, 5)"> {{ homeworld }}</a></label>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <label><b>Films:</b></label>
+        <div *ngFor="let name of filmNames">
+          <a (click)="redirect(name, 0)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label><b>Vehicles:</b></label>
+        <div *ngFor="let name of vehicleNames">
+          <a (click)="redirect(name, 2)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label><b>Starships:</b></label>
+        <div *ngFor="let name of starshipNames">
+          <a (click)="redirect(name, 3)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label><b>Species:</b></label>
+        <div *ngFor="let name of specieNames">
+          <a (click)="redirect(name, 4)">{{ name }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!selChar">
+  Use the left menu to navigate through the characters.
+</div>

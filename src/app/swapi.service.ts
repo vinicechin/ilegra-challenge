@@ -6,26 +6,87 @@ import { throwError } from 'rxjs';
 import 'rxjs/add/operator/map'
 import { Film } from './film.model'; 
 import { Character } from './character.model'; 
+import { Vehicle } from './vehicle.model'; 
+import { Starship } from './starship.model';
+import { Specie } from './specie.model';
+import { Planet } from './planet.model';
+
+const FILMS = 0
+const CHARACTERS = 1
+const VEHICLES = 2
+const STARSHIPS = 3
+const SPECIES = 4
+const PLANETS = 5
 
 @Injectable()
 export class SwapiService {
+  // emit event for data updates
   filmsUpdated = new EventEmitter<Film[]>();
-  charsUpdated = new EventEmitter<Film[]>();
+  charsUpdated = new EventEmitter<Character[]>();
+  vehiclesUpdated = new EventEmitter<Vehicle[]>();
+  starshipsUpdated = new EventEmitter<Starship[]>();
+  speciesUpdated = new EventEmitter<Specie[]>();
+  planetsUpdated = new EventEmitter<Planet[]>();
+  // emit event to change tab
+  tabChanged = new EventEmitter<void>();
+  // redirection and selections events
+  redirectEvent = new EventEmitter<{ selected: any[], type: number }>();
+  selectFilm = new EventEmitter<Film>();
+  selectCharacter = new EventEmitter<Character>();
+  selectVehicle = new EventEmitter<Vehicle>();
+  selectStarship = new EventEmitter<Starship>();
+  selectSpecie = new EventEmitter<Specie>();
+  selectPlanet = new EventEmitter<Planet>();
+  // variable to control components data values
   public films : Film[] = [];
-  public characters : any[] = [];
+  public characters : Character[] = [];
+  public vehicles : Vehicle[] = [];
+  public starships : Starship[] = [];
+  public species : Specie[] = [];
+  public planets : Planet[] = [];
 
   // service constructor
   constructor(private http: Http) {}
 
-  // Film setter and getter
   setFilms(films: Film[]) {
-    this.buildFilmsStructure(films)
+    this.films = Film.buildFilmsStructure(films)
     this.filmsUpdated.emit(this.films);
   }
 
-  setCharacters(chars: any[]) {
-    this.buildCharactersStructure(chars)
+  setCharacters(chars: Character[]) {
+    this.characters = Character.buildCharactersStructure(chars)
     this.charsUpdated.emit(this.characters);
+  }
+
+  setVehicles(vehicles: Vehicle[]) {
+    this.vehicles = Vehicle.buildVehicleStructure(vehicles)
+    this.vehiclesUpdated.emit(this.vehicles)
+  }
+
+  setStarships(starships: Starship[]) {
+    this.starships = Starship.buildStarshipStructure(starships)
+    this.starshipsUpdated.emit(this.starships)
+  }
+
+  setSpecies(species: Specie[]) {
+    this.species = Specie.buildSpeciesStructure(species)
+    this.speciesUpdated.emit(this.species)
+  }
+
+  setPlanets(planets: Planet[]) {
+    this.planets = Planet.buildPlanetsStructure(planets)
+    this.planetsUpdated.emit(this.planets)
+  }
+
+  //Gets data from api based on purl parameter
+  getUnitaryData(url) {
+    return this.http.get(url)
+      .map(
+        (response: Response) => {
+          const data = response.json();
+          return data
+        }
+      )
   }
   
   // Gets data from api based on purl parameter
@@ -40,20 +101,33 @@ export class SwapiService {
           if (data.next) {
             this.getData(url, ++page, items, type)
           } else {
-            console.log(items)
+            // console.log("Loaded data: " + type)
             this.setData(type, items)
           }
         }
       )
   }
 
+  // Set data for component of respective type
   setData(type, array) {
     switch (type) {
-      case 0:
+      case FILMS:
         this.setFilms(array)
         break;
-      case 1:
+      case CHARACTERS:
         this.setCharacters(array)
+        break;
+      case VEHICLES:
+        this.setVehicles(array)
+        break;
+      case STARSHIPS:
+        this.setStarships(array)
+        break;
+      case SPECIES:
+        this.setSpecies(array)
+        break;
+      case PLANETS:
+        this.setPlanets(array)
         break;
       default:
         console.log(array)
@@ -61,66 +135,39 @@ export class SwapiService {
     }
   }
 
-  // Build film structure based on film model
-  buildFilmsStructure(films) {
-    const filmsArray: Film[] = [];
-    for (let film of films) {
-      const charsArray = this.getIdsArray(film.characters)
-      const planetsArray = this.getIdsArray(film.planets)
-      const speciesArray = this.getIdsArray(film.species)
-      const starshipsArray = this.getIdsArray(film.starships)
-      const vehiclesArray = this.getIdsArray(film.vehicles)
-
-      const newFilm = new Film(
-        film.director, 
-        film.title, 
-        film.episode_id, 
-        charsArray,
-        planetsArray,
-        speciesArray,
-        starshipsArray,
-        vehiclesArray
-      )
-
-      filmsArray.push(newFilm)
+  redirect(name, type) {
+    var filterResult
+    switch (type) {
+      case FILMS:
+        filterResult = this.films.filter(
+          film => film.title === name)
+        break;
+      case CHARACTERS:
+        filterResult = this.characters.filter(
+          char => char.name === name)
+        break;
+      case VEHICLES:
+        filterResult = this.vehicles.filter(
+          vehicle => vehicle.name === name)
+        break;
+      case STARSHIPS:
+        filterResult = this.starships.filter(
+          starship => starship.name === name)
+        break;
+      case SPECIES:
+        filterResult = this.species.filter(
+          specie => specie.name === name)
+        break;
+      case PLANETS:
+        filterResult = this.planets.filter(
+          planet => planet.name === name)
+        break;
+      default:
+        console.log(name, type)
+        break;
     }
-    this.films = filmsArray;
-  }
-
-  // Build film structure based on film model
-  buildCharactersStructure(chars) {
-    const charsArray: Character[] = [];
-    for (let char of chars) {
-      const filmsArray = this.getIdsArray(char.films)
-      const homeworld = parseInt(char.homeworld.substr(char.homeworld.length - 3, 2).replace('/',''))
-      const speciesArray = this.getIdsArray(char.species)
-      const starshipsArray = this.getIdsArray(char.starships)
-      const vehiclesArray = this.getIdsArray(char.vehicles)
-
-      const newChar = new Character(
-        char.eye_color, 
-        char.height, 
-        char.mass,
-        char.name, 
-        filmsArray,
-        homeworld,
-        speciesArray,
-        starshipsArray,
-        vehiclesArray
-      )
-
-      charsArray.push(newChar)
+    if (filterResult[0]) {
+      this.redirectEvent.emit({selected: filterResult[0], type: type})
     }
-    this.characters = charsArray;
-  }
-
-  // transform links into ids array
-  getIdsArray(originArray) {
-    const resultArray = []
-    for (let item of originArray) {
-      const itemId = parseInt(item.substr(item.length - 3, 2).replace('/',''))
-      resultArray.push(itemId)
-    }
-    return resultArray;
   }
 }

@@ -1,0 +1,17 @@
+label {
+  margin-bottom: 0px;
+}
+
+.starship-name {
+  margin-top: 15px;
+}
+
+.starship-content a {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.starship-content a:hover {
+  color: #000bff;
+  text-decoration: underline;
+}

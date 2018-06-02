@@ -1,3 +1,51 @@
-<div>
-  Teste
+<div *ngIf="selFilm">
+  <div class="film-title">
+    <h4>{{ selFilm.title }}</h4>
+  </div>
+  <hr>
+  <div class="film-content">
+    <label><b>Director:</b> {{ selFilm.director }}</label>
+    <br>
+    <label><b>Producer:</b> {{ selFilm.producer }}</label>
+    <br>
+    <label><b>Opening Crawl:</b> {{ selFilm.crawl }}</label>
+    <br>
+    <label><b>Release Date:</b> {{ selFilm.release }}</label>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <label><b>Characters:</b></label>
+        <div *ngFor="let name of characterNames">
+          <a (click)="redirect(name, 1)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label><b>Vehicles:</b></label>
+        <div *ngFor="let name of vehicleNames">
+          <a (click)="redirect(name, 2)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label><b>Starships:</b></label>
+        <div *ngFor="let name of starshipNames">
+          <a (click)="redirect(name, 3)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label><b>Species:</b></label>
+        <div *ngFor="let name of specieNames">
+          <a (click)="redirect(name, 4)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label><b>Planets:</b></label>
+        <div *ngFor="let name of planetNames">
+          <a (click)="redirect(name, 5)">{{ name }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!selFilm">
+  Use the left menu to navigate through the films.
 </div>

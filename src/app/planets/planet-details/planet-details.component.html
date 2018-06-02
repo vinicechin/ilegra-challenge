@@ -1,0 +1,41 @@
+<div *ngIf="selPlanet">
+  <div class="planet-name">
+    <h4>{{ selPlanet.name }}</h4>
+  </div>
+  <hr>
+  <div class="planet-content">
+    <label><b>Rotation Period:</b> {{ selPlanet.rotation_period }}</label>
+    <br>
+    <label><b>Orbital Period:</b> {{ selPlanet.orbital_period }}</label>
+    <br>
+    <label><b>Diameter:</b> {{ selPlanet.diameter }}</label>
+    <br>
+    <label><b>Climate:</b> {{ selPlanet.climate }}</label>
+    <br>
+    <label><b>Gravity:</b> {{ selPlanet.gravity }}</label>
+    <br>
+    <label><b>Terrain:</b> {{ selPlanet.terrain }}</label>
+    <br>
+    <label><b>Water Surface:</b> {{ selPlanet.surface_water }}%</label>
+    <br>
+    <label><b>Population:</b> {{ selPlanet.population }}</label>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <label><b>Films:</b></label>
+        <div *ngFor="let name of filmNames">
+          <a (click)="redirect(name, 0)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label><b>Residents:</b></label>
+        <div *ngFor="let name of characterNames">
+          <a (click)="redirect(name, 1)">{{ name }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!selPlanet">
+  Use the left menu to navigate through the planets.
+</div>

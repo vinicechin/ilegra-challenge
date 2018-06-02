@@ -1,11 +1,20 @@
-<div class="row">
-  <div class="col-md-5">
+<div class="row" *ngIf="loadedData">
+  <div class="col-3">
     <app-film
       *ngFor="let filmItem of films" 
-      [film]="filmItem">
+      [film]="filmItem"
+      (click)="setSelectedFilm(filmItem)">
     </app-film>
   </div>
-  <app-film-details class="col-md-7">
-  </app-film-details>
+  <div class="col-9">
+    <app-film-details 
+      [selFilm]="selectedFilm">
+    </app-film-details>
+  </div>
+</div>
+<div *ngIf="!loadedData">
+  <div class="loading-msg">
+    Loading
+  </div>
 </div>
 

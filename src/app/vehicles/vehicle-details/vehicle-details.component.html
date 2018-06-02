@@ -1,0 +1,45 @@
+<div *ngIf="selVehicle">
+  <div class="vehicle-name">
+    <h4>{{ selVehicle.name }}</h4>
+  </div>
+  <hr>
+  <div class="vehicle-content">
+    <label><b>Model:</b> {{ selVehicle.model }}</label>
+    <br>
+    <label><b>Manufacturer:</b> {{ selVehicle.manufacturer }}</label>
+    <br>
+    <label><b>Cost:</b> {{ selVehicle.cost_in_credits }} credits</label>
+    <br>
+    <label><b>Length:</b> {{ selVehicle.length }}</label>
+    <br>
+    <label><b>Max Speed:</b> {{ selVehicle.max_atm_speed }}</label>
+    <br>
+    <label><b>Crew:</b> {{ selVehicle.crew }}</label>
+    <br>
+    <label><b>Passangers:</b> {{ selVehicle.passengers }}</label>
+    <br>
+    <label><b>Cargo Capacity:</b> {{ selVehicle.cargo_capacity }}</label>
+    <br>
+    <label><b>Consumables:</b> {{ selVehicle.consumables }}</label>
+    <br>
+    <label><b>Class:</b> {{ selVehicle.vehicle_class }}</label>
+    <br>
+    <div class="row">
+      <div class="col">
+        <label><b>Films:</b></label>
+        <div *ngFor="let name of filmNames">
+          <a (click)="redirect(name, 0)">{{ name }}</a>
+        </div>
+      </div>
+      <div class="col">
+        <label><b>Pilotes:</b></label>
+        <div *ngFor="let name of characterNames">
+          <a (click)="redirect(name, 1)">{{ name }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!selVehicle">
+  Use the left menu to navigate through the vehicles.
+</div>

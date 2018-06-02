@@ -1,0 +1,11 @@
+a:hover {
+  background-color: #efefef;
+}
+
+label {
+  cursor: pointer;
+}
+
+.list-group-item {
+  padding: 7px 15px 0px 15px;
+}
