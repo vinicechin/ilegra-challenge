@@ -6,9 +6,10 @@
       (click)="setSelectedFilm(filmItem)">
     </app-film>
   </div>
-  <app-film-details 
-    class="col-7"
-    [selFilm]="selectedFilm">
-  </app-film-details>
+  <div class="col-7">
+    <app-film-details 
+      [selFilm]="selectedFilm">
+    </app-film-details>
+  </div>
 </div>
 
