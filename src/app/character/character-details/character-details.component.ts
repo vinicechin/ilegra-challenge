@@ -10,6 +10,10 @@ import { Character } from '../../character.model';
 export class CharacterDetailsComponent implements OnInit {
   @Input() selChar: Character;
   filmNames: string[] = [];
+  starshipNames: string[] = [];
+  vehicleNames: string[] = [];
+  specieNames: string[] = [];
+  homeworld: string = '';
 
   constructor(private swapiService: SwapiService) {}
 
@@ -19,6 +23,10 @@ export class CharacterDetailsComponent implements OnInit {
   ngOnChanges() {
     if (this.selChar) {
       this.getFilmTitles()
+      this.getStarshipsName()
+      this.getVehiclesName()
+      this.getSpeciesName()
+      this.getHomeworld()
     }
   }
 
@@ -33,6 +41,52 @@ export class CharacterDetailsComponent implements OnInit {
           }
         )
     }
+  }
+
+  getStarshipsName() {
+    this.starshipNames = []
+    for (let starshipUrl of this.selChar.starships) {
+      this.swapiService.getUnitaryData(starshipUrl)
+        .subscribe(
+          (starship: any) => {
+            this.starshipNames.push(starship.name)
+          }
+        )
+    }
+  }
+
+  getVehiclesName() {
+    this.vehicleNames = []
+    for (let vehiclesUrl of this.selChar.vehicles) {
+      this.swapiService.getUnitaryData(vehiclesUrl)
+        .subscribe(
+          (vehicle: any) => {
+            this.vehicleNames.push(vehicle.name)
+          }
+        )
+    }
+  }
+
+  getSpeciesName() {
+    this.specieNames = []
+    for (let specieUrl of this.selChar.species) {
+      this.swapiService.getUnitaryData(specieUrl)
+        .subscribe(
+          (specie: any) => {
+            this.specieNames.push(specie.name)
+          }
+        )
+    }
+  }
+
+  getHomeworld() {
+    this.homeworld = ''
+    this.swapiService.getUnitaryData(this.selChar.homeworld)
+      .subscribe(
+        (planet: any) => {
+          this.homeworld = planet.name
+        }
+      )
   }
 
   redirect(name, type) {
