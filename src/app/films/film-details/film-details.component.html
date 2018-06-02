@@ -2,13 +2,55 @@
   <div class="film-title">
     Title: {{ selFilm.title }}
   </div>
+  <hr>
   <div class="film-content">
-    <label>Characters:</label>
-    <div *ngFor="let name of characterNames">
-      {{ name }}
+    <label>Director: {{ selFilm.director }}</label>
+    <br>
+    <label>Producer: {{ selFilm.producer }}</label>
+    <br>
+    <label>Opening Crawl: {{ selFilm.crawl }}</label>
+    <br>
+    <label>Release Date: {{ selFilm.release }}</label>
+    <br>
+    <div class="row">
+      <div class="col">
+        <label>Characters:</label>
+        <div *ngFor="let name of characterNames">
+          {{ name }}
+        </div>
+      </div>
+      <div class="col">
+        <label>Vehicles:</label>
+        <div *ngFor="let name of vehicleNames">
+          {{ name }}
+        </div>
+      </div>
+      <div class="col">
+        <label>Starships:</label>
+        <div *ngFor="let name of starshipNames">
+          {{ name }}
+        </div>
+      </div>
+      <div class="col">
+        <label>Species:</label>
+        <div *ngFor="let name of specieNames">
+          {{ name }}
+        </div>
+      </div>
+      <div class="col">
+        <label>Planets:</label>
+        <div *ngFor="let name of planetNames">
+          {{ name }}
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <div *ngIf="!selFilm">
   Plase select a film to show its details
 </div>
+
+<!-- 
+public planets: string[],
+public species: string[],
+public vehicles: string[] -->

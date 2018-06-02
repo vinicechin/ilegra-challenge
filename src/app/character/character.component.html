@@ -1,12 +1,12 @@
 <div class="row">
-  <div class="col-5">
+  <div class="col-4">
     <app-character-item 
       *ngFor="let characterItem of characters" 
       [character]="characterItem"
       (click)="setSelectedChar(characterItem)">
     </app-character-item>
   </div>
-  <div class="col-7">
+  <div class="col-8">
     <app-character-details 
       [selChar]="selectedChar">
     </app-character-details>
