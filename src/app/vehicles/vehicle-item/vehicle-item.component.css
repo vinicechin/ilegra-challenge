@@ -1,0 +1,8 @@
+a:hover {
+  background-color: #efefef;
+}
+
+.list-group-item {
+  height: 40px;
+  padding: 7px 15px;
+}

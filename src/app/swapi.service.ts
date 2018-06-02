@@ -6,16 +6,19 @@ import { throwError } from 'rxjs';
 import 'rxjs/add/operator/map'
 import { Film } from './film.model'; 
 import { Character } from './character.model'; 
+import { Vehicle } from './vehicle.model'; 
 
 @Injectable()
 export class SwapiService {
   // emit event for data updates
   filmsUpdated = new EventEmitter<Film[]>();
   charsUpdated = new EventEmitter<Character[]>();
+  vehiclesUpdated = new EventEmitter<Vehicle[]>();
   tabChanged = new EventEmitter<void>();
   // variable to control components data values
   public films : Film[] = [];
   public characters : Character[] = [];
+  public vehicles : Vehicle[] = [];
 
   // service constructor
   constructor(private http: Http) {}
@@ -28,6 +31,11 @@ export class SwapiService {
   setCharacters(chars: Character[]) {
     this.characters = Character.buildCharactersStructure(chars)
     this.charsUpdated.emit(this.characters);
+  }
+
+  setVehicles(vehicles: Vehicle[]) {
+    this.vehicles = Vehicle.buildVehicleStructure(vehicles)
+    this.vehiclesUpdated.emit(this.vehicles)
   }
 
   //Gets data from api based on purl parameter
@@ -68,6 +76,9 @@ export class SwapiService {
         break;
       case 1:
         this.setCharacters(array)
+        break;
+      case 2:
+        this.setVehicles(array)
         break;
       default:
         console.log(array)
