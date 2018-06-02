@@ -5,6 +5,7 @@ import { SwapiService } from './swapi.service';
 const FILMS = 0
 const CHARACTERS = 1
 const VEHICLES = 2
+const STARSHIPS = 3
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent {
   filmsSelected = true;
   charactersSelected = false;
   vehiclesSelected = false;
+  starshipsSelected = false;
 
   constructor(private swapiService: SwapiService) {
     this.swapiService.redirectEvent.subscribe( 
@@ -49,22 +51,37 @@ export class AppComponent {
     this.swapiService.tabChanged.emit();
   }
 
+  onStarshipsSelected() {
+    this.selectStarshipsTab();
+    this.swapiService.tabChanged.emit();
+  }
+
   selectFilmsTab() {
     this.filmsSelected = true;
     this.charactersSelected = false;
     this.vehiclesSelected = false;
+    this.starshipsSelected = false;
   }
 
   selectCharacterTab() {
     this.filmsSelected = false;
     this.charactersSelected = true;
     this.vehiclesSelected = false;
+    this.starshipsSelected = false;
   }
 
   selectVehiclesTab() {
     this.filmsSelected = false;
     this.charactersSelected = false;
     this.vehiclesSelected = true;
+    this.starshipsSelected = false;
+  }
+
+  selectStarshipsTab() {
+    this.filmsSelected = false;
+    this.charactersSelected = false;
+    this.vehiclesSelected = false;
+    this.starshipsSelected = true;
   }
 
   redirect(redirectObj) {
@@ -80,6 +97,10 @@ export class AppComponent {
       case VEHICLES:
         this.selectVehiclesTab()
         this.swapiService.selectVehicle.emit(redirectObj.selected)
+        break;
+      case STARSHIPS:
+        this.selectStarshipsTab()
+        this.swapiService.selectStarship.emit(redirectObj.selected)
         break;
       default:
         break;
