@@ -53,5 +53,6 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new SwapiActions.GetCharsAction());
     this.store.dispatch(new SwapiActions.GetSpeciesAction());
     this.store.dispatch(new SwapiActions.GetPlanetsAction());
+    this.store.dispatch(new SwapiActions.GetVehiclesAction());
   }
 }

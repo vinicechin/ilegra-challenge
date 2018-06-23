@@ -82,6 +82,23 @@ export class SwapiEffects {
         })
     })
 
+  @Effect()
+  getVehicles$ = this.action$
+    .ofType(swapiActions.GET_VEHICLES)
+    .switchMap(() => {
+      return this.getDataRecursively('https://swapi.co/api/vehicles')
+        .then((data: any) => {
+          for(let vehicle of data) {
+            vehicle.id = this.getIdFromUrl(vehicle.url)
+          }
+          console.log(data)
+          return new swapiActions.GetVehiclesSuccessAction({vehicles: data})
+        })
+        .catch((error) => {
+          new swapiActions.GetVehiclesErrorAction({error: error})
+        })
+    })
+
   // AUXILIAR METHODS
   getDataRecursively(url = 'https://swapi.co/api/people', array = []) {
     return new Promise((resolve, reject) => {
