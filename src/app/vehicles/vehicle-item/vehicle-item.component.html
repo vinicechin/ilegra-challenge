@@ -37,7 +37,7 @@
         <h4 class="list-data-header">Pilots</h4>
         <div class="list-data-container col-md-12 bg-dark" *ngIf="pilots.length > 0">
           <div *ngFor="let pilot of pilots | sortBy: 'name'">
-            <div class="list-item" (click)="router.navigate(['characters', member.id]);">
+            <div class="list-item" (click)="router.navigate(['characters', pilot.id]);">
               {{ pilot.name }}
             </div>
           </div>
