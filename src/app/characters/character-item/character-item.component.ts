@@ -19,6 +19,7 @@ export class CharacterItemComponent implements OnInit {
   filmsAppeared: any[] = [];
   characterSpecies: any[] = [];
   homeworld: any;
+  vehiclesPiloted: any[] = [];
 
   constructor(private route: ActivatedRoute,
               private store: Store<SwapiState>,
@@ -47,7 +48,8 @@ export class CharacterItemComponent implements OnInit {
     return !this.currentCharacter || 
             this.filmsAppeared.length <= 0 ||
             this.characterSpecies.length <= 0 ||
-            !this.homeworld;
+            !this.homeworld ||
+            this.vehiclesPiloted.length <= 0;
   }
 
   setCurrentCharacter() {
@@ -59,6 +61,8 @@ export class CharacterItemComponent implements OnInit {
       this.characterSpecies = [];
       this.dataService.getSpeciesFromUrls(this.currentCharacter.species, this.characterSpecies);
       this.homeworld = this.dataService.getPlanetFromUrl(this.currentCharacter.homeworld);
+      this.vehiclesPiloted = [];
+      this.dataService.getVehiclesFromUrls(this.currentCharacter.vehicles, this.vehiclesPiloted);
     }
   }
 
