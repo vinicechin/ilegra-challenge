@@ -1,3 +1,21 @@
-<p>
-  planet-list works!
-</p>
+<div class="row my-2">
+  <div class="col-12 filter-bar">
+    <input [(ngModel)]="searchTerm" class="form-control mr-sm-2" type="text" placeholder="Filter by planet name" aria-label="Filter">
+  </div>
+</div>
+<div class="row">
+  <div *ngFor="let planet of planets | filter : searchTerm | sortBy: 'name'" class="col-lg-6 col-xl-4 planet-container">
+    <div class="planet-content bg-dark">
+      <h2 class="planet-name">{{ planet.name }}</h2>
+      <div>
+        <p class="planet-info-item"><span class="planet-info-item-label">Population:</span> {{ planet.population }}</p>
+        <p class="planet-info-item"><span class="planet-info-item-label">Diameter:</span> {{ planet.diameter }}</p>
+        <p class="planet-info-item"><span class="planet-info-item-label">Gravity:</span> {{ planet.gravity }}</p>
+        <p class="planet-info-item"><span class="planet-info-item-label">Climate:</span> {{ planet.climate }}</p>
+      </div>
+      <div class="details-btn-container">
+        <a class="btn btn-secondary" role="button" (click)="router.navigate(['planets', planet.id]);">View details »</a>
+      </div>
+    </div>
+  </div>
+</div>
