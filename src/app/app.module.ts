@@ -28,6 +28,9 @@ import { PlanetItemComponent } from './planets/planet-item/planet-item.component
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { VehicleListComponent } from './vehicles/vehicle-list/vehicle-list.component';
 import { VehicleItemComponent } from './vehicles/vehicle-item/vehicle-item.component';
+import { StarshipsComponent } from './starships/starships.component';
+import { StarshipListComponent } from './starships/starship-list/starship-list.component';
+import { StarshipItemComponent } from './starships/starship-item/starship-item.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import { VehicleItemComponent } from './vehicles/vehicle-item/vehicle-item.compo
     PlanetItemComponent,
     VehiclesComponent,
     VehicleListComponent,
-    VehicleItemComponent
+    VehicleItemComponent,
+    StarshipsComponent,
+    StarshipListComponent,
+    StarshipItemComponent
   ],
   imports: [
     BrowserModule,
