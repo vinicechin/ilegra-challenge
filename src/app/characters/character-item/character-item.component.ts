@@ -17,6 +17,7 @@ export class CharacterItemComponent implements OnInit {
   id: number;
   currentCharacter: any;
   filmsAppeared: any[] = [];
+  characterSpecies: string = "";
 
   constructor(private route: ActivatedRoute,
               private store: Store<SwapiState>,
@@ -27,7 +28,7 @@ export class CharacterItemComponent implements OnInit {
     this.swapi$ = this.store.select('swapi');
 
     this.swapi$.subscribe((data) => {
-      if (this.verifyDataLoad()) {
+      if (this.verifyDataToLoad()) {
         this.setCurrentCharacter();
       }
     });
@@ -41,17 +42,32 @@ export class CharacterItemComponent implements OnInit {
       )
   }
 
-  verifyDataLoad() {
-    return !this.currentCharacter || this.filmsAppeared.length <= 0;
+  verifyDataToLoad() {
+    return !this.currentCharacter || 
+            this.filmsAppeared.length <= 0 ||
+            this.characterSpecies === "";
   }
 
   setCurrentCharacter() {
     this.currentCharacter = this.dataService.getCharacterById(this.id);
     if (this.currentCharacter) {
-      console.log(this.currentCharacter)
+      console.log(this.currentCharacter);
       this.filmsAppeared = [];
-      this.dataService.getFilmsFromUrls(this.currentCharacter.films, this.filmsAppeared)
+      this.dataService.getFilmsFromUrls(this.currentCharacter.films, this.filmsAppeared);
+      this.setCharacterSpecies(this.currentCharacter.species);
     }
+  }
+
+  setCharacterSpecies(speciesUrlArray) {
+    var speciesArray = [];
+    this.dataService.getSpeciesFromUrls(this.currentCharacter.species, speciesArray);
+
+    var species = speciesArray[0].name;
+    for(let i = 1; i < speciesArray.length; i++) {
+      species += ' | ' + speciesArray[i].name;
+    }
+
+    this.characterSpecies = species;
   }
 
 }
