@@ -1,8 +1,5 @@
 <div class="row film-container">
-  <div class="main-info-container col-md-12 col-lg-8" *ngIf="!currentFilm">
-    Loading Film
-  </div>
-  <div class="main-info-container col-md-12 col-lg-8" *ngIf="currentFilm">
+  <div class="main-info-container col-md-12 col-lg-8">
     <h2 style="margin-bottom: 0px">{{ currentFilm ? currentFilm.title : '' }}</h2>
     <p class="opening_crawl">{{ currentFilm ? currentFilm.opening_crawl : '' }}</p>
     <div class="film-basic-info bg-dark">
