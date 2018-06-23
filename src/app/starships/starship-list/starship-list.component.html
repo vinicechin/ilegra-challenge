@@ -1,3 +1,21 @@
-<p>
-  starship-list works!
-</p>
+<div class="row my-2">
+  <div class="col-12 filter-bar">
+    <input [(ngModel)]="searchTerm" class="form-control mr-sm-2" type="text" placeholder="Filter by starship name" aria-label="Filter">
+  </div>
+</div>
+<div class="row">
+  <div *ngFor="let starship of starships | filter : searchTerm | sortBy: 'name'" class="col-lg-6 col-xl-4 starship-container">
+    <div class="starship-content bg-dark">
+      <h4 class="starship-name">{{ starship.name }}</h4>
+      <div>
+        <p class="starship-info-item"><span class="starship-info-item-label">Model:</span> {{ starship.model }}</p>
+        <p class="starship-info-item"><span class="starship-info-item-label">Class:</span> {{ starship.starship_class }}</p>
+        <p class="starship-info-item"><span class="starship-info-item-label">Length:</span> {{ starship.length }}</p>
+        <p class="starship-info-item"><span class="starship-info-item-label">Crew:</span> {{ starship.crew }}</p>
+      </div>
+      <div class="details-btn-container">
+        <a class="btn btn-secondary" role="button" (click)="router.navigate(['starships', starship.id]);">View details »</a>
+      </div>
+    </div>
+  </div>
+</div>

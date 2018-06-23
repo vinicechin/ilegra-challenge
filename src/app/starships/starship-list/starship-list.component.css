@@ -1,0 +1,37 @@
+.starship-container {
+  padding: 5px;
+}
+
+.starship-content {
+  background-color: grey;
+  padding: 5px 10px 10px 10px;
+  border: 1px solid #FFC500;
+  border-radius: 5px;
+  color: white;
+}
+
+.starship-name {
+  text-align: center;
+  color: #FFC500;
+}
+
+.details-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter-bar {
+  padding: 5px;
+}
+
+.starship-info-item {
+  margin-bottom: 2px;
+  display: flex;
+}
+
+.starship-info-item-label {
+  display: flex;
+  justify-content: flex-end;
+  width: 60px;
+  margin-right: 5px;
+}
