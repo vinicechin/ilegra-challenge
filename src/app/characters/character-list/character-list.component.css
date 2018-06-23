@@ -1,0 +1,37 @@
+.character-container {
+  padding: 5px;
+}
+
+.character-content {
+  background-color: grey;
+  padding: 5px 10px 10px 10px;
+  border: 1px solid #FFC500;
+  border-radius: 5px;
+  color: white;
+}
+
+.character-name {
+  text-align: center;
+  color: #FFC500;
+}
+
+.details-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter-bar {
+  padding: 5px;
+}
+
+.character-info-item {
+  margin-bottom: 2px;
+  display: flex;
+}
+
+.character-info-item-label {
+  display: flex;
+  justify-content: flex-end;
+  width: 80px;
+  margin-right: 5px;
+}

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ilegra-challenge": {
+    "angular-test": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ilegra-challenge",
+            "outputPath": "dist/angular-test",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -51,18 +51,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ilegra-challenge:build"
+            "browserTarget": "angular-test:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ilegra-challenge:build:production"
+              "browserTarget": "angular-test:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ilegra-challenge:build"
+            "browserTarget": "angular-test:build"
           }
         },
         "test": {
@@ -96,7 +96,7 @@
         }
       }
     },
-    "ilegra-challenge-e2e": {
+    "angular-test-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -104,11 +104,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ilegra-challenge:serve"
+            "devServerTarget": "angular-test:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ilegra-challenge:serve:production"
+              "devServerTarget": "angular-test:serve:production"
             }
           }
         },
@@ -124,5 +124,5 @@
       }
     }
   },
-  "defaultProject": "ilegra-challenge"
+  "defaultProject": "angular-test"
 }

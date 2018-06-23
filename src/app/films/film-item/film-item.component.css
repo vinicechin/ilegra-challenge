@@ -1,0 +1,83 @@
+.film-container {
+  color: white;
+}
+
+.film-basic-info {
+  padding: 10px 15px 2px 15px;
+  border-radius: 5px;
+  width: 270px;
+}
+
+.main-info-container {
+  padding: 10px;  
+  min-height: 300px;
+}
+
+h2, h4 {
+  color: #FFC500;
+}
+
+.list-data-header {
+  margin-top: 5px;
+  margin-bottom: 1px;
+}
+
+.list-data-container {
+  padding: 10px;
+  height: 150px;
+  overflow-y: auto;
+  border: 1px solid #FFC500;
+  border-radius: 5px;
+}
+
+.list-item {
+  width: 50%;
+  float: left;
+  white-space: nowrap;
+  overflow:hidden !important;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.list-item:hover {
+  color: #FFC500;
+}
+
+.lists-container {
+  padding: 0px;
+}
+
+.lists-container .row {
+  padding: 0;
+  margin: 0;
+}
+
+.list-container {
+  padding: 0px 5px;
+}
+
+.opening_crawl {
+  text-align: justify;
+  padding: 0px 15px 0px 0px;
+  margin-bottom: 5px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}

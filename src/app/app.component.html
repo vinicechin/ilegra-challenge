@@ -1,61 +1,92 @@
-<div class="container">
-  <div class="app-header">
-    <h1>Star Wars Wiki</h1>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" (click)="router.navigate(['']);">SW Wiki</a>
+  <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/films" style="display: flex;">
+          <div class="films-icon"></div>
+          Episodes
+        </a>
+      </li>
+      <li class="nav-item roman-numeral" routerLinkActive="active">
+        <a class="nav-link" routerLink="/films/1">I</a>
+      </li>
+      <li class="nav-item roman-numeral" routerLinkActive="active">
+        <a class="nav-link" routerLink="/films/2">II</a>
+      </li>
+      <li class="nav-item roman-numeral" routerLinkActive="active">
+        <a class="nav-link" routerLink="/films/3">III</a>
+      </li>
+      <li class="nav-item roman-numeral" routerLinkActive="active">
+        <a class="nav-link" routerLink="/films/4">IV</a>
+      </li>
+      <li class="nav-item roman-numeral" routerLinkActive="active">
+        <a class="nav-link" routerLink="/films/5">V</a>
+      </li>
+      <li class="nav-item roman-numeral" routerLinkActive="active">
+        <a class="nav-link" routerLink="/films/6">VI</a>
+      </li>
+      <li class="nav-item roman-numeral" routerLinkActive="active">
+        <a class="nav-link" routerLink="/films/7">VII</a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/characters" style="display: flex;">
+          <div class="characters-icon"></div>
+          Characters
+        </a>
+      </li>
+      <!-- <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/characters/1">Char 1</a>
+      </li> -->
+
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="" style="display: flex;">
+          <div class="species-icon"></div>
+          Species
+        </a>
+      </li>
+      
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="" style="display: flex;">
+          <div class="planets-icon"></div>
+          Planets
+        </a>
+      </li>
+      
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="" style="display: flex;">
+          <div class="vehicles-icon"></div>
+          Vehicles
+        </a>
+      </li>
+      
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="" style="display: flex;">
+          <div class="starships-icon"></div>
+          Starships
+        </a>
+      </li>
+    </ul>
+    <div class="loader" *ngIf="loading"></div>
   </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <ul class="nav nav-tabs" style="margin: 5px 0px">
-        <button 
-          class="btn"
-          [ngClass]="{'selected-tab': filmsSelected}"
-          (click)="onFilmsSelected()"> 
-            Films
-        </button>
-        <button 
-          class="btn"
-          [ngClass]="{'selected-tab': charactersSelected}"
-          (click)="onCharacterSelected()"> 
-            Characters
-        </button>
-        <button 
-          class="btn"
-          [ngClass]="{'selected-tab': vehiclesSelected}"
-          (click)="onVehiclesSelected()"> 
-            Vehicles
-        </button>
-        <button 
-          class="btn"
-          [ngClass]="{'selected-tab': starshipsSelected}"
-          (click)="onStarshipsSelected()"> 
-            Starships
-        </button>
-        <button 
-          class="btn"
-          [ngClass]="{'selected-tab': speciesSelected}"
-          (click)="onSpeciesSelected()"> 
-            Species
-        </button>
-        <button 
-          class="btn"
-          [ngClass]="{'selected-tab': planetsSelected}"
-          (click)="onPlanetsSelected()"> 
-            Planets
-        </button>
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <app-films [hidden]="!filmsSelected"></app-films>
-      <app-characters [hidden]="!charactersSelected"></app-characters>
-      <app-vehicles [hidden]="!vehiclesSelected"></app-vehicles> 
-      <app-starships [hidden]="!starshipsSelected"></app-starships> 
-      <app-species [hidden]="!speciesSelected"></app-species> 
-      <app-planets [hidden]="!planetsSelected"></app-planets>
-    </div>
-  </div>
-  <hr style="margin: 5px 0px">
-  <div class="app-footer">
-    <p style="margin: 0px">&copy;Vinicius Cechin 2018. Powered by <a target="_blank" href="https://swapi.co/">SWAPI</a></p>
-  </div>
+</nav>
+<div *ngIf="error" class="error-container">
+  Error loading the API data. <a (click)="reload()" style="cursor: pointer; text-decoration: underline;">Try to reload</a>
 </div>
+
+<main role="main">
+  <div class="container main-container">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+
+<footer class="footer bg-dark">
+  <div class="container footer-content">
+    <p style="color: white">© Vinicius Cechin 2018</p>
+  </div>
+</footer>

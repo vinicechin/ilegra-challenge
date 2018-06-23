@@ -1,59 +1,48 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StoreModule} from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { AlertModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
-import { SwapiService } from './swapi.service';
 import { FilmsComponent } from './films/films.component';
-import { CharacterComponent } from './character/character.component';
-import { FilmComponent } from './films/film/film.component';
-import { CharacterItemComponent } from './character/character-item/character-item.component';
-import { FilmDetailsComponent } from './films/film-details/film-details.component';
-import { CharacterDetailsComponent } from './character/character-details/character-details.component';
-import { VehiclesComponent } from './vehicles/vehicles.component';
-import { VehicleItemComponent } from './vehicles/vehicle-item/vehicle-item.component';
-import { VehicleDetailsComponent } from './vehicles/vehicle-details/vehicle-details.component';
-import { StarshipsComponent } from './starships/starships.component';
-import { StarshipItemComponent } from './starships/starship-item/starship-item.component';
-import { StarshipDetailsComponent } from './starships/starship-details/starship-details.component';
-import { SpeciesComponent } from './species/species.component';
-import { SpecieItemComponent } from './species/specie-item/specie-item.component';
-import { SpecieDetailsComponent } from './species/specie-details/specie-details.component';
-import { PlanetsComponent } from './planets/planets.component';
-import { PlanetItemComponent } from './planets/planet-item/planet-item.component';
-import { PlanetDetailsComponent } from './planets/planet-details/planet-details.component';
+import { FilmListComponent } from './films/film-list/film-list.component';
+import { FilmItemComponent } from './films/film-item/film-item.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import { SwapiReducer } from './store/swapi.reducers';
+import { SwapiEffects } from './store/swapi.effects';
+import { CharactersComponent } from './characters/characters.component';
+import { CharacterItemComponent } from './characters/character-item/character-item.component';
+import { CharacterListComponent } from './characters/character-list/character-list.component';
+import { FilterPipe, SortByPipe } from './app.pipes';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilmsComponent,
-    CharacterComponent,
-    FilmComponent,
+    FilmListComponent,
+    FilmItemComponent,
+    CharactersComponent,
     CharacterItemComponent,
-    FilmDetailsComponent,
-    CharacterDetailsComponent,
-    VehiclesComponent,
-    VehicleItemComponent,
-    VehicleDetailsComponent,
-    StarshipsComponent,
-    StarshipItemComponent,
-    StarshipDetailsComponent,
-    SpeciesComponent,
-    SpecieItemComponent,
-    SpecieDetailsComponent,
-    PlanetsComponent,
-    PlanetItemComponent,
-    PlanetDetailsComponent
+    CharacterListComponent,
+    FilterPipe,
+    SortByPipe,
+    LoadingScreenComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
-    HttpModule,
-    AlertModule.forRoot()
+    StoreModule.forRoot(({ swapi: SwapiReducer})),
+    EffectsModule.forRoot([ SwapiEffects ]),
+    HttpClientModule,
+    NgbModule.forRoot()
   ],
-  providers: [SwapiService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
