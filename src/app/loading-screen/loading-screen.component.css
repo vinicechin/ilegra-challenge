@@ -21,10 +21,10 @@ h1 {
 }
 
 .best-char-link {
-  text-decoration: underline;
+  color: #FFC500;
 }
 
 .best-char-link:hover {
-  color: #FFC500;
   cursor: pointer;
+  text-decoration: underline;
 }

@@ -3,22 +3,21 @@ import { NgModule } from '@angular/core';
 import { StoreModule} from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { SwapiReducer } from './store/swapi.reducers';
+import { SwapiEffects } from './store/swapi.effects';
+import { FilterPipe, SortByPipe } from './app.pipes';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { FilmsComponent } from './films/films.component';
 import { FilmListComponent } from './films/film-list/film-list.component';
 import { FilmItemComponent } from './films/film-item/film-item.component';
-import { AppRoutingModule } from './app-routing.module';
-
-import { SwapiReducer } from './store/swapi.reducers';
-import { SwapiEffects } from './store/swapi.effects';
 import { CharactersComponent } from './characters/characters.component';
 import { CharacterItemComponent } from './characters/character-item/character-item.component';
 import { CharacterListComponent } from './characters/character-list/character-list.component';
-import { FilterPipe, SortByPipe } from './app.pipes';
-import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { SpeciesComponent } from './species/species.component';
 import { SpeciesListComponent } from './species/species-list/species-list.component';
 import { SpeciesItemComponent } from './species/species-item/species-item.component';
@@ -35,15 +34,15 @@ import { StarshipItemComponent } from './starships/starship-item/starship-item.c
 @NgModule({
   declarations: [
     AppComponent,
+    FilterPipe,
+    SortByPipe,
+    LoadingScreenComponent,
     FilmsComponent,
     FilmListComponent,
     FilmItemComponent,
     CharactersComponent,
     CharacterItemComponent,
     CharacterListComponent,
-    FilterPipe,
-    SortByPipe,
-    LoadingScreenComponent,
     SpeciesComponent,
     SpeciesListComponent,
     SpeciesItemComponent,
