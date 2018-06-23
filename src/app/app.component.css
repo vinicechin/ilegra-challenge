@@ -1,21 +1,64 @@
-button {
-  margin-right: 2px;
-  margin-bottom: 2px;
+.main-container {
+  margin-bottom: 35px;
 }
 
-.app-header {
-  display: flex;
-  justify-content: center;
-  margin: 15px 0px;
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #FFC500;
 }
 
-.app-footer {
-  display: flex;
-  justify-content: center;
-  margin: 5px 0px;
+.footer-content {
+  text-align: center;
 }
 
-.selected-tab {
-  background-color: #007bff;
-  color: white;
+.footer-content p {
+  margin: 2px;
+}
+
+.navbar {
+  padding: 2px 8px;
+}
+
+.navbar-brand {
+  cursor: pointer;
+  color: #FFC500 !important;
+}
+
+.error-container {
+  background-color: red; 
+  text-align: center; 
+  color: white; 
+  height: 15px; 
+  font-size: 12px; 
+  padding: 0px; 
+  line-height: 12px;
+}
+
+.loader {
+  border: 2px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 2px solid #FFC500;
+  width: 15px;
+  height: 15px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.roman-numeral {
+  font-family: Roboto Mono;
+  margin-top: 2px;
 }

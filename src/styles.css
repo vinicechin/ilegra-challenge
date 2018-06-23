@@ -1,4 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-  overflow-y:scroll;
+.app-background {
+  overflow-y: scroll;
+  background: url('/assets/images/stars-background.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: repeat;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+/* App icons */
+.films-icon {
+  background: url('/assets/images/icons/films.png');
+  background-size: cover;
+  width: 18px;
+  height: 18px;
+  margin: 2px 4px 0px 0px;
+}
+
+.characters-icon {
+  background: url('/assets/images/icons/people.png');
+  background-size: cover;
+  width: 16px;
+  height: 16px;
+  margin: 4px 4px 0px 0px;
+}
+
+.species-icon {
+  background: url('/assets/images/icons/species.png');
+  background-size: cover;
+  width: 17px;
+  height: 17px;
+  margin: 4px 4px 0px 0px;
+}
+
+.planets-icon {
+  background: url('/assets/images/icons/planets.png');
+  background-size: cover;
+  width: 17px;
+  height: 17px;
+  margin: 4px 4px 0px 0px;
+}
+
+.vehicles-icon {
+  background: url('/assets/images/icons/vehicles.png');
+  background-size: cover;
+  width: 19px;
+  height: 19px;
+  margin: 4px 4px 0px 0px;
+}
+
+.starships-icon {
+  background: url('/assets/images/icons/starships.png');
+  background-size: cover;
+  width: 17px;
+  height: 17px;
+  margin: 4px 4px 0px 0px;
 }

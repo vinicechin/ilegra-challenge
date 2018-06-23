@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-8">
+    <h2 style="margin-bottom: 0px">{{ currentCharacter ? currentCharacter.name : '' }}</h2>
+  </div>
+</div>
+<div class="row character-container">
+  <div class="col-md-4">
+    <div class="character-basic-info bg-dark">
+      <p><b>Hair Color:</b> {{ currentCharacter ? currentCharacter.hair_color : '' }}</p>
+      <p><b>Skin Color:</b> {{ currentCharacter ? currentCharacter.skin_color : '' }}</p>
+      <p><b>Eyes Color:</b> {{ currentCharacter ? currentCharacter.eye_color : '' }}</p>
+      <p><b>Height:</b> {{ currentCharacter ? currentCharacter.height : '' }}</p>
+      <p><b>Mass:</b> {{ currentCharacter ? currentCharacter.mass : '' }}</p>
+      <p><b>gender:</b> {{ currentCharacter ? currentCharacter.gender : '' }}</p>
+      <p><b>Birth Year:</b> {{ currentCharacter ? currentCharacter.birth_year : '' }}</p>
+      <p><b>Homeworld:</b> ...</p>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="list-data-header">Appearances</h4>
+        <div class="list-data-container col-md-12 bg-dark">
+          <div *ngFor="let film of filmsAppeared | sortBy: 'episode_id'">
+            <div class="list-item" (click)="router.navigate(['films', film.episode_id]);">
+              {{ film.title }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h4 class="list-data-header">Vehicles</h4>
+        <div class="list-data-container col-md-12 bg-dark">
+          <div *ngFor="let film of filmsAppeared | sortBy: 'episode_id'">
+            <div class="list-item" (click)="router.navigate(['films', film.episode_id]);">
+              {{ film.title }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h4 class="list-data-header">Starships</h4>
+        <div class="list-data-container col-md-12 bg-dark">
+          <div *ngFor="let film of filmsAppeared | sortBy: 'episode_id'">
+            <div class="list-item" (click)="router.navigate(['films', film.episode_id]);">
+              {{ film.title }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

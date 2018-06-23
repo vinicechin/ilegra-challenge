@@ -1,0 +1,76 @@
+<div class="row film-container">
+  <div class="main-info-container col-md-12 col-lg-8" *ngIf="!currentFilm">
+    Loading Film
+  </div>
+  <div class="main-info-container col-md-12 col-lg-8" *ngIf="currentFilm">
+    <h2 style="margin-bottom: 0px">{{ currentFilm ? currentFilm.title : '' }}</h2>
+    <p class="opening_crawl">{{ currentFilm ? currentFilm.opening_crawl : '' }}</p>
+    <div class="film-basic-info bg-dark">
+      <p><b>Episode:</b> {{ currentFilm ? currentFilm.episode_id : '' }}</p>
+      <p><b>Director:</b> {{ currentFilm ? currentFilm.director : '' }}</p>
+      <p><b>Producer:</b> {{ currentFilm ? currentFilm.producer : '' }}</p>
+      <p><b>Release Date:</b> {{ currentFilm ? currentFilm.release_date : '' }}</p>
+    </div>
+  </div>
+
+  <div class="lists-container col-sm-6 col-md-12 col-lg-4">
+    <div class="row">
+      <div class="list-container col-md-6 col-lg-12">
+        <h4 class="list-data-header">Characters</h4>
+        <div class="list-data-container col-md-12 bg-dark">
+          <div *ngFor="let character of filmCharacters | sortBy: 'name'">
+            <div class="list-item" (click)="router.navigate(['characters', character.id]);">
+              {{ character.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="list-container col-md-6 col-lg-12">
+        <h4 class="list-data-header">Species</h4>
+        <div class="list-data-container col-md-12 bg-dark">
+          <div *ngFor="let character of filmCharacters | sortBy: 'name'">
+            <div class="list-item">
+              {{ character.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lists-container col-sm-6 col-md-12">
+    <div class="row">
+      <div class="list-container col-md-4">
+        <h4 class="list-data-header">Starships</h4>
+        <div class="list-data-container col-md-12 bg-dark">
+          <div *ngFor="let character of filmCharacters | sortBy: 'name'">
+            <div class="list-item">
+              {{ character.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="list-container col-md-4">
+        <h4 class="list-data-header">Vehicles</h4>
+        <div class="list-data-container col-md-12 bg-dark">
+          <div *ngFor="let character of filmCharacters | sortBy: 'name'">
+            <div class="list-item">
+              {{ character.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="list-container col-md-4">
+        <h4 class="list-data-header">Planets</h4>
+        <div class="list-data-container col-md-12 bg-dark">
+          <div *ngFor="let character of filmCharacters | sortBy: 'name'">
+            <div class="list-item">
+              {{ character.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

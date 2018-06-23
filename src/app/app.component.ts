@@ -1,160 +1,55 @@
 import { Component, OnInit } from '@angular/core';
-import { Response } from '@angular/http';
-import { SwapiService } from './swapi.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router'; 
 
-const FILMS = 0
-const CHARACTERS = 1
-const VEHICLES = 2
-const STARSHIPS = 3
-const SPECIES = 4
-const PLANETS = 5
+import { SwapiState } from './store/swapi.state';
+import * as SwapiActions from './store/swapi.actions';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [DataService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  isCollapsed = true;
   title = 'app';
-  filmsSelected = true;
-  charactersSelected = false;
-  vehiclesSelected = false;
-  starshipsSelected = false;
-  speciesSelected = false;
-  planetsSelected = false;
+  swapi$: Observable<any>;
+  loading: boolean = true;
+  error: boolean = false;
 
-  constructor(private swapiService: SwapiService) {
-    this.swapiService.redirectEvent.subscribe( 
-      (redirectObj) => this.redirect(redirectObj)
-    )
-  }
+  constructor(private store: Store<SwapiState>,
+              private dataService: DataService,
+              private router: Router) {}
 
   ngOnInit() {
-    this.getData()
+    this.swapi$ = this.store.select('swapi');
+    this.swapi$.subscribe((data) => {
+      const loadEnded = this.dataService.setData(data);
+      if (this.loading && loadEnded) {
+        this.loading = false;
+      }
+
+      if (data.error) {
+        this.error = true;
+        console.log(data.error.message);
+        data.error = null;
+      }
+    });
+
+    this.loadData();
   }
 
-  getData() {
-    this.swapiService.getData("https://swapi.co/api/films", 1, [], 0)
-    this.swapiService.getData("https://swapi.co/api/people", 1, [], 1)
-    this.swapiService.getData("https://swapi.co/api/vehicles", 1, [], 2)
-    this.swapiService.getData("https://swapi.co/api/starships", 1, [], 3)
-    this.swapiService.getData("https://swapi.co/api/species", 1, [], 4)
-    this.swapiService.getData("https://swapi.co/api/planets", 1, [], 5)
+  reload() {
+    this.loading = true;
+    this.error = false;
+    this.loadData();
   }
 
-  onFilmsSelected() {
-    this.selectFilmsTab();
-    this.swapiService.tabChanged.emit();
+  loadData() {
+    this.store.dispatch(new SwapiActions.GetFilmsAction())
+    this.store.dispatch(new SwapiActions.GetCharsAction())
   }
-
-  onCharacterSelected() {
-    this.selectCharacterTab();
-    this.swapiService.tabChanged.emit();
-  }
-
-  onVehiclesSelected() {
-    this.selectVehiclesTab();
-    this.swapiService.tabChanged.emit();
-  }
-
-  onStarshipsSelected() {
-    this.selectStarshipsTab();
-    this.swapiService.tabChanged.emit();
-  }
-
-  onSpeciesSelected() {
-    this.selectSpeciesTab();
-    this.swapiService.tabChanged.emit();
-  }
-
-  onPlanetsSelected() {
-    this.selectPlanetsTab();
-    this.swapiService.tabChanged.emit();
-  }
-
-  selectFilmsTab() {
-    this.filmsSelected = true;
-    this.charactersSelected = false;
-    this.vehiclesSelected = false;
-    this.starshipsSelected = false;
-    this.speciesSelected = false;
-    this.planetsSelected = false;
-  }
-
-  selectCharacterTab() {
-    this.filmsSelected = false;
-    this.charactersSelected = true;
-    this.vehiclesSelected = false;
-    this.starshipsSelected = false;
-    this.speciesSelected = false;
-    this.planetsSelected = false;
-  }
-
-  selectVehiclesTab() {
-    this.filmsSelected = false;
-    this.charactersSelected = false;
-    this.vehiclesSelected = true;
-    this.starshipsSelected = false;
-    this.speciesSelected = false;
-    this.planetsSelected = false;
-  }
-
-  selectStarshipsTab() {
-    this.filmsSelected = false;
-    this.charactersSelected = false;
-    this.vehiclesSelected = false;
-    this.starshipsSelected = true;
-    this.speciesSelected = false;
-    this.planetsSelected = false;
-  }
-
-  selectSpeciesTab() {
-    this.filmsSelected = false;
-    this.charactersSelected = false;
-    this.vehiclesSelected = false;
-    this.starshipsSelected = false;
-    this.speciesSelected = true;
-    this.planetsSelected = false;
-  }
-
-  selectPlanetsTab() {
-    this.filmsSelected = false;
-    this.charactersSelected = false;
-    this.vehiclesSelected = false;
-    this.starshipsSelected = false;
-    this.speciesSelected = false;
-    this.planetsSelected = true;
-  }
-
-  redirect(redirectObj) {
-    switch (redirectObj.type) {
-      case FILMS:
-        this.selectFilmsTab()
-        this.swapiService.selectFilm.emit(redirectObj.selected)
-        break;
-      case CHARACTERS:
-        this.selectCharacterTab()
-        this.swapiService.selectCharacter.emit(redirectObj.selected)
-        break;
-      case VEHICLES:
-        this.selectVehiclesTab()
-        this.swapiService.selectVehicle.emit(redirectObj.selected)
-        break;
-      case STARSHIPS:
-        this.selectStarshipsTab()
-        this.swapiService.selectStarship.emit(redirectObj.selected)
-        break;
-      case SPECIES:
-        this.selectSpeciesTab()
-        this.swapiService.selectSpecie.emit(redirectObj.selected)
-        break;
-      case PLANETS:
-        this.selectPlanetsTab()
-        this.swapiService.selectPlanet.emit(redirectObj.selected)
-        break;
-      default:
-        break;
-    }
-  }
-
 }
