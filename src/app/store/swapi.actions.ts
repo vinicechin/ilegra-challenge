@@ -15,6 +15,9 @@ export const GET_PLANETS_ERROR = 'GET_PLANETS_ERROR';
 export const GET_VEHICLES = 'GET_VEHICLES';
 export const GET_VEHICLES_SUCCESS = 'GET_VEHICLES_SUCCESS';
 export const GET_VEHICLES_ERROR = 'GET_VEHICLES_ERROR';
+export const GET_STARSHIPS = 'GET_STARSHIPS';
+export const GET_STARSHIPS_SUCCESS = 'GET_STARSHIPS_SUCCESS';
+export const GET_STARSHIPS_ERROR = 'GET_STARSHIPS_ERROR';
 
 export class GetFilmsAction implements Action {
   readonly type = GET_FILMS;
@@ -96,6 +99,22 @@ export class GetVehiclesErrorAction implements Action {
   constructor(public payload: {error: any}) {}
 }
 
+export class GetStarshipsAction implements Action {
+  readonly type = GET_STARSHIPS;
+}
+
+export class GetStarshipsSuccessAction implements Action {
+  readonly type = GET_STARSHIPS_SUCCESS;
+
+  constructor(public payload: {starships: any[]}) {}
+}
+
+export class GetStarshipsErrorAction implements Action {
+  readonly type = GET_STARSHIPS_ERROR;
+
+  constructor(public payload: {error: any}) {}
+}
+
 export type SwapiActions = GetFilmsAction 
                          | GetFilmsSuccessAction 
                          | GetFilmsErrorAction
@@ -110,4 +129,7 @@ export type SwapiActions = GetFilmsAction
                          | GetPlanetsErrorAction
                          | GetVehiclesAction 
                          | GetVehiclesSuccessAction 
-                         | GetVehiclesErrorAction;
+                         | GetVehiclesErrorAction
+                         | GetStarshipsAction 
+                         | GetStarshipsSuccessAction 
+                         | GetStarshipsErrorAction;

@@ -135,6 +135,32 @@ export function SwapiReducer( state = initialState, action: fromSwapi.SwapiActio
       };
     };
 
+    // STARSHIPS CASES
+    case fromSwapi.GET_STARSHIPS: {
+      const starships = state.starships;
+      starships.loading = true;
+      return {
+        ...state,
+        starships: starships
+      };
+    };
+
+    case fromSwapi.GET_STARSHIPS_SUCCESS: {
+      return {
+        ...state,
+        starships: {items: action.payload.starships, loading: false},
+        error: null
+      };
+    };
+
+    case fromSwapi.GET_STARSHIPS_ERROR: {
+      return {
+        ...state,
+        starships: {items: [], loading: false},
+        error: action.payload.error
+      };
+    };
+
     // DEFAULT CASE
     default:
       return state;

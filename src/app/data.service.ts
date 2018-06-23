@@ -8,6 +8,7 @@ enum Type {
     SPECIES = 2,
     PLANETS = 3,
     VEHICLES = 4,
+    STARSHIPS = 5
 }
 
 @Injectable()
@@ -17,6 +18,7 @@ export class DataService {
   species: any[] = [];
   planets: any[] = [];
   vehicles: any[] = [];
+  starships: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -81,6 +83,17 @@ export class DataService {
     this.getArrayFromUrls(vehiclesArray, array, Type.VEHICLES);
   }
 
+  // STARSHIPS GETTERS
+  getStarshipById(id) {
+    return this.starships.find((starship) => {
+      return starship.id === id;
+    });
+  }
+
+  getStarshipsFromUrls(starshipsArray: any[], array: any[]) {
+    this.getArrayFromUrls(starshipsArray, array, Type.STARSHIPS);
+  }
+
   // DATA SETTER METHODS
   setData(data: any) {
     this.films = data.films.items;
@@ -88,6 +101,7 @@ export class DataService {
     this.species = data.species.items;
     this.planets = data.planets.items;
     this.vehicles = data.vehicles.items;
+    this.starships = data.starships.items;
 
     return this.verifyDataLoaded(data);
   }
@@ -98,10 +112,9 @@ export class DataService {
     const speciesLoading = data.species.loading;
     const planetsLoading = data.planets.loading;
     const vehiclesLoading = data.vehicles.loading;
-    //vehicles
-    //starships
+    const starshipsLoading = data.starships.loading;
 
-    return !filmsLoading && !charsLoading && !speciesLoading && !planetsLoading && !vehiclesLoading;
+    return !filmsLoading && !charsLoading && !speciesLoading && !planetsLoading && !vehiclesLoading && !starshipsLoading;
   }
 
   // AUXILIAR METHODS
@@ -122,6 +135,9 @@ export class DataService {
         break;
       case Type.VEHICLES:
         dataArray = this.vehicles;
+        break;
+      case Type.STARSHIPS:
+        dataArray = this.starships;
         break;
       default:
         dataArray = [];
