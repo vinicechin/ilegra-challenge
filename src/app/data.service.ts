@@ -6,6 +6,7 @@ enum Type {
     FILMS = 0,
     CHARACTERS = 1,
     SPECIES = 2,
+    PLANETS = 3,
 }
 
 @Injectable()
@@ -13,6 +14,7 @@ export class DataService {
   films: any[] = [];
   chars: any[] = [];
   species: any[] = [];
+  planets: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -61,11 +63,23 @@ export class DataService {
     return species;
   }
 
+  // PLANETS GETTERS
+  getPlanetsById(id) {
+    return this.planets.find((planet) => {
+      return planet.id === id;
+    });
+  }
+
+  getPlanetsFromUrls(planetsArray: any[], array: any[]) {
+    this.getArrayFromUrls(planetsArray, array, Type.PLANETS);
+  }
+
   // DATA SETTER METHODS
   setData(data: any) {
     this.films = data.films.items;
     this.chars = data.chars.items;
     this.species = data.species.items;
+    this.planets = data.planets.items;
 
     return this.verifyDataLoaded(data);
   }
@@ -74,8 +88,11 @@ export class DataService {
     const filmsLoading = data.films.loading;
     const charsLoading = data.chars.loading;
     const speciesLoading = data.species.loading;
+    const planetsLoading = data.planets.loading;
+    //vehicles
+    //starships
 
-    return !filmsLoading && !charsLoading && !speciesLoading;
+    return !filmsLoading && !charsLoading && !speciesLoading && !planetsLoading;
   }
 
   // AUXILIAR METHODS
@@ -90,6 +107,9 @@ export class DataService {
         break;
       case Type.SPECIES:
         dataArray = this.species;
+        break;
+      case Type.PLANETS:
+        dataArray = this.planets;
         break;
       default:
         dataArray = [];
