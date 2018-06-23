@@ -12,9 +12,16 @@
       <p><b>Hair Colors:</b> {{ currentSpecies ? currentSpecies.hair_colors : '' }}</p>
       <p><b>Skin Colors:</b> {{ currentSpecies ? currentSpecies.skin_colors : '' }}</p>
       <p><b>Eyes Colors:</b> {{ currentSpecies ? currentSpecies.eye_colors : '' }}</p>
-      <p><b>Average Height:</b> {{ currentSpecies ? currentSpecies.average_height : '' }}</p>
+      <p><b>Average Height (cm):</b> {{ currentSpecies ? currentSpecies.average_height : '' }}</p>
       <p><b>Average Lifespan:</b> {{ currentSpecies ? currentSpecies.average_lifespan : '' }}</p>
-      <p><b>Homeworld:</b> ...</p>
+      <p>
+        <b>Homeworld:</b>
+        <span 
+          class="clickable-item" 
+          (click)="router.navigate(['planets', homeworld.id]);">
+           {{ homeworld ? homeworld.name : '' }}
+        </span>
+      </p>
       <p><b>Language:</b> {{ currentSpecies ? currentSpecies.language : '' }}</p>
     </div>
   </div>

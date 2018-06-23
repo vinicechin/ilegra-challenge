@@ -12,6 +12,14 @@
   margin-bottom: 8px;
 }
 
+.clickable-item {
+  cursor: pointer;
+}
+
+.clickable-item:hover {
+  color: #FFC500;
+}
+
 h2, h4 {
   color: #FFC500;
 }

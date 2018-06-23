@@ -18,6 +18,7 @@ export class SpeciesItemComponent implements OnInit {
   currentSpecies: any;
   filmsAppeared: any[] = [];
   members: any[] = [];
+  homeworld: any;
 
   constructor(private route: ActivatedRoute,
               private store: Store<SwapiState>,
@@ -45,7 +46,8 @@ export class SpeciesItemComponent implements OnInit {
   verifyDataToLoad() {
     return !this.currentSpecies || 
             this.filmsAppeared.length <= 0 ||
-            this.members.length <= 0
+            this.members.length <= 0 ||
+            !this.homeworld;
   }
 
   setCurrentSpecies() {
@@ -56,6 +58,7 @@ export class SpeciesItemComponent implements OnInit {
       this.dataService.getFilmsFromUrls(this.currentSpecies.films, this.filmsAppeared);
       this.members = [];
       this.dataService.getCharactersFromUrls(this.currentSpecies.people, this.members);
+      this.homeworld = this.dataService.getPlanetFromUrl(this.currentSpecies.homeworld);
     }
   }
 }
