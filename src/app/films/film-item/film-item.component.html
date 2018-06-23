@@ -26,7 +26,7 @@
         <h4 class="list-data-header">Species</h4>
         <div class="list-data-container col-md-12 bg-dark">
           <div *ngFor="let species of filmSpecies | sortBy: 'name'">
-            <div class="list-item">
+            <div class="list-item" (click)="router.navigate(['species', species.id]);">
               {{ species.name }}
             </div>
           </div>
