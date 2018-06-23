@@ -49,7 +49,8 @@ export class AppComponent implements OnInit {
   }
 
   loadData() {
-    this.store.dispatch(new SwapiActions.GetFilmsAction())
-    this.store.dispatch(new SwapiActions.GetCharsAction())
+    this.store.dispatch(new SwapiActions.GetFilmsAction());
+    this.store.dispatch(new SwapiActions.GetCharsAction());
+    this.store.dispatch(new SwapiActions.GetSpeciesAction());
   }
 }

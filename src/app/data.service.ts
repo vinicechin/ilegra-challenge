@@ -5,53 +5,68 @@ import { Router } from '@angular/router';
 enum Type {
     FILMS = 0,
     CHARACTERS = 1,
+    SPECIES = 2,
 }
 
 @Injectable()
 export class DataService {
   films: any[] = [];
   chars: any[] = [];
+  species: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  //Receive an id and returns a film object
+  // FILMS GETTERS
   getFilmById(id) {
     return this.films.find((film) => {
       return film.episode_id === id;
     });
   }
 
-  //Receive a films url array and returns a films array
   getFilmsFromUrls(filmsArray: any[], array: any[]) {
     this.getArrayFromUrls(filmsArray, array, Type.FILMS);
   }
 
-  //Receive an id and returns a character object
+  // CHARACTERS GETTERS
   getCharacterById(id) {
     return this.chars.find((character) => {
       return character.id === id;
     });
   }
 
-  //Receive a characters url array and returns a characters array
   getCharactersFromUrls(charsArray: any[], array: any[]) {
     this.getArrayFromUrls(charsArray, array, Type.CHARACTERS);
   }
 
+  // SPECIES GETTERS
+  getSpeciesById(id) {
+    return this.species.find((species) => {
+      return species.id === id;
+    });
+  }
+
+  getSpeciesFromUrls(speciesArray: any[], array: any[]) {
+    this.getArrayFromUrls(speciesArray, array, Type.SPECIES);
+  }
+
+  // DATA SETTER METHODS
   setData(data: any) {
     this.films = data.films.items;
     this.chars = data.chars.items;
+    this.species = data.species.items;
 
     return this.verifyDataLoaded(data);
   }
 
   verifyDataLoaded(data) {
-    const filmsLoading = data.films.loading
-    const charsLoading = data.chars.loading
+    const filmsLoading = data.films.loading;
+    const charsLoading = data.chars.loading;
+    const speciesLoading = data.species.loading;
 
-    return !filmsLoading && !charsLoading;
+    return !filmsLoading && !charsLoading && !speciesLoading;
   }
 
+  // AUXILIAR METHODS
   getArrayFromUrls(urlArray: any[], array: any[], type: Type) {
     var dataArray: any[];
     switch(type) {
@@ -60,6 +75,9 @@ export class DataService {
         break;
       case Type.CHARACTERS:
         dataArray = this.chars;
+        break;
+      case Type.SPECIES:
+        dataArray = this.species;
         break;
       default:
         dataArray = [];

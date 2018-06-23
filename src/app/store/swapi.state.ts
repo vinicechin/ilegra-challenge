@@ -9,6 +9,10 @@ export interface SwapiState {
     items: any[],
     loading: boolean
   };
+  species: {
+    items: any[],
+    loading: boolean
+  };
   error: any;
 }
 
@@ -18,6 +22,10 @@ export const initialState: SwapiState = {
     loading: true
   },
   chars: {
+    items: [],
+    loading: true
+  },
+  species: {
     items: [],
     loading: true
   },

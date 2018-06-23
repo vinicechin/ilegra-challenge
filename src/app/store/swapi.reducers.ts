@@ -57,6 +57,32 @@ export function SwapiReducer( state = initialState, action: fromSwapi.SwapiActio
       };
     };
 
+    // SPECIES CASES
+    case fromSwapi.GET_SPECIES: {
+      const species = state.species;
+      species.loading = true;
+      return {
+        ...state,
+        species: species
+      };
+    };
+
+    case fromSwapi.GET_SPECIES_SUCCESS: {
+      return {
+        ...state,
+        species: {items: action.payload.species, loading: false},
+        error: null
+      };
+    };
+
+    case fromSwapi.GET_SPECIES_ERROR: {
+      return {
+        ...state,
+        species: {items: [], loading: false},
+        error: action.payload.error
+      };
+    };
+
     // DEFAULT CASE
     default:
       return state;
