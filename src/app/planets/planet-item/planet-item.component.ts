@@ -8,17 +8,16 @@ import { SwapiState } from '../../store/swapi.state';
 import { DataService } from '../../data.service';
 
 @Component({
-  selector: 'app-character-item',
-  templateUrl: './character-item.component.html',
-  styleUrls: ['./character-item.component.css']
+  selector: 'app-planet-item',
+  templateUrl: './planet-item.component.html',
+  styleUrls: ['./planet-item.component.css']
 })
-export class CharacterItemComponent implements OnInit {
+export class PlanetItemComponent implements OnInit {
   swapi$: Observable<SwapiState>;
   id: number;
-  currentCharacter: any;
+  currentPlanet: any;
   filmsAppeared: any[] = [];
-  characterSpecies: any[] = [];
-  homeworld: any;
+  residents: any[] = [];
 
   constructor(private route: ActivatedRoute,
               private store: Store<SwapiState>,
@@ -30,7 +29,7 @@ export class CharacterItemComponent implements OnInit {
 
     this.swapi$.subscribe((data) => {
       if (this.verifyDataToLoad()) {
-        this.setCurrentCharacter();
+        this.setCurrentPlanet();
       }
     });
 
@@ -38,27 +37,25 @@ export class CharacterItemComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          this.setCurrentCharacter();
+          this.setCurrentPlanet();
         }
       )
   }
 
   verifyDataToLoad() {
-    return !this.currentCharacter || 
+    return !this.currentPlanet || 
             this.filmsAppeared.length <= 0 ||
-            this.characterSpecies.length <= 0 ||
-            !this.homeworld;
+            this.residents.length <= 0
   }
 
-  setCurrentCharacter() {
-    this.currentCharacter = this.dataService.getCharacterById(this.id);
-    if (this.currentCharacter) {
-      console.log(this.currentCharacter);
+  setCurrentPlanet() {
+    this.currentPlanet = this.dataService.getPlanetsById(this.id);
+    if (this.currentPlanet) {
+      console.log(this.currentPlanet);
       this.filmsAppeared = [];
-      this.dataService.getFilmsFromUrls(this.currentCharacter.films, this.filmsAppeared);
-      this.characterSpecies = [];
-      this.dataService.getSpeciesFromUrls(this.currentCharacter.species, this.characterSpecies);
-      this.homeworld = this.dataService.getPlanetFromUrl(this.currentCharacter.homeworld);
+      this.dataService.getFilmsFromUrls(this.currentPlanet.films, this.filmsAppeared);
+      this.residents = [];
+      this.dataService.getCharactersFromUrls(this.currentPlanet.residents, this.residents);
     }
   }
 

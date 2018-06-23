@@ -83,6 +83,32 @@ export function SwapiReducer( state = initialState, action: fromSwapi.SwapiActio
       };
     };
 
+    // PLANETS CASES
+    case fromSwapi.GET_PLANETS: {
+      const planets = state.planets;
+      planets.loading = true;
+      return {
+        ...state,
+        planets: planets
+      };
+    };
+
+    case fromSwapi.GET_PLANETS_SUCCESS: {
+      return {
+        ...state,
+        planets: {items: action.payload.planets, loading: false},
+        error: null
+      };
+    };
+
+    case fromSwapi.GET_PLANETS_ERROR: {
+      return {
+        ...state,
+        planets: {items: [], loading: false},
+        error: action.payload.error
+      };
+    };
+
     // DEFAULT CASE
     default:
       return state;

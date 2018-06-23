@@ -6,6 +6,7 @@ enum Type {
     FILMS = 0,
     CHARACTERS = 1,
     SPECIES = 2,
+    PLANETS = 3,
 }
 
 @Injectable()
@@ -13,6 +14,7 @@ export class DataService {
   films: any[] = [];
   chars: any[] = [];
   species: any[] = [];
+  planets: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -49,16 +51,21 @@ export class DataService {
     this.getArrayFromUrls(speciesArray, array, Type.SPECIES);
   }
 
-  getSpeciesStringFromUrls(speciesUrlArray: any[]) {
-    var speciesArray = [];
-    this.getArrayFromUrls(speciesUrlArray, speciesArray, Type.SPECIES);
+  // PLANETS GETTERS
+  getPlanetsById(id) {
+    return this.planets.find((planet) => {
+      return planet.id === id;
+    });
+  }
 
-    var species = speciesArray[0].name;
-    for(let i = 1; i < speciesArray.length; i++) {
-      species += ' | ' + speciesArray[i].name;
-    }
+  getPlanetsFromUrls(planetsArray: any[], array: any[]) {
+    this.getArrayFromUrls(planetsArray, array, Type.PLANETS);
+  }
 
-    return species;
+  getPlanetFromUrl(planetUrl: any) {
+    var planetsArray = [];
+    this.getArrayFromUrls([planetUrl], planetsArray, Type.PLANETS);
+    return planetsArray[0];
   }
 
   // DATA SETTER METHODS
@@ -66,6 +73,7 @@ export class DataService {
     this.films = data.films.items;
     this.chars = data.chars.items;
     this.species = data.species.items;
+    this.planets = data.planets.items;
 
     return this.verifyDataLoaded(data);
   }
@@ -74,8 +82,11 @@ export class DataService {
     const filmsLoading = data.films.loading;
     const charsLoading = data.chars.loading;
     const speciesLoading = data.species.loading;
+    const planetsLoading = data.planets.loading;
+    //vehicles
+    //starships
 
-    return !filmsLoading && !charsLoading && !speciesLoading;
+    return !filmsLoading && !charsLoading && !speciesLoading && !planetsLoading;
   }
 
   // AUXILIAR METHODS
@@ -90,6 +101,9 @@ export class DataService {
         break;
       case Type.SPECIES:
         dataArray = this.species;
+        break;
+      case Type.PLANETS:
+        dataArray = this.planets;
         break;
       default:
         dataArray = [];

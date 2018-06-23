@@ -9,6 +9,9 @@ export const GET_CHARS_ERROR = 'GET_CHARS_ERROR';
 export const GET_SPECIES = 'GET_SPECIES';
 export const GET_SPECIES_SUCCESS = 'GET_SPECIES_SUCCESS';
 export const GET_SPECIES_ERROR = 'GET_SPECIES_ERROR';
+export const GET_PLANETS = 'GET_PLANETS';
+export const GET_PLANETS_SUCCESS = 'GET_PLANETS_SUCCESS';
+export const GET_PLANETS_ERROR = 'GET_PLANETS_ERROR';
 
 export class GetFilmsAction implements Action {
   readonly type = GET_FILMS;
@@ -58,6 +61,22 @@ export class GetSpeciesErrorAction implements Action {
   constructor(public payload: {error: any}) {}
 }
 
+export class GetPlanetsAction implements Action {
+  readonly type = GET_PLANETS;
+}
+
+export class GetPlanetsSuccessAction implements Action {
+  readonly type = GET_PLANETS_SUCCESS;
+
+  constructor(public payload: {planets: any[]}) {}
+}
+
+export class GetPlanetsErrorAction implements Action {
+  readonly type = GET_PLANETS_ERROR;
+
+  constructor(public payload: {error: any}) {}
+}
+
 export type SwapiActions = GetFilmsAction 
                          | GetFilmsSuccessAction 
                          | GetFilmsErrorAction
@@ -66,4 +85,7 @@ export type SwapiActions = GetFilmsAction
                          | GetCharsErrorAction
                          | GetSpeciesAction 
                          | GetSpeciesSuccessAction 
-                         | GetSpeciesErrorAction;
+                         | GetSpeciesErrorAction
+                         | GetPlanetsAction 
+                         | GetPlanetsSuccessAction 
+                         | GetPlanetsErrorAction;

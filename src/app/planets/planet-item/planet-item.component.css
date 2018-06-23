@@ -1,23 +1,15 @@
-.character-container {
+.planet-container {
   color: white;
 }
 
-.character-basic-info {
+.planet-basic-info {
   padding: 10px 15px 2px 15px;
   border-radius: 5px;
   margin-top: 15px;
 }
 
-.character-basic-info p {
+.planet-basic-info p {
   margin-bottom: 8px;
-}
-
-.clickable-item {
-  cursor: pointer;
-}
-
-.clickable-item:hover {
-  color: #FFC500;
 }
 
 h2, h4 {
@@ -31,7 +23,7 @@ h2, h4 {
 
 .list-data-container {
   padding: 10px;
-  height: 282px;
+  height: 250px;
   overflow-y: auto;
   border: 1px solid #FFC500;
   border-radius: 5px;

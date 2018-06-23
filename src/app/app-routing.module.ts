@@ -11,6 +11,9 @@ import { CharacterListComponent } from './characters/character-list/character-li
 import { SpeciesComponent } from './species/species.component';
 import { SpeciesItemComponent } from './species/species-item/species-item.component';
 import { SpeciesListComponent } from './species/species-list/species-list.component';
+import { PlanetsComponent } from './planets/planets.component';
+import { PlanetItemComponent } from './planets/planet-item/planet-item.component';
+import { PlanetListComponent } from './planets/planet-list/planet-list.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoadingScreenComponent, pathMatch: 'full' },
@@ -25,6 +28,10 @@ const appRoutes: Routes = [
   { path: 'species', component: SpeciesComponent, children: [
     { path: '', component: SpeciesListComponent },
     { path: ':id', component: SpeciesItemComponent }
+  ]},
+  { path: 'planets', component: PlanetsComponent, children: [
+    { path: '', component: PlanetListComponent },
+    { path: ':id', component: PlanetItemComponent }
   ]}
 ]
 

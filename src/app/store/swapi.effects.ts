@@ -65,6 +65,23 @@ export class SwapiEffects {
         })
     })
 
+  @Effect()
+  getPlanets$ = this.action$
+    .ofType(swapiActions.GET_PLANETS)
+    .switchMap(() => {
+      return this.getDataRecursively('https://swapi.co/api/planets')
+        .then((data: any) => {
+          for(let planet of data) {
+            planet.id = this.getIdFromUrl(planet.url)
+          }
+          console.log(data)
+          return new swapiActions.GetPlanetsSuccessAction({planets: data})
+        })
+        .catch((error) => {
+          new swapiActions.GetPlanetsErrorAction({error: error})
+        })
+    })
+
   // AUXILIAR METHODS
   getDataRecursively(url = 'https://swapi.co/api/people', array = []) {
     return new Promise((resolve, reject) => {
