@@ -18,6 +18,7 @@ export class CharacterItemComponent implements OnInit {
   currentCharacter: any;
   filmsAppeared: any[] = [];
   characterSpecies: string = "";
+  homeworld: any;
 
   constructor(private route: ActivatedRoute,
               private store: Store<SwapiState>,
@@ -45,7 +46,8 @@ export class CharacterItemComponent implements OnInit {
   verifyDataToLoad() {
     return !this.currentCharacter || 
             this.filmsAppeared.length <= 0 ||
-            this.characterSpecies === "";
+            this.characterSpecies === "" ||
+            !this.homeworld;
   }
 
   setCurrentCharacter() {
@@ -55,6 +57,7 @@ export class CharacterItemComponent implements OnInit {
       this.filmsAppeared = [];
       this.dataService.getFilmsFromUrls(this.currentCharacter.films, this.filmsAppeared);
       this.characterSpecies = this.dataService.getSpeciesStringFromUrls(this.currentCharacter.species);
+      this.homeworld = this.dataService.getPlanetFromUrl(this.currentCharacter.homeworld);
     }
   }
 

@@ -14,7 +14,14 @@
       <p><b>Gender:</b> {{ currentCharacter ? currentCharacter.gender : '' }}</p>
       <p><b>Species:</b> {{ characterSpecies }}</p>
       <p><b>Birth Year:</b> {{ currentCharacter ? currentCharacter.birth_year : '' }}</p>
-      <p><b>Homeworld:</b> ...</p>
+      <p>
+        <b>Homeworld:</b>
+        <span 
+          class="homeworld-item" 
+          (click)="router.navigate(['planets', homeworld.id]);">
+           {{ homeworld ? homeworld.name : '' }}
+        </span>
+      </p>
     </div>
   </div>
   <div class="col-md-8">

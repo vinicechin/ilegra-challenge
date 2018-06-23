@@ -74,6 +74,12 @@ export class DataService {
     this.getArrayFromUrls(planetsArray, array, Type.PLANETS);
   }
 
+  getPlanetFromUrl(planetUrl: any) {
+    var planetsArray = [];
+    this.getArrayFromUrls([planetUrl], planetsArray, Type.PLANETS);
+    return planetsArray[0];
+  }
+
   // DATA SETTER METHODS
   setData(data: any) {
     this.films = data.films.items;
