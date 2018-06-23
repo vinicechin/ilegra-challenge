@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-8">
+    <h2 style="margin-bottom: 0px">{{ currentVehicle ? currentVehicle.name : '' }}</h2>
+  </div>
+</div>
+<div class="row vehicle-container">
+  <div class="col-md-7">
+    <div class="vehicle-basic-info bg-dark">
+      <p><b>Model:</b> {{ currentVehicle ? currentVehicle.model : '' }}</p>
+      <p><b>Class:</b> {{ currentVehicle ? currentVehicle.vehicle_class : '' }}</p>
+      <p><b>Manufacturer:</b> {{ currentVehicle ? currentVehicle.manufacturer : '' }}</p>
+      <p><b>Cost (credits):</b> {{ currentVehicle ? currentVehicle.cost_in_credits : '' }}</p>
+      <p><b>Length:</b> {{ currentVehicle ? currentVehicle.length : '' }}</p>
+      <p><b>Max Atm Speed:</b> {{ currentVehicle ? currentVehicle.max_atmosphering_speed : '' }}</p>
+      <p><b>Crew:</b> {{ currentVehicle ? currentVehicle.crew : '' }}</p>
+      <p><b>Passengers:</b> {{ currentVehicle ? currentVehicle.passengers : '' }}</p>
+      <p><b>Cargo Capacity:</b> {{ currentVehicle ? currentVehicle.cargo_capacity : '' }}</p>
+      <p><b>Consumables:</b> {{ currentVehicle ? currentVehicle.consumables : '' }}</p>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h4 class="list-data-header">Appearances</h4>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmsAppeared.length > 0">
+          <div *ngFor="let film of filmsAppeared | sortBy: 'episode_id'">
+            <div class="list-item" (click)="router.navigate(['films', film.episode_id]);">
+              {{ film.title }}
+            </div>
+          </div>
+        </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmsAppeared.length <= 0">
+          <div>N/A</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h4 class="list-data-header">Pilots</h4>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="pilots.length > 0">
+          <div *ngFor="let pilot of pilots | sortBy: 'name'">
+            <div class="list-item" (click)="router.navigate(['characters', member.id]);">
+              {{ pilot.name }}
+            </div>
+          </div>
+        </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="pilots.length <= 0">
+          <div>N/A</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

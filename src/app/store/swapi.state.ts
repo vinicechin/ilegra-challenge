@@ -17,6 +17,10 @@ export interface SwapiState {
     items: any[],
     loading: boolean
   };
+  vehicles: {
+    items: any[],
+    loading: boolean
+  };
   error: any;
 }
 
@@ -34,6 +38,10 @@ export const initialState: SwapiState = {
     loading: true
   },
   planets: {
+    items: [],
+    loading: true
+  },
+  vehicles: {
     items: [],
     loading: true
   },

@@ -109,6 +109,32 @@ export function SwapiReducer( state = initialState, action: fromSwapi.SwapiActio
       };
     };
 
+    // VEHICLES CASES
+    case fromSwapi.GET_VEHICLES: {
+      const vehicles = state.vehicles;
+      vehicles.loading = true;
+      return {
+        ...state,
+        vehicles: vehicles
+      };
+    };
+
+    case fromSwapi.GET_VEHICLES_SUCCESS: {
+      return {
+        ...state,
+        vehicles: {items: action.payload.vehicles, loading: false},
+        error: null
+      };
+    };
+
+    case fromSwapi.GET_VEHICLES_ERROR: {
+      return {
+        ...state,
+        vehicles: {items: [], loading: false},
+        error: action.payload.error
+      };
+    };
+
     // DEFAULT CASE
     default:
       return state;
