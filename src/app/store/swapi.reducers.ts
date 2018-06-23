@@ -57,6 +57,110 @@ export function SwapiReducer( state = initialState, action: fromSwapi.SwapiActio
       };
     };
 
+    // SPECIES CASES
+    case fromSwapi.GET_SPECIES: {
+      const species = state.species;
+      species.loading = true;
+      return {
+        ...state,
+        species: species
+      };
+    };
+
+    case fromSwapi.GET_SPECIES_SUCCESS: {
+      return {
+        ...state,
+        species: {items: action.payload.species, loading: false},
+        error: null
+      };
+    };
+
+    case fromSwapi.GET_SPECIES_ERROR: {
+      return {
+        ...state,
+        species: {items: [], loading: false},
+        error: action.payload.error
+      };
+    };
+
+    // PLANETS CASES
+    case fromSwapi.GET_PLANETS: {
+      const planets = state.planets;
+      planets.loading = true;
+      return {
+        ...state,
+        planets: planets
+      };
+    };
+
+    case fromSwapi.GET_PLANETS_SUCCESS: {
+      return {
+        ...state,
+        planets: {items: action.payload.planets, loading: false},
+        error: null
+      };
+    };
+
+    case fromSwapi.GET_PLANETS_ERROR: {
+      return {
+        ...state,
+        planets: {items: [], loading: false},
+        error: action.payload.error
+      };
+    };
+
+    // VEHICLES CASES
+    case fromSwapi.GET_VEHICLES: {
+      const vehicles = state.vehicles;
+      vehicles.loading = true;
+      return {
+        ...state,
+        vehicles: vehicles
+      };
+    };
+
+    case fromSwapi.GET_VEHICLES_SUCCESS: {
+      return {
+        ...state,
+        vehicles: {items: action.payload.vehicles, loading: false},
+        error: null
+      };
+    };
+
+    case fromSwapi.GET_VEHICLES_ERROR: {
+      return {
+        ...state,
+        vehicles: {items: [], loading: false},
+        error: action.payload.error
+      };
+    };
+
+    // STARSHIPS CASES
+    case fromSwapi.GET_STARSHIPS: {
+      const starships = state.starships;
+      starships.loading = true;
+      return {
+        ...state,
+        starships: starships
+      };
+    };
+
+    case fromSwapi.GET_STARSHIPS_SUCCESS: {
+      return {
+        ...state,
+        starships: {items: action.payload.starships, loading: false},
+        error: null
+      };
+    };
+
+    case fromSwapi.GET_STARSHIPS_ERROR: {
+      return {
+        ...state,
+        starships: {items: [], loading: false},
+        error: action.payload.error
+      };
+    };
+
     // DEFAULT CASE
     default:
       return state;

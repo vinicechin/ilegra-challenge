@@ -19,3 +19,12 @@ h1 {
 .instructions-header {
   text-align: center; margin-bottom: 7px;
 }
+
+.best-char-link {
+  color: #FFC500;
+}
+
+.best-char-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

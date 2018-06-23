@@ -71,3 +71,11 @@
   height: 17px;
   margin: 4px 4px 0px 0px;
 }
+
+.starwars-icon {
+  background: url('/assets/images/icons/star-wars.png');
+  background-size: cover;
+  width: 60px;
+  height: 45px;
+  margin: -15px 4px 0px 0px;
+}

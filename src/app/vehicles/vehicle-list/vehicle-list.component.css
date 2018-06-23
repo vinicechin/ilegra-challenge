@@ -1,0 +1,37 @@
+.vehicle-container {
+  padding: 5px;
+}
+
+.vehicle-content {
+  background-color: grey;
+  padding: 5px 10px 10px 10px;
+  border: 1px solid #FFC500;
+  border-radius: 5px;
+  color: white;
+}
+
+.vehicle-name {
+  text-align: center;
+  color: #FFC500;
+}
+
+.details-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter-bar {
+  padding: 5px;
+}
+
+.vehicle-info-item {
+  margin-bottom: 2px;
+  display: flex;
+}
+
+.vehicle-info-item-label {
+  display: flex;
+  justify-content: flex-end;
+  width: 60px;
+  margin-right: 5px;
+}

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" (click)="router.navigate(['']);">SW Wiki</a>
+  <a class="navbar-brand" (click)="router.navigate(['']);" style="display: flex;"><div class="starwars-icon"></div>Wiki</a>
   <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -40,33 +40,30 @@
           Characters
         </a>
       </li>
-      <!-- <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/characters/1">Char 1</a>
-      </li> -->
 
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="" style="display: flex;">
+        <a class="nav-link" routerLink="/species" style="display: flex;">
           <div class="species-icon"></div>
           Species
         </a>
       </li>
       
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="" style="display: flex;">
+        <a class="nav-link" routerLink="/planets" style="display: flex;">
           <div class="planets-icon"></div>
           Planets
         </a>
       </li>
       
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="" style="display: flex;">
+        <a class="nav-link" routerLink="/vehicles" style="display: flex;">
           <div class="vehicles-icon"></div>
           Vehicles
         </a>
       </li>
       
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="" style="display: flex;">
+        <a class="nav-link" routerLink="/starships" style="display: flex;">
           <div class="starships-icon"></div>
           Starships
         </a>

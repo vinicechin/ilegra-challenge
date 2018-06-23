@@ -1,8 +1,5 @@
 <div class="row film-container">
-  <div class="main-info-container col-md-12 col-lg-8" *ngIf="!currentFilm">
-    Loading Film
-  </div>
-  <div class="main-info-container col-md-12 col-lg-8" *ngIf="currentFilm">
+  <div class="main-info-container col-md-12 col-lg-8">
     <h2 style="margin-bottom: 0px">{{ currentFilm ? currentFilm.title : '' }}</h2>
     <p class="opening_crawl">{{ currentFilm ? currentFilm.opening_crawl : '' }}</p>
     <div class="film-basic-info bg-dark">
@@ -17,22 +14,28 @@
     <div class="row">
       <div class="list-container col-md-6 col-lg-12">
         <h4 class="list-data-header">Characters</h4>
-        <div class="list-data-container col-md-12 bg-dark">
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmCharacters.length > 0">
           <div *ngFor="let character of filmCharacters | sortBy: 'name'">
             <div class="list-item" (click)="router.navigate(['characters', character.id]);">
               {{ character.name }}
             </div>
           </div>
         </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmCharacters.length <= 0">
+          <div>N/A</div>
+        </div>
       </div>
       <div class="list-container col-md-6 col-lg-12">
         <h4 class="list-data-header">Species</h4>
-        <div class="list-data-container col-md-12 bg-dark">
-          <div *ngFor="let character of filmCharacters | sortBy: 'name'">
-            <div class="list-item">
-              {{ character.name }}
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmSpecies.length > 0">
+          <div *ngFor="let species of filmSpecies | sortBy: 'name'">
+            <div class="list-item" (click)="router.navigate(['species', species.id]);">
+              {{ species.name }}
             </div>
           </div>
+        </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmSpecies.length <= 0">
+          <div>N/A</div>
         </div>
       </div>
     </div>
@@ -42,32 +45,41 @@
     <div class="row">
       <div class="list-container col-md-4">
         <h4 class="list-data-header">Starships</h4>
-        <div class="list-data-container col-md-12 bg-dark">
-          <div *ngFor="let character of filmCharacters | sortBy: 'name'">
-            <div class="list-item">
-              {{ character.name }}
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmStarships.length > 0">
+          <div *ngFor="let starship of filmStarships | sortBy: 'name'">
+            <div class="list-item" (click)="router.navigate(['starships', starship.id]);">
+              {{ starship.name }}
             </div>
           </div>
+        </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmStarships.length <= 0">
+          <div>N/A</div>
         </div>
       </div>
       <div class="list-container col-md-4">
         <h4 class="list-data-header">Vehicles</h4>
-        <div class="list-data-container col-md-12 bg-dark">
-          <div *ngFor="let character of filmCharacters | sortBy: 'name'">
-            <div class="list-item">
-              {{ character.name }}
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmVehicles.length > 0">
+          <div *ngFor="let vehicle of filmVehicles | sortBy: 'name'">
+            <div class="list-item" (click)="router.navigate(['vehicles', vehicle.id]);">
+              {{ vehicle.name }}
             </div>
           </div>
+        </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmVehicles.length <= 0">
+          <div>N/A</div>
         </div>
       </div>
       <div class="list-container col-md-4">
         <h4 class="list-data-header">Planets</h4>
-        <div class="list-data-container col-md-12 bg-dark">
-          <div *ngFor="let character of filmCharacters | sortBy: 'name'">
-            <div class="list-item">
-              {{ character.name }}
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmPlanets.length > 0">
+          <div *ngFor="let planet of filmPlanets | sortBy: 'name'">
+            <div class="list-item" (click)="router.navigate(['planets', planet.id]);">
+              {{ planet.name }}
             </div>
           </div>
+        </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmPlanets.length <= 0">
+          <div>N/A</div>
         </div>
       </div>
     </div>

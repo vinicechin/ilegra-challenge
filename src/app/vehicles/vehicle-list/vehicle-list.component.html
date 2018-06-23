@@ -1,0 +1,21 @@
+<div class="row my-2">
+  <div class="col-12 filter-bar">
+    <input [(ngModel)]="searchTerm" class="form-control mr-sm-2" type="text" placeholder="Filter by vehicle name" aria-label="Filter">
+  </div>
+</div>
+<div class="row">
+  <div *ngFor="let vehicle of vehicles | filter : searchTerm | sortBy: 'name'" class="col-lg-6 col-xl-4 vehicle-container">
+    <div class="vehicle-content bg-dark">
+      <h4 class="vehicle-name">{{ vehicle.name }}</h4>
+      <div>
+        <p class="vehicle-info-item"><span class="vehicle-info-item-label">Model:</span> {{ vehicle.model }}</p>
+        <p class="vehicle-info-item"><span class="vehicle-info-item-label">Class:</span> {{ vehicle.vehicle_class }}</p>
+        <p class="vehicle-info-item"><span class="vehicle-info-item-label">Length:</span> {{ vehicle.length }}</p>
+        <p class="vehicle-info-item"><span class="vehicle-info-item-label">Crew:</span> {{ vehicle.crew }}</p>
+      </div>
+      <div class="details-btn-container">
+        <a class="btn btn-secondary" role="button" (click)="router.navigate(['vehicles', vehicle.id]);">View details »</a>
+      </div>
+    </div>
+  </div>
+</div>

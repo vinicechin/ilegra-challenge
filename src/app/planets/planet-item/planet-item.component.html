@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-8">
+    <h2 style="margin-bottom: 0px">{{ currentPlanet ? currentPlanet.name : '' }}</h2>
+  </div>
+</div>
+<div class="row planet-container">
+  <div class="col-md-5">
+    <div class="planet-basic-info bg-dark">
+      <p><b>Population:</b> {{ currentPlanet ? currentPlanet.population : '' }}</p>
+      <p><b>Diameter:</b> {{ currentPlanet ? currentPlanet.diameter : '' }}</p>
+      <p><b>Rotation Period:</b> {{ currentPlanet ? currentPlanet.rotation_period : '' }}</p>
+      <p><b>Orbital Period:</b> {{ currentPlanet ? currentPlanet.orbital_period : '' }}</p>
+      <p><b>Gravity:</b> {{ currentPlanet ? currentPlanet.gravity : '' }}</p>
+      <p><b>Terrain:</b> {{ currentPlanet ? currentPlanet.terrain : '' }}</p>
+      <p><b>Climate:</b> {{ currentPlanet ? currentPlanet.climate : '' }}</p>
+      <p><b>Water Surface (%):</b> {{ currentPlanet ? currentPlanet.surface_water : '' }}</p>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="row">
+      <div class="col-md-5">
+        <h4 class="list-data-header">Appearances</h4>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmsAppeared.length > 0">
+          <div *ngFor="let film of filmsAppeared | sortBy: 'episode_id'">
+            <div class="list-item" (click)="router.navigate(['films', film.episode_id]);">
+              {{ film.title }}
+            </div>
+          </div>
+        </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmsAppeared.length <= 0">
+          <div>N/A</div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <h4 class="list-data-header">Residents</h4>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="residents.length > 0">
+          <div *ngFor="let resident of residents | sortBy: 'name'">
+            <div class="list-item" (click)="router.navigate(['characters', resident.id]);">
+              {{ resident.name }}
+            </div>
+          </div>
+        </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="residents.length <= 0">
+          <div>N/A</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

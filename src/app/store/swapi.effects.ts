@@ -48,6 +48,74 @@ export class SwapiEffects {
         });
     })
 
+  @Effect()
+  getSpecies$ = this.action$
+    .ofType(swapiActions.GET_SPECIES)
+    .switchMap(() => {
+      return this.getDataRecursively('https://swapi.co/api/species')
+        .then((data: any) => {
+          for(let species of data) {
+            species.id = this.getIdFromUrl(species.url)
+          }
+          console.log(data)
+          return new swapiActions.GetSpeciesSuccessAction({species: data})
+        })
+        .catch((error) => {
+          new swapiActions.GetSpeciesErrorAction({error: error})
+        })
+    })
+
+  @Effect()
+  getPlanets$ = this.action$
+    .ofType(swapiActions.GET_PLANETS)
+    .switchMap(() => {
+      return this.getDataRecursively('https://swapi.co/api/planets')
+        .then((data: any) => {
+          for(let planet of data) {
+            planet.id = this.getIdFromUrl(planet.url)
+          }
+          console.log(data)
+          return new swapiActions.GetPlanetsSuccessAction({planets: data})
+        })
+        .catch((error) => {
+          new swapiActions.GetPlanetsErrorAction({error: error})
+        })
+    })
+
+  @Effect()
+  getVehicles$ = this.action$
+    .ofType(swapiActions.GET_VEHICLES)
+    .switchMap(() => {
+      return this.getDataRecursively('https://swapi.co/api/vehicles')
+        .then((data: any) => {
+          for(let vehicle of data) {
+            vehicle.id = this.getIdFromUrl(vehicle.url)
+          }
+          console.log(data)
+          return new swapiActions.GetVehiclesSuccessAction({vehicles: data})
+        })
+        .catch((error) => {
+          new swapiActions.GetVehiclesErrorAction({error: error})
+        })
+    })
+
+  @Effect()
+  getStarships$ = this.action$
+    .ofType(swapiActions.GET_STARSHIPS)
+    .switchMap(() => {
+      return this.getDataRecursively('https://swapi.co/api/starships')
+        .then((data: any) => {
+          for(let starship of data) {
+            starship.id = this.getIdFromUrl(starship.url)
+          }
+          console.log(data)
+          return new swapiActions.GetStarshipsSuccessAction({starships: data})
+        })
+        .catch((error) => {
+          new swapiActions.GetStarshipsErrorAction({error: error})
+        })
+    })
+
   // AUXILIAR METHODS
   getDataRecursively(url = 'https://swapi.co/api/people', array = []) {
     return new Promise((resolve, reject) => {

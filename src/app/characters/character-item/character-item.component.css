@@ -12,6 +12,14 @@
   margin-bottom: 8px;
 }
 
+.clickable-item {
+  cursor: pointer;
+}
+
+.clickable-item:hover {
+  color: #FFC500;
+}
+
 h2, h4 {
   color: #FFC500;
 }
@@ -23,7 +31,7 @@ h2, h4 {
 
 .list-data-container {
   padding: 10px;
-  height: 249px;
+  height: 282px;
   overflow-y: auto;
   border: 1px solid #FFC500;
   border-radius: 5px;

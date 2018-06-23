@@ -9,43 +9,67 @@
       <p><b>Hair Color:</b> {{ currentCharacter ? currentCharacter.hair_color : '' }}</p>
       <p><b>Skin Color:</b> {{ currentCharacter ? currentCharacter.skin_color : '' }}</p>
       <p><b>Eyes Color:</b> {{ currentCharacter ? currentCharacter.eye_color : '' }}</p>
-      <p><b>Height:</b> {{ currentCharacter ? currentCharacter.height : '' }}</p>
-      <p><b>Mass:</b> {{ currentCharacter ? currentCharacter.mass : '' }}</p>
-      <p><b>gender:</b> {{ currentCharacter ? currentCharacter.gender : '' }}</p>
+      <p><b>Height (cm):</b> {{ currentCharacter ? currentCharacter.height : '' }}</p>
+      <p><b>Mass (Kg):</b> {{ currentCharacter ? currentCharacter.mass : '' }}</p>
+      <p><b>Gender:</b> {{ currentCharacter ? currentCharacter.gender : '' }}</p>
+      <p>
+        <b>Species:</b>
+        <span *ngFor="let specie of characterSpecies; let i = index"
+          class="clickable-item"
+          (click)="router.navigate(['species', specie.id]);">
+          {{ specie.name }}<span *ngIf="i < characterSpecies.length - 1"> | </span>
+        </span>
+      </p>
       <p><b>Birth Year:</b> {{ currentCharacter ? currentCharacter.birth_year : '' }}</p>
-      <p><b>Homeworld:</b> ...</p>
+      <p>
+        <b>Homeworld:</b>
+        <span 
+          class="clickable-item" 
+          (click)="router.navigate(['planets', homeworld.id]);">
+           {{ homeworld ? homeworld.name : '' }}
+        </span>
+      </p>
     </div>
   </div>
   <div class="col-md-8">
     <div class="row">
       <div class="col-md-4">
         <h4 class="list-data-header">Appearances</h4>
-        <div class="list-data-container col-md-12 bg-dark">
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmsAppeared.length > 0">
           <div *ngFor="let film of filmsAppeared | sortBy: 'episode_id'">
             <div class="list-item" (click)="router.navigate(['films', film.episode_id]);">
               {{ film.title }}
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <h4 class="list-data-header">Vehicles</h4>
-        <div class="list-data-container col-md-12 bg-dark">
-          <div *ngFor="let film of filmsAppeared | sortBy: 'episode_id'">
-            <div class="list-item" (click)="router.navigate(['films', film.episode_id]);">
-              {{ film.title }}
-            </div>
-          </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmsAppeared.length <= 0">
+          <div>N/A</div>
         </div>
       </div>
       <div class="col-md-4">
-        <h4 class="list-data-header">Starships</h4>
-        <div class="list-data-container col-md-12 bg-dark">
-          <div *ngFor="let film of filmsAppeared | sortBy: 'episode_id'">
-            <div class="list-item" (click)="router.navigate(['films', film.episode_id]);">
-              {{ film.title }}
+        <h4 class="list-data-header">Vehicles Piloted</h4>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="vehiclesPiloted.length > 0">
+          <div *ngFor="let vehicle of vehiclesPiloted | sortBy: 'name'">
+            <div class="list-item" (click)="router.navigate(['vehicles', vehicle.id]);">
+              {{ vehicle.name }}
             </div>
           </div>
+        </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="vehiclesPiloted.length <= 0">
+          <div>N/A</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h4 class="list-data-header">Starships Piloted</h4>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="starshipsPiloted.length > 0">
+          <div *ngFor="let starship of starshipsPiloted | sortBy: 'episode_id'">
+            <div class="list-item" (click)="router.navigate(['starships', starship.id]);">
+              {{ starship.name }}
+            </div>
+          </div>
+        </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="starshipsPiloted.length <= 0">
+          <div>N/A</div>
         </div>
       </div>
     </div>
