@@ -35,32 +35,41 @@
     <div class="row">
       <div class="col-md-4">
         <h4 class="list-data-header">Appearances</h4>
-        <div class="list-data-container col-md-12 bg-dark">
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmsAppeared.length > 0">
           <div *ngFor="let film of filmsAppeared | sortBy: 'episode_id'">
             <div class="list-item" (click)="router.navigate(['films', film.episode_id]);">
               {{ film.title }}
             </div>
           </div>
+        </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmsAppeared.length <= 0">
+          <div>N/A</div>
         </div>
       </div>
       <div class="col-md-4">
         <h4 class="list-data-header">Vehicles</h4>
-        <div class="list-data-container col-md-12 bg-dark">
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmsAppeared.length > 0">
           <div *ngFor="let film of filmsAppeared | sortBy: 'episode_id'">
             <div class="list-item" (click)="router.navigate(['films', film.episode_id]);">
               {{ film.title }}
             </div>
           </div>
         </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmsAppeared.length <= 0">
+          <div>N/A</div>
+        </div>
       </div>
       <div class="col-md-4">
         <h4 class="list-data-header">Starships</h4>
-        <div class="list-data-container col-md-12 bg-dark">
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmsAppeared.length > 0">
           <div *ngFor="let film of filmsAppeared | sortBy: 'episode_id'">
             <div class="list-item" (click)="router.navigate(['films', film.episode_id]);">
               {{ film.title }}
             </div>
           </div>
+        </div>
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmsAppeared.length <= 0">
+          <div>N/A</div>
         </div>
       </div>
     </div>
