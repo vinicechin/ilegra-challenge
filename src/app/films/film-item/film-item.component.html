@@ -60,9 +60,9 @@
       <div class="list-container col-md-4">
         <h4 class="list-data-header">Planets</h4>
         <div class="list-data-container col-md-12 bg-dark">
-          <div *ngFor="let character of filmCharacters | sortBy: 'name'">
-            <div class="list-item">
-              {{ character.name }}
+          <div *ngFor="let planet of filmPlanets | sortBy: 'name'">
+            <div class="list-item" (click)="router.navigate(['planets', planet.id]);">
+              {{ planet.name }}
             </div>
           </div>
         </div>

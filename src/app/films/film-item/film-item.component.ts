@@ -18,6 +18,7 @@ export class FilmItemComponent implements OnInit {
   currentFilm: any;
   filmCharacters: any[] = [];
   filmSpecies: any[] = [];
+  filmPlanets: any[] = [];
 
   constructor(private route: ActivatedRoute,
               private store: Store<SwapiState>,
@@ -45,17 +46,20 @@ export class FilmItemComponent implements OnInit {
   verifyDataToLoad() {
     return !this.currentFilm || 
             this.filmCharacters.length <= 0 || 
-            this.filmSpecies.length <= 0;
+            this.filmSpecies.length <= 0 ||
+            this.filmPlanets.length <= 0;
   }
 
   setCurrentFilm() {
     this.currentFilm = this.dataService.getFilmById(this.id);
     if (this.currentFilm) {
-      console.log(this.currentFilm)
+      console.log(this.currentFilm);
       this.filmCharacters = [];
-      this.dataService.getCharactersFromUrls(this.currentFilm.characters, this.filmCharacters)
+      this.dataService.getCharactersFromUrls(this.currentFilm.characters, this.filmCharacters);
       this.filmSpecies = [];
-      this.dataService.getSpeciesFromUrls(this.currentFilm.species, this.filmSpecies)
+      this.dataService.getSpeciesFromUrls(this.currentFilm.species, this.filmSpecies);
+      this.filmPlanets = [];
+      this.dataService.getPlanetsFromUrls(this.currentFilm.planets, this.filmPlanets);
     }
   }
 
