@@ -20,6 +20,7 @@ export class FilmItemComponent implements OnInit {
   filmSpecies: any[] = [];
   filmPlanets: any[] = [];
   filmVehicles: any[] = [];
+  filmStarships: any[] = [];
 
   constructor(private route: ActivatedRoute,
               private store: Store<SwapiState>,
@@ -49,7 +50,8 @@ export class FilmItemComponent implements OnInit {
             this.filmCharacters.length <= 0 || 
             this.filmSpecies.length <= 0 ||
             this.filmPlanets.length <= 0 ||
-            this.filmVehicles.length <= 0;
+            this.filmVehicles.length <= 0||
+            this.filmStarships.length <= 0;
   }
 
   setCurrentFilm() {
@@ -64,6 +66,8 @@ export class FilmItemComponent implements OnInit {
       this.dataService.getPlanetsFromUrls(this.currentFilm.planets, this.filmPlanets);
       this.filmVehicles = [];
       this.dataService.getVehiclesFromUrls(this.currentFilm.vehicles, this.filmVehicles);
+      this.filmStarships = [];
+      this.dataService.getStarshipsFromUrls(this.currentFilm.starships, this.filmStarships);
     }
   }
 

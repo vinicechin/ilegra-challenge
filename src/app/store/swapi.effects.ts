@@ -99,6 +99,23 @@ export class SwapiEffects {
         })
     })
 
+  @Effect()
+  getStarships$ = this.action$
+    .ofType(swapiActions.GET_STARSHIPS)
+    .switchMap(() => {
+      return this.getDataRecursively('https://swapi.co/api/starships')
+        .then((data: any) => {
+          for(let starship of data) {
+            starship.id = this.getIdFromUrl(starship.url)
+          }
+          console.log(data)
+          return new swapiActions.GetStarshipsSuccessAction({starships: data})
+        })
+        .catch((error) => {
+          new swapiActions.GetStarshipsErrorAction({error: error})
+        })
+    })
+
   // AUXILIAR METHODS
   getDataRecursively(url = 'https://swapi.co/api/people', array = []) {
     return new Promise((resolve, reject) => {

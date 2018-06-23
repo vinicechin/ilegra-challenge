@@ -1,21 +1,23 @@
 <div class="row">
   <div class="col-md-8">
-    <h2 style="margin-bottom: 0px">{{ currentVehicle ? currentVehicle.name : '' }}</h2>
+    <h2 style="margin-bottom: 0px">{{ currentStarship ? currentStarship.name : '' }}</h2>
   </div>
 </div>
-<div class="row vehicle-container">
+<div class="row starship-container">
   <div class="col-md-7">
-    <div class="vehicle-basic-info bg-dark">
-      <p><b>Model:</b> {{ currentVehicle ? currentVehicle.model : '' }}</p>
-      <p><b>Class:</b> {{ currentVehicle ? currentVehicle.vehicle_class : '' }}</p>
-      <p><b>Manufacturer:</b> {{ currentVehicle ? currentVehicle.manufacturer : '' }}</p>
-      <p><b>Cost (credits):</b> {{ currentVehicle ? currentVehicle.cost_in_credits : '' }}</p>
-      <p><b>Length:</b> {{ currentVehicle ? currentVehicle.length : '' }}</p>
-      <p><b>Max Atm Speed:</b> {{ currentVehicle ? currentVehicle.max_atmosphering_speed : '' }}</p>
-      <p><b>Crew:</b> {{ currentVehicle ? currentVehicle.crew : '' }}</p>
-      <p><b>Passengers:</b> {{ currentVehicle ? currentVehicle.passengers : '' }}</p>
-      <p><b>Cargo Capacity:</b> {{ currentVehicle ? currentVehicle.cargo_capacity : '' }}</p>
-      <p><b>Consumables:</b> {{ currentVehicle ? currentVehicle.consumables : '' }}</p>
+    <div class="starship-basic-info bg-dark">
+      <p><b>Model:</b> {{ currentStarship ? currentStarship.model : '' }}</p>
+      <p><b>Class:</b> {{ currentStarship ? currentStarship.starship_class : '' }}</p>
+      <p><b>Manufacturer:</b> {{ currentStarship ? currentStarship.manufacturer : '' }}</p>
+      <p><b>Cost (credits):</b> {{ currentStarship ? currentStarship.cost_in_credits : '' }}</p>
+      <p><b>Length:</b> {{ currentStarship ? currentStarship.length : '' }}</p>
+      <p><b>Max Atm Speed:</b> {{ currentStarship ? currentStarship.max_atmosphering_speed : '' }}</p>
+      <p><b>Hyperdrive Rating:</b> {{ currentStarship ? currentStarship.hyperdrive_rating : '' }}</p>
+      <p><b>MGLT:</b> {{ currentStarship ? currentStarship.MGLT : '' }}</p>
+      <p><b>Crew:</b> {{ currentStarship ? currentStarship.crew : '' }}</p>
+      <p><b>Passengers:</b> {{ currentStarship ? currentStarship.passengers : '' }}</p>
+      <p><b>Cargo Capacity:</b> {{ currentStarship ? currentStarship.cargo_capacity : '' }}</p>
+      <p><b>Consumables:</b> {{ currentStarship ? currentStarship.consumables : '' }}</p>
     </div>
   </div>
   <div class="col-md-5">
