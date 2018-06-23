@@ -12,11 +12,11 @@
   margin-bottom: 8px;
 }
 
-.homeworld-item {
+.clickable-item {
   cursor: pointer;
 }
 
-.homeworld-item:hover {
+.clickable-item:hover {
   color: #FFC500;
 }
 

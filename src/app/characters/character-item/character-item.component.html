@@ -12,12 +12,19 @@
       <p><b>Height:</b> {{ currentCharacter ? currentCharacter.height : '' }}</p>
       <p><b>Mass:</b> {{ currentCharacter ? currentCharacter.mass : '' }}</p>
       <p><b>Gender:</b> {{ currentCharacter ? currentCharacter.gender : '' }}</p>
-      <p><b>Species:</b> {{ characterSpecies }}</p>
+      <p>
+        <b>Species:</b>
+        <span *ngFor="let specie of characterSpecies; let i = index"
+          class="clickable-item"
+          (click)="router.navigate(['species', specie.id]);">
+          {{ specie.name }}<span *ngIf="i < characterSpecies.length - 1"> | </span>
+        </span>
+      </p>
       <p><b>Birth Year:</b> {{ currentCharacter ? currentCharacter.birth_year : '' }}</p>
       <p>
         <b>Homeworld:</b>
         <span 
-          class="homeworld-item" 
+          class="clickable-item" 
           (click)="router.navigate(['planets', homeworld.id]);">
            {{ homeworld ? homeworld.name : '' }}
         </span>

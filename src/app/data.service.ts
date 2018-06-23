@@ -51,18 +51,6 @@ export class DataService {
     this.getArrayFromUrls(speciesArray, array, Type.SPECIES);
   }
 
-  getSpeciesStringFromUrls(speciesUrlArray: any[]) {
-    var speciesArray = [];
-    this.getArrayFromUrls(speciesUrlArray, speciesArray, Type.SPECIES);
-
-    var species = speciesArray[0].name;
-    for(let i = 1; i < speciesArray.length; i++) {
-      species += ' | ' + speciesArray[i].name;
-    }
-
-    return species;
-  }
-
   // PLANETS GETTERS
   getPlanetsById(id) {
     return this.planets.find((planet) => {
