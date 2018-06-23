@@ -49,6 +49,18 @@ export class DataService {
     this.getArrayFromUrls(speciesArray, array, Type.SPECIES);
   }
 
+  getSpeciesStringFromUrls(speciesUrlArray: any[]) {
+    var speciesArray = [];
+    this.getArrayFromUrls(speciesUrlArray, speciesArray, Type.SPECIES);
+
+    var species = speciesArray[0].name;
+    for(let i = 1; i < speciesArray.length; i++) {
+      species += ' | ' + speciesArray[i].name;
+    }
+
+    return species;
+  }
+
   // DATA SETTER METHODS
   setData(data: any) {
     this.films = data.films.items;

@@ -54,20 +54,8 @@ export class CharacterItemComponent implements OnInit {
       console.log(this.currentCharacter);
       this.filmsAppeared = [];
       this.dataService.getFilmsFromUrls(this.currentCharacter.films, this.filmsAppeared);
-      this.setCharacterSpecies(this.currentCharacter.species);
+      this.characterSpecies = this.dataService.getSpeciesStringFromUrls(this.currentCharacter.species);
     }
-  }
-
-  setCharacterSpecies(speciesUrlArray) {
-    var speciesArray = [];
-    this.dataService.getSpeciesFromUrls(this.currentCharacter.species, speciesArray);
-
-    var species = speciesArray[0].name;
-    for(let i = 1; i < speciesArray.length; i++) {
-      species += ' | ' + speciesArray[i].name;
-    }
-
-    this.characterSpecies = species;
   }
 
 }
