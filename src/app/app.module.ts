@@ -22,6 +22,9 @@ import { LoadingScreenComponent } from './loading-screen/loading-screen.componen
 import { SpeciesComponent } from './species/species.component';
 import { SpeciesListComponent } from './species/species-list/species-list.component';
 import { SpeciesItemComponent } from './species/species-item/species-item.component';
+import { PlanetsComponent } from './planets/planets.component';
+import { PlanetListComponent } from './planets/planet-list/planet-list.component';
+import { PlanetItemComponent } from './planets/planet-item/planet-item.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { SpeciesItemComponent } from './species/species-item/species-item.compon
     LoadingScreenComponent,
     SpeciesComponent,
     SpeciesListComponent,
-    SpeciesItemComponent
+    SpeciesItemComponent,
+    PlanetsComponent,
+    PlanetListComponent,
+    PlanetItemComponent
   ],
   imports: [
     BrowserModule,
