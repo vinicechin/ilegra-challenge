@@ -25,6 +25,9 @@ import { SpeciesItemComponent } from './species/species-item/species-item.compon
 import { PlanetsComponent } from './planets/planets.component';
 import { PlanetListComponent } from './planets/planet-list/planet-list.component';
 import { PlanetItemComponent } from './planets/planet-item/planet-item.component';
+import { VehiclesComponent } from './vehicles/vehicles.component';
+import { VehicleListComponent } from './vehicles/vehicle-list/vehicle-list.component';
+import { VehicleItemComponent } from './vehicles/vehicle-item/vehicle-item.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { PlanetItemComponent } from './planets/planet-item/planet-item.component
     SpeciesItemComponent,
     PlanetsComponent,
     PlanetListComponent,
-    PlanetItemComponent
+    PlanetItemComponent,
+    VehiclesComponent,
+    VehicleListComponent,
+    VehicleItemComponent
   ],
   imports: [
     BrowserModule,
