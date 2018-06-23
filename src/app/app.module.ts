@@ -19,6 +19,9 @@ import { CharacterItemComponent } from './characters/character-item/character-it
 import { CharacterListComponent } from './characters/character-list/character-list.component';
 import { FilterPipe, SortByPipe } from './app.pipes';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
+import { SpeciesComponent } from './species/species.component';
+import { SpeciesListComponent } from './species/species-list/species-list.component';
+import { SpeciesItemComponent } from './species/species-item/species-item.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { LoadingScreenComponent } from './loading-screen/loading-screen.componen
     CharacterListComponent,
     FilterPipe,
     SortByPipe,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    SpeciesComponent,
+    SpeciesListComponent,
+    SpeciesItemComponent
   ],
   imports: [
     BrowserModule,
