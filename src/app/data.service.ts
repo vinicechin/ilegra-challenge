@@ -7,6 +7,7 @@ enum Type {
     CHARACTERS = 1,
     SPECIES = 2,
     PLANETS = 3,
+    VEHICLES = 4,
 }
 
 @Injectable()
@@ -15,6 +16,7 @@ export class DataService {
   chars: any[] = [];
   species: any[] = [];
   planets: any[] = [];
+  vehicles: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -68,12 +70,24 @@ export class DataService {
     return planetsArray[0];
   }
 
+  // VEHICLES GETTERS
+  getVehicleById(id) {
+    return this.vehicles.find((vehicle) => {
+      return vehicle.id === id;
+    });
+  }
+
+  getVehiclesFromUrls(vehiclesArray: any[], array: any[]) {
+    this.getArrayFromUrls(vehiclesArray, array, Type.VEHICLES);
+  }
+
   // DATA SETTER METHODS
   setData(data: any) {
     this.films = data.films.items;
     this.chars = data.chars.items;
     this.species = data.species.items;
     this.planets = data.planets.items;
+    this.vehicles = data.vehicles.items;
 
     return this.verifyDataLoaded(data);
   }
@@ -83,10 +97,11 @@ export class DataService {
     const charsLoading = data.chars.loading;
     const speciesLoading = data.species.loading;
     const planetsLoading = data.planets.loading;
+    const vehiclesLoading = data.vehicles.loading;
     //vehicles
     //starships
 
-    return !filmsLoading && !charsLoading && !speciesLoading && !planetsLoading;
+    return !filmsLoading && !charsLoading && !speciesLoading && !planetsLoading && !vehiclesLoading;
   }
 
   // AUXILIAR METHODS
@@ -104,6 +119,9 @@ export class DataService {
         break;
       case Type.PLANETS:
         dataArray = this.planets;
+        break;
+      case Type.VEHICLES:
+        dataArray = this.vehicles;
         break;
       default:
         dataArray = [];
