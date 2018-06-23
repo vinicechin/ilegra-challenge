@@ -45,14 +45,14 @@
     <div class="row">
       <div class="list-container col-md-4">
         <h4 class="list-data-header">Starships</h4>
-        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmCharacters.length > 0">
-          <div *ngFor="let character of filmCharacters | sortBy: 'name'">
-            <div class="list-item">
-              {{ character.name }}
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmStarships.length > 0">
+          <div *ngFor="let starship of filmStarships | sortBy: 'name'">
+            <div class="list-item" (click)="router.navigate(['starships', starship.id]);">
+              {{ starship.name }}
             </div>
           </div>
         </div>
-        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmCharacters.length <= 0">
+        <div class="list-data-container col-md-12 bg-dark" *ngIf="filmStarships.length <= 0">
           <div>N/A</div>
         </div>
       </div>
