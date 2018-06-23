@@ -1,8 +1,5 @@
 <div class="row film-container">
-  <div class="main-info-container col-md-12 col-lg-8" *ngIf="!currentFilm">
-    Loading Film
-  </div>
-  <div class="main-info-container col-md-12 col-lg-8" *ngIf="currentFilm">
+  <div class="main-info-container col-md-12 col-lg-8">
     <h2 style="margin-bottom: 0px">{{ currentFilm ? currentFilm.title : '' }}</h2>
     <p class="opening_crawl">{{ currentFilm ? currentFilm.opening_crawl : '' }}</p>
     <div class="film-basic-info bg-dark">
@@ -28,9 +25,9 @@
       <div class="list-container col-md-6 col-lg-12">
         <h4 class="list-data-header">Species</h4>
         <div class="list-data-container col-md-12 bg-dark">
-          <div *ngFor="let character of filmCharacters | sortBy: 'name'">
-            <div class="list-item">
-              {{ character.name }}
+          <div *ngFor="let species of filmSpecies | sortBy: 'name'">
+            <div class="list-item" (click)="router.navigate(['species', species.id]);">
+              {{ species.name }}
             </div>
           </div>
         </div>

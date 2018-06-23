@@ -1,14 +1,14 @@
-.character-container {
+.species-container {
   color: white;
 }
 
-.character-basic-info {
+.species-basic-info {
   padding: 10px 15px 2px 15px;
   border-radius: 5px;
   margin-top: 15px;
 }
 
-.character-basic-info p {
+.species-basic-info p {
   margin-bottom: 8px;
 }
 
@@ -23,7 +23,7 @@ h2, h4 {
 
 .list-data-container {
   padding: 10px;
-  height: 282px;
+  height: 315px;
   overflow-y: auto;
   border: 1px solid #FFC500;
   border-radius: 5px;

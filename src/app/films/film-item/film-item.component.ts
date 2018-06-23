@@ -17,6 +17,7 @@ export class FilmItemComponent implements OnInit {
   id: number;
   currentFilm: any;
   filmCharacters: any[] = [];
+  filmSpecies: any[] = [];
 
   constructor(private route: ActivatedRoute,
               private store: Store<SwapiState>,
@@ -27,7 +28,7 @@ export class FilmItemComponent implements OnInit {
     this.swapi$ = this.store.select('swapi');
 
     this.swapi$.subscribe((data) => {
-      if (this.verifyDataLoad()) {
+      if (this.verifyDataToLoad()) {
         this.setCurrentFilm();
       }
     });
@@ -41,8 +42,10 @@ export class FilmItemComponent implements OnInit {
       )
   }
 
-  verifyDataLoad() {
-    return !this.currentFilm || this.filmCharacters.length <= 0;
+  verifyDataToLoad() {
+    return !this.currentFilm || 
+            this.filmCharacters.length <= 0 || 
+            this.filmSpecies.length <= 0;
   }
 
   setCurrentFilm() {
@@ -51,6 +54,8 @@ export class FilmItemComponent implements OnInit {
       console.log(this.currentFilm)
       this.filmCharacters = [];
       this.dataService.getCharactersFromUrls(this.currentFilm.characters, this.filmCharacters)
+      this.filmSpecies = [];
+      this.dataService.getSpeciesFromUrls(this.currentFilm.species, this.filmSpecies)
     }
   }
 

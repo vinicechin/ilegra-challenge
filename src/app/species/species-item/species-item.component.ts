@@ -8,16 +8,16 @@ import { SwapiState } from '../../store/swapi.state';
 import { DataService } from '../../data.service';
 
 @Component({
-  selector: 'app-character-item',
-  templateUrl: './character-item.component.html',
-  styleUrls: ['./character-item.component.css']
+  selector: 'app-species-item',
+  templateUrl: './species-item.component.html',
+  styleUrls: ['./species-item.component.css']
 })
-export class CharacterItemComponent implements OnInit {
+export class SpeciesItemComponent implements OnInit {
   swapi$: Observable<SwapiState>;
   id: number;
-  currentCharacter: any;
+  currentSpecies: any;
   filmsAppeared: any[] = [];
-  characterSpecies: string = "";
+  members: any[] = [];
 
   constructor(private route: ActivatedRoute,
               private store: Store<SwapiState>,
@@ -29,7 +29,7 @@ export class CharacterItemComponent implements OnInit {
 
     this.swapi$.subscribe((data) => {
       if (this.verifyDataToLoad()) {
-        this.setCurrentCharacter();
+        this.setCurrentSpecies();
       }
     });
 
@@ -37,25 +37,25 @@ export class CharacterItemComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          this.setCurrentCharacter();
+          this.setCurrentSpecies();
         }
       )
   }
 
   verifyDataToLoad() {
-    return !this.currentCharacter || 
+    return !this.currentSpecies || 
             this.filmsAppeared.length <= 0 ||
-            this.characterSpecies === "";
+            this.members.length <= 0
   }
 
-  setCurrentCharacter() {
-    this.currentCharacter = this.dataService.getCharacterById(this.id);
-    if (this.currentCharacter) {
-      console.log(this.currentCharacter);
+  setCurrentSpecies() {
+    this.currentSpecies = this.dataService.getSpeciesById(this.id);
+    if (this.currentSpecies) {
+      console.log(this.currentSpecies);
       this.filmsAppeared = [];
-      this.dataService.getFilmsFromUrls(this.currentCharacter.films, this.filmsAppeared);
-      this.characterSpecies = this.dataService.getSpeciesStringFromUrls(this.currentCharacter.species);
+      this.dataService.getFilmsFromUrls(this.currentSpecies.films, this.filmsAppeared);
+      this.members = [];
+      this.dataService.getCharactersFromUrls(this.currentSpecies.people, this.members);
     }
   }
-
 }

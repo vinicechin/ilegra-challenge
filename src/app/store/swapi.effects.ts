@@ -48,6 +48,23 @@ export class SwapiEffects {
         });
     })
 
+  @Effect()
+  getSpecies$ = this.action$
+    .ofType(swapiActions.GET_SPECIES)
+    .switchMap(() => {
+      return this.getDataRecursively('https://swapi.co/api/species')
+        .then((data: any) => {
+          for(let species of data) {
+            species.id = this.getIdFromUrl(species.url)
+          }
+          console.log(data)
+          return new swapiActions.GetSpeciesSuccessAction({species: data})
+        })
+        .catch((error) => {
+          new swapiActions.GetSpeciesErrorAction({error: error})
+        })
+    })
+
   // AUXILIAR METHODS
   getDataRecursively(url = 'https://swapi.co/api/people', array = []) {
     return new Promise((resolve, reject) => {

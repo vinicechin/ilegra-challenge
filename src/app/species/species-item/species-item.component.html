@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-8">
+    <h2 style="margin-bottom: 0px">{{ currentSpecies ? currentSpecies.name : '' }}</h2>
+  </div>
+</div>
+<div class="row species-container">
+  <div class="col-md-5">
+    <div class="species-basic-info bg-dark">
+      <p><b>Classification:</b> {{ currentSpecies ? currentSpecies.classification : '' }}</p>
+      <p><b>Designation:</b> {{ currentSpecies ? currentSpecies.designation : '' }}</p>
+      <p><b>Language:</b> {{ currentSpecies ? currentSpecies.language : '' }}</p>
+      <p><b>Hair Colors:</b> {{ currentSpecies ? currentSpecies.hair_colors : '' }}</p>
+      <p><b>Skin Colors:</b> {{ currentSpecies ? currentSpecies.skin_colors : '' }}</p>
+      <p><b>Eyes Colors:</b> {{ currentSpecies ? currentSpecies.eye_colors : '' }}</p>
+      <p><b>Average Height:</b> {{ currentSpecies ? currentSpecies.average_height : '' }}</p>
+      <p><b>Average Lifespan:</b> {{ currentSpecies ? currentSpecies.average_lifespan : '' }}</p>
+      <p><b>Homeworld:</b> ...</p>
+      <p><b>Language:</b> {{ currentSpecies ? currentSpecies.language : '' }}</p>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="row">
+      <div class="col-md-5">
+        <h4 class="list-data-header">Appearances</h4>
+        <div class="list-data-container col-md-12 bg-dark">
+          <div *ngFor="let film of filmsAppeared | sortBy: 'episode_id'">
+            <div class="list-item" (click)="router.navigate(['films', film.episode_id]);">
+              {{ film.title }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <h4 class="list-data-header">Members</h4>
+        <div class="list-data-container col-md-12 bg-dark">
+          <div *ngFor="let member of members | sortBy: 'name'">
+            <div class="list-item" (click)="router.navigate(['characters', member.id]);">
+              {{ member.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

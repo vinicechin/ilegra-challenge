@@ -1,0 +1,21 @@
+<div class="row my-2">
+  <div class="col-12 filter-bar">
+    <input [(ngModel)]="searchTerm" class="form-control mr-sm-2" type="text" placeholder="Filter by name" aria-label="Filter">
+  </div>
+</div>
+<div class="row">
+  <div *ngFor="let speciesItem of species | filter : searchTerm | sortBy: 'name'" class="col-lg-6 col-xl-4 species-container">
+    <div class="species-content bg-dark">
+      <h2 class="species-name">{{ speciesItem.name }}</h2>
+      <div>
+        <p class="species-info-item"><span class="species-info-item-label">Classification:</span> {{ speciesItem.classification }}</p>
+        <p class="species-info-item"><span class="species-info-item-label">Designation:</span> {{ speciesItem.designation }}</p>
+        <p class="species-info-item"><span class="species-info-item-label">Avg Height:</span> {{ speciesItem.average_height }}</p>
+        <p class="species-info-item"><span class="species-info-item-label">Avg Lifespan:</span> {{ speciesItem.average_lifespan }}</p>
+      </div>
+      <div class="details-btn-container">
+        <a class="btn btn-secondary" role="button" (click)="router.navigate(['species', speciesItem.id]);">View details »</a>
+      </div>
+    </div>
+  </div>
+</div>
