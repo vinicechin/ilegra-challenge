@@ -17,6 +17,9 @@ import { PlanetListComponent } from './planets/planet-list/planet-list.component
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { VehicleItemComponent } from './vehicles/vehicle-item/vehicle-item.component';
 import { VehicleListComponent } from './vehicles/vehicle-list/vehicle-list.component';
+import { StarshipsComponent } from './starships/starships.component';
+import { StarshipItemComponent } from './starships/starship-item/starship-item.component';
+import { StarshipListComponent } from './starships/starship-list/starship-list.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoadingScreenComponent, pathMatch: 'full' },
@@ -39,6 +42,10 @@ const appRoutes: Routes = [
   { path: 'vehicles', component: VehiclesComponent, children: [
     { path: '', component: VehicleListComponent },
     { path: ':id', component: VehicleItemComponent }
+  ]},
+  { path: 'starships', component: StarshipsComponent, children: [
+    { path: '', component: StarshipListComponent },
+    { path: ':id', component: StarshipItemComponent }
   ]}
 ]
 
