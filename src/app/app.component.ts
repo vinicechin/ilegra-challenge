@@ -15,7 +15,7 @@ import { DataService } from './data.service';
 })
 export class AppComponent implements OnInit {
   isCollapsed = true;
-  title = 'app';
+  title = 'Star Wars Wiki';
   swapi$: Observable<any>;
   loading: boolean = true;
   error: boolean = false;
