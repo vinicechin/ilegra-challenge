@@ -1,6 +1,6 @@
 # Ilegra Challenge: A Star Wars Webpage powered by SWAPI
 
-The goal of this project is to use the [SWAPI](https://swapi.co/) api to create a webpage to show informations about the Star Wars movies.
+The goal of this project is to create a webpage to show informations about the Star Wars franchise. The data used is provided by the [SWAPI](https://swapi.co/) api.
 
 ## Technologies
 The technologies used in this project are:
@@ -12,6 +12,10 @@ The technologies used in this project are:
     * Core, effects and store
 * [JQuery](https://jquery.com/) 3.3.1
 * [RxJs](https://github.com/ReactiveX/rxjs)/[RxJs-Compat](https://www.npmjs.com/package/rxjs-compat) 6.2.1
+
+## Future work
+* Implement unitary and integration tests.
+* Research and test new possible UX/UI implementations.
 
 ## Install dependencies
 It is necessary to have nodejs and angular-cli installed to be able to install and run this project:
