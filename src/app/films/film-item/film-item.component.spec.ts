@@ -96,9 +96,7 @@ describe('FilmItemComponent', () => {
     });
 
     fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(dataService.getFilmById(2)).toBeFalsy();
-    });
+    expect(dataService.getFilmById(2)).toBeFalsy();
   });
 
   it('should get list of characters by urls', () => {
@@ -115,10 +113,8 @@ describe('FilmItemComponent', () => {
     });
 
     fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      var array = [];
-      dataService.getCharactersFromUrls(['url/1/'], array)
-      expect(array).toEqual(mockFilmCharacters);
-    });
+    var array = [];
+    dataService.getCharactersFromUrls(['url/1/'], array)
+    expect(array).toEqual(mockFilmCharacters);
   });
 });

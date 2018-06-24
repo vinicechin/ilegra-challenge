@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Router } from '@angular/router'; 
 
-enum Type {
+export enum Type {
     FILMS = 0,
     CHARACTERS = 1,
     SPECIES = 2,
@@ -146,10 +146,10 @@ export class DataService {
     if (dataArray.length > 0) {
       for (let id of this.getIdsArray(urlArray)) {
         const item = dataArray.find((item) => {
-          if (type === Type.FILMS) {
-            return item.episode_id === id;
+          if (type == Type.FILMS) {
+            return item.episode_id == id;
           } else {
-            return item.id === id;
+            return item.id == id;
           }
         });
         array.push(item);
