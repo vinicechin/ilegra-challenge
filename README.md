@@ -14,8 +14,8 @@ The technologies used in this project are:
 * [RxJs](https://github.com/ReactiveX/rxjs)/[RxJs-Compat](https://www.npmjs.com/package/rxjs-compat) 6.2.1
 
 ## Future work
-* Implement unitary and integration tests.
 * Research and test new possible UX/UI implementations.
+* Research for better ways to test components and UI.
 
 ## Installations and dependencies
 It is necessary to have nodejs and angular-cli installed to be able to install and run this project:
