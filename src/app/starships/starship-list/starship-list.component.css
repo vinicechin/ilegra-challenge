@@ -27,6 +27,9 @@
 .starship-info-item {
   margin-bottom: 2px;
   display: flex;
+  white-space: nowrap;
+  overflow:hidden !important;
+  text-overflow: ellipsis;
 }
 
 .starship-info-item-label {

@@ -27,6 +27,9 @@
 .species-info-item {
   margin-bottom: 2px;
   display: flex;
+  white-space: nowrap;
+  overflow:hidden !important;
+  text-overflow: ellipsis;
 }
 
 .species-info-item-label {
