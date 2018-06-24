@@ -18,11 +18,11 @@ const appRoutes: Routes = [
 ]
 const mockFilm = {name: 'Film 1'}
 const mockFilms: any[] = [{id: 1, name: 'Film 1'}]
-const mockFilmCharacters = [{name: 'Char 1'}]
-const mockFilmSpecies = [{name: 'Species 1'}]
-const mockFilmPlanets = [{name: 'Planet 1'}]
-const mockFilmVehicles = [{name: 'Vehicle 1'}]
-const mockFilmStarships = [{name: 'Starship 1'}]
+const mockFilmCharacters = [{id: 1, name: 'Char 1'}]
+const mockFilmSpecies = [{id: 1, name: 'Species 1'}]
+const mockFilmPlanets = [{id: 1, name: 'Planet 1'}]
+const mockFilmVehicles = [{id: 1, name: 'Vehicle 1'}]
+const mockFilmStarships = [{id: 1, name: 'Starship 1'}]
 
 describe('FilmItemComponent', () => {
   beforeEach(async(() => {
@@ -69,14 +69,10 @@ describe('FilmItemComponent', () => {
     expect(app.verifyDataToLoad()).toBeFalsy();
   }));
 
-
   it('should get film by id', () => {
     let fixture = TestBed.createComponent(FilmItemComponent);
     let app = fixture.debugElement.componentInstance;
     let dataService = fixture.debugElement.injector.get(DataService);
-    // let spy = spyOn(dataService, 'getFilmById')
-    //   .and.returnValue(Promise.resolve('Data'));
-
     spyOn(dataService,'getFilmById').and.callFake(function(id) {
       return mockFilms.find((film) => {
         return film.id === id;
@@ -84,9 +80,45 @@ describe('FilmItemComponent', () => {
     });
 
     fixture.detectChanges();
-    
     fixture.whenStable().then(() => {
       expect(dataService.getFilmById(1)).toBeTruthy();
+    });
+  });
+
+  it('should fail to get film by id', () => {
+    let fixture = TestBed.createComponent(FilmItemComponent);
+    let app = fixture.debugElement.componentInstance;
+    let dataService = fixture.debugElement.injector.get(DataService);
+    spyOn(dataService,'getFilmById').and.callFake(function(id) {
+      return mockFilms.find((film) => {
+        return film.id === id;
+      });
+    });
+
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(dataService.getFilmById(2)).toBeFalsy();
+    });
+  });
+
+  it('should get list of characters by urls', () => {
+    let fixture = TestBed.createComponent(FilmItemComponent);
+    let app = fixture.debugElement.componentInstance;
+    let dataService = fixture.debugElement.injector.get(DataService);
+    spyOn(dataService,'getCharactersFromUrls').and.callFake(function(urlArray, resArray) {
+      let array = dataService.getIdsArray(urlArray);
+      for(let id of array) {
+        resArray.push(mockFilmCharacters.find((char) => {
+          return char.id === id;
+        }));
+      }
+    });
+
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      var array = [];
+      dataService.getCharactersFromUrls(['url/1/'], array)
+      expect(array).toEqual(mockFilmCharacters);
     });
   });
 });
