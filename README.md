@@ -15,7 +15,7 @@ The technologies used in this project are:
 
 ## Future work
 * Research and test new possible UX/UI implementations.
-* Research for better ways to test components and UI.
+* Research for better ways to implement automated tests for components and UI.
 
 ## Installations and dependencies
 It is necessary to have nodejs and angular-cli installed to be able to install and run this project:
