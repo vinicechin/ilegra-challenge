@@ -32,4 +32,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/` to visuali
 
 When running the application with chrome the webpage may have problems getting the data from the api. The [Moesif CORS](https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc?hl=en) extension can solve this problem. You just need to add it to chrome and turn it on.
 
+## Running unit tests 
+ 
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
 ## 
